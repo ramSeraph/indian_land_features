@@ -6,3 +6,5 @@
 * [Geomorphology](https://github.com/ramSeraph/indian_land_features/releases/tag/geomorphology)
 * [Geology](https://github.com/ramSeraph/indian_land_features/releases/tag/geology)
 * [Forests](https://github.com/ramSeraph/indian_land_features/releases/tag/forests)
+* [Mining](https://github.com/ramSeraph/indian_land_features/releases/tag/mining)
+* [Groundwater Prospects](https://github.com/ramSeraph/indian_land_features/releases/tag/groundwater-prospects)
