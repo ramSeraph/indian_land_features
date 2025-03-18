@@ -50,7 +50,7 @@ uv run rio rgbify -b -10000 -i 0.1 --min-z  9 --max-z  9 --round-digits  7 -j 8 
 uv run rio rgbify -b -10000 -i 0.1 --min-z 10 --max-z 10 --round-digits  6 -j 8 --format webp data/dem_epsg3857.vrt data/cartodem_v3r1_z10.mbtiles
 uv run rio rgbify -b -10000 -i 0.1 --min-z 11 --max-z 11 --round-digits  5 -j 8 --format webp data/dem_epsg3857.vrt data/cartodem_v3r1_z11.mbtiles
 uv run rio rgbify -b -10000 -i 0.1 --min-z 12 --max-z 12 --round-digits  4 -j 8 --format webp data/dem_epsg3857.vrt data/cartodem_v3r1_z12.mbtiles
-tile-join -n Bhuvan_CartoDEM_v3r1_Terrain_RGB -o Bhuvan_CartoDEM_v3r1_Terrain_RGB.mbtiles data/cartodem_v3r1_z*.mbtiles
+
 
 uvx --from "git+https://github.com/mapbox/mbutil" mb-util --image_format webp data/cartodem_v3r1_z5.mbtiles data/tiles5
 uvx --from "git+https://github.com/mapbox/mbutil" mb-util --image_format webp data/cartodem_v3r1_z6.mbtiles data/tiles6
