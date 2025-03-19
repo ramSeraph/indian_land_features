@@ -1,0 +1,10 @@
+{
+   "type": "baselayer",
+   "format": "webp",
+   "attribution": "<a href=\"https://bhuvan-app3.nrsc.gov.in/data/download/index.php\" target=\"_blank\" rel=\"noopener noreferrer\">Bhuvan CartoDEM 30m v3r1</a>",
+   "description": "",
+   "name": "Bhuvan_CartoDEM_v3r1_TerrainRGB",
+   "version": "1",
+   "maxzoom": "12",
+   "minzoom": "5"
+}

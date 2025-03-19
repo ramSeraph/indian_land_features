@@ -40,46 +40,20 @@ tile-join -n Bhuvan_CartoDEM_v3r1_Contours -l contour -pk -o Bhuvan_CartoDEM_v3r
 gdalbuildvrt -vrtnodata -255 data/dem_255.vrt data/raw/v3_r1/*.tif
 gdalwarp -r cubicspline -s_srs EPSG:4326 -t_srs EPSG:3857 -dstnodata 0 -co COMPRESS=DEFLATE data/dem_255.vrt data/dem_epsg3857.vrt
 
-uv venv
-uv pip install "git+https://github.com/acalcutt/rio-rgbify"
-uv run rio rgbify -b -10000 -i 0.1 --min-z  5 --max-z  5 --round-digits 11 -j 8 --format webp data/dem_epsg3857.vrt data/cartodem_v3r1_z5.mbtiles
-uv run rio rgbify -b -10000 -i 0.1 --min-z  6 --max-z  6 --round-digits 10 -j 8 --format webp data/dem_epsg3857.vrt data/cartodem_v3r1_z6.mbtiles
-uv run rio rgbify -b -10000 -i 0.1 --min-z  7 --max-z  7 --round-digits  9 -j 8 --format webp data/dem_epsg3857.vrt data/cartodem_v3r1_z7.mbtiles
-uv run rio rgbify -b -10000 -i 0.1 --min-z  8 --max-z  8 --round-digits  8 -j 8 --format webp data/dem_epsg3857.vrt data/cartodem_v3r1_z8.mbtiles
-uv run rio rgbify -b -10000 -i 0.1 --min-z  9 --max-z  9 --round-digits  7 -j 8 --format webp data/dem_epsg3857.vrt data/cartodem_v3r1_z9.mbtiles
-uv run rio rgbify -b -10000 -i 0.1 --min-z 10 --max-z 10 --round-digits  6 -j 8 --format webp data/dem_epsg3857.vrt data/cartodem_v3r1_z10.mbtiles
-uv run rio rgbify -b -10000 -i 0.1 --min-z 11 --max-z 11 --round-digits  5 -j 8 --format webp data/dem_epsg3857.vrt data/cartodem_v3r1_z11.mbtiles
-uv run rio rgbify -b -10000 -i 0.1 --min-z 12 --max-z 12 --round-digits  4 -j 8 --format webp data/dem_epsg3857.vrt data/cartodem_v3r1_z12.mbtiles
-
-
-uvx --from "git+https://github.com/mapbox/mbutil" mb-util --image_format webp data/cartodem_v3r1_z5.mbtiles data/tiles5
-uvx --from "git+https://github.com/mapbox/mbutil" mb-util --image_format webp data/cartodem_v3r1_z6.mbtiles data/tiles6
-uvx --from "git+https://github.com/mapbox/mbutil" mb-util --image_format webp data/cartodem_v3r1_z7.mbtiles data/tiles7
-uvx --from "git+https://github.com/mapbox/mbutil" mb-util --image_format webp data/cartodem_v3r1_z8.mbtiles data/tiles8
-uvx --from "git+https://github.com/mapbox/mbutil" mb-util --image_format webp data/cartodem_v3r1_z9.mbtiles data/tiles9
-uvx --from "git+https://github.com/mapbox/mbutil" mb-util --image_format webp data/cartodem_v3r1_z10.mbtiles data/tiles10
-uvx --from "git+https://github.com/mapbox/mbutil" mb-util --image_format webp data/cartodem_v3r1_z11.mbtiles data/tiles11
-uvx --from "git+https://github.com/mapbox/mbutil" mb-util --image_format webp data/cartodem_v3r1_z12.mbtiles data/tiles12
 
 mkdir data/tiles
-cp data/tiles5/metadata.json data/tiles/
+cp metadata.json data/tiles/
+round_bits=11
+for zoom in 5 6 7 8 9 10 11 12
+do
+    uvx --from rasterio --with "git+https://github.com/acalcutt/rio-rgbify" rio rgbify -b -10000 -i 0.1 --min-z  ${zoom} --max-z  ${zoom}  --round-digits $round_bits -j 8 --format webp data/dem_epsg3857.vrt data/cartodem_v3r1_z${zoom}.mbtiles
 
-mv data/tiles5/5 data/tiles
-mv data/tiles6/6 data/tiles
-mv data/tiles7/7 data/tiles
-mv data/tiles8/8 data/tiles
-mv data/tiles9/9 data/tiles
-mv data/tiles10/10 data/tiles
-mv data/tiles11/11 data/tiles
-mv data/tiles12/12 data/tiles
+    uvx --from "git+https://github.com/mapbox/mbutil" mb-util --image_format webp data/cartodem_v3r1_z5.mbtiles data/tiles${zoom}
 
-rm -rf data/tiles5
-rm -rf data/tiles6
-rm -rf data/tiles7
-rm -rf data/tiles8
-rm -rf data/tiles9
-rm -rf data/tiles10
-rm -rf data/tiles11
-rm -rf data/tiles12
+    mv data/tiles${zoom}/${zoom} data/tiles
+    rm -rf data/tiles${zoom}
+
+    round_bits=$(( round_bits - 1))
+done
 
 uvx --from "git+https://github.com/mapbox/mbutil" mb-util --image_format webp data/tiles Bhuvan_CartoDEM_v3r1_TerrainRGB.mbtiles
