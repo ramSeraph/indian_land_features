@@ -32,6 +32,9 @@ cd data
 rm v3_r1_water_bodies.geojsonl.7z
 cd -
 
+# Based on prior work at https://github.com/nst-guide/terrain and 
+# https://medium.com/@frederic.rodrigo/optimization-of-rgb-dem-tiles-for-dynamic-hill-shading-with-mapbox-gl-or-maplibre-gl-55bef8eb3d86
+
 # create contour vector tiles
 find data/tifs/v3_r1 -type f | xargs -I {} ./gen_contours.sh {}
 tile-join -n Bhuvan_CartoDEM_v3r1_Contours -l contour -pk -o Bhuvan_CartoDEM_v3r1_Contours.mbtiles data/contours/*.mbtiles
