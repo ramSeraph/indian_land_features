@@ -51,7 +51,7 @@ for zoom in 5 6 7 8 9 10 11 12
 do
     uvx --from rasterio --with "git+https://github.com/acalcutt/rio-rgbify" rio rgbify -b -10000 -i 0.1 --min-z  ${zoom} --max-z  ${zoom}  --round-digits $round_bits -j 8 --format webp data/dem_epsg3857.vrt data/cartodem_v3r1_z${zoom}.mbtiles
 
-    uvx --from "git+https://github.com/mapbox/mbutil" mb-util --image_format webp data/cartodem_v3r1_z5.mbtiles data/tiles${zoom}
+    uvx --from "git+https://github.com/mapbox/mbutil" mb-util --image_format webp data/cartodem_v3r1_z${zoom}.mbtiles data/tiles${zoom}
 
     mv data/tiles${zoom}/${zoom} data/tiles
     rm -rf data/tiles${zoom}
