@@ -29,7 +29,7 @@ uvrun join.py
 rm -f data/water/v3_r1/*
 cd data
 7z a v3_r1_water_bodies.geojsonl.7z v3_r1_water_bodies.geojsonl
-rm v3_r1_water_bodies.geojsonl.7z
+rm v3_r1_water_bodies.geojsonl
 cd -
 
 # Based on prior work at https://github.com/nst-guide/terrain and 
@@ -56,7 +56,7 @@ do
     mv data/tiles${zoom}/${zoom} data/tiles
     rm -rf data/tiles${zoom}
 
-    round_bits=$(( round_bits - 1))
+    round_bits=$(( round_bits - 1 ))
 done
 
 uvx --from "git+https://github.com/mapbox/mbutil" mb-util --image_format webp data/tiles Bhuvan_CartoDEM_v3r1_TerrainRGB.mbtiles
