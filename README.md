@@ -11,3 +11,4 @@
 * [Groundwater Prospects](https://github.com/ramSeraph/indian_land_features/releases/tag/groundwater-prospects)
 * [CartoDEM](https://github.com/ramSeraph/indian_land_features/releases/tag/cartodem-30m-v3r1)
 * [SOI Elevation data](https://github.com/ramSeraph/indian_land_features/releases/tag/soi-dem)
+* [Land Degradation](https://github.com/ramSeraph/indian_land_features/releases/tag/degradation)
