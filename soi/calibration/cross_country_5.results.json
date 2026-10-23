@@ -1,0 +1,433 @@
+{
+  "purpose": "Five geographically separated sheets; unchanged geometry detector; raster used only for calibration review",
+  "sheets": [
+    {
+      "sheet": "53A_16",
+      "region": "Himachal Pradesh \u2014 lower Himalayan terrain",
+      "output_dir": "data/contour_dem/53A_16-cross-country-joined",
+      "source_features": 8888,
+      "contour_parts": 9064,
+      "circles": 155,
+      "triangles": 0,
+      "reconstructed_symbols": 19,
+      "dem_status": "conflicting_constraints",
+      "conflicting_sample_locations": 37,
+      "review": {
+        "sample_symbols": 13,
+        "sample_controls": 24,
+        "matching_printed_heights": 12,
+        "different_printed_heights": [
+          {
+            "source_id": "CONTOUR_Crv.2449709",
+            "audit_id": "061",
+            "source_m": 1206.0,
+            "printed_m": 1208.0,
+            "notes": "Circle height symbol; source VALUE 1206 disagrees with printed 1208."
+          }
+        ],
+        "unreadable_or_unverifiable_symbols": 0,
+        "review_file": "calibration/53A_16.review.csv",
+        "additional_recovered_symbols_reviewed": 19,
+        "recovered_matching_printed_heights": 18,
+        "recovered_review_file": "calibration/53A_16.recovered-symbols.review.json"
+      }
+    },
+    {
+      "sheet": "45F_4",
+      "region": "Rajasthan \u2014 arid terrain near Jodhpur",
+      "output_dir": "data/contour_dem/45F_4-cross-country",
+      "source_features": 620,
+      "contour_parts": 482,
+      "circles": 140,
+      "triangles": 10,
+      "reconstructed_symbols": 0,
+      "dem_status": "created",
+      "conflicting_sample_locations": 0,
+      "review": {
+        "sample_symbols": 34,
+        "sample_controls": 24,
+        "matching_printed_heights": 3,
+        "different_printed_heights": [
+          {
+            "source_id": "CONTOUR_Crv.926158",
+            "audit_id": "142",
+            "source_m": 274.0,
+            "printed_m": 276.0,
+            "notes": "Visible height marker; map label differs from source VALUE."
+          },
+          {
+            "source_id": "CONTOUR_Crv.926142",
+            "audit_id": "145",
+            "source_m": 208.0,
+            "printed_m": 212.0,
+            "notes": "Visible height marker; map label differs from source VALUE."
+          },
+          {
+            "source_id": "CONTOUR_Crv.926165",
+            "audit_id": "147",
+            "source_m": 193.0,
+            "printed_m": 196.0,
+            "notes": "Visible height marker; map label differs from source VALUE."
+          },
+          {
+            "source_id": "CONTOUR_Crv.926145",
+            "audit_id": "148",
+            "source_m": 206.0,
+            "printed_m": 211.0,
+            "notes": "Visible height marker; map label differs from source VALUE."
+          }
+        ],
+        "unreadable_or_unverifiable_symbols": 27,
+        "review_file": "calibration/45F_4.review.csv"
+      },
+      "coverage_fraction": 0.9817182125225306,
+      "contour_only_holdout": {
+        "count": 146,
+        "unavailable": 4,
+        "bias_m": -1.983438878946097,
+        "mae_m": 4.147150843521498,
+        "rmse_m": 5.578466072875543,
+        "max_abs_m": 19.0
+      },
+      "limitation": "Many source height markers absent from raster and several visible marker elevations differ; source/raster correspondence is insufficient for a clean calibration."
+    },
+    {
+      "sheet": "73D_15",
+      "region": "Odisha \u2014 Mahanadi valley and Eastern Ghats",
+      "output_dir": "data/contour_dem/73D_15-cross-country",
+      "source_features": 5741,
+      "contour_parts": 5724,
+      "circles": 101,
+      "triangles": 21,
+      "reconstructed_symbols": 0,
+      "dem_status": "created",
+      "conflicting_sample_locations": 0,
+      "review": {
+        "sample_symbols": 36,
+        "sample_controls": 24,
+        "matching_printed_heights": 33,
+        "different_printed_heights": [
+          {
+            "source_id": "CONTOUR_Crv.7099821",
+            "audit_id": "071",
+            "source_m": 101.0,
+            "printed_m": 104.0,
+            "notes": "Source circle VALUE 101 is at the printed 104 point; a separate triangle labelled 101 is nearby. Correspondence differs."
+          }
+        ],
+        "unreadable_or_unverifiable_symbols": 2,
+        "review_file": "calibration/73D_15.review.csv"
+      },
+      "coverage_fraction": 0.996534056660639,
+      "contour_only_holdout": {
+        "count": 122,
+        "unavailable": 0,
+        "bias_m": -3.2320911164108344,
+        "mae_m": 4.313753161125065,
+        "rmse_m": 5.1844263498143,
+        "max_abs_m": 12.0
+      }
+    },
+    {
+      "sheet": "83E_11",
+      "region": "Arunachal Pradesh \u2014 Himalayan foothills",
+      "output_dir": "data/contour_dem/83E_11-cross-country",
+      "source_features": 15755,
+      "contour_parts": 15887,
+      "circles": 84,
+      "triangles": 14,
+      "reconstructed_symbols": 0,
+      "dem_status": "conflicting_constraints",
+      "conflicting_sample_locations": 10,
+      "review": {
+        "sample_symbols": 27,
+        "sample_controls": 24,
+        "matching_printed_heights": 0,
+        "different_printed_heights": [],
+        "unreadable_or_unverifiable_symbols": 27,
+        "review_file": "calibration/83E_11.review.csv"
+      },
+      "limitation": "Raster crops omit contours and height labels; detector accuracy cannot be established from this raster."
+    },
+    {
+      "sheet": "47J_9",
+      "region": "Maharashtra \u2014 Deccan plateau east of Pune",
+      "output_dir": "data/contour_dem/47J_9-cross-country",
+      "source_features": 1409,
+      "contour_parts": 1325,
+      "circles": 95,
+      "triangles": 15,
+      "reconstructed_symbols": 0,
+      "dem_status": "conflicting_constraints",
+      "conflicting_sample_locations": 46,
+      "review": {
+        "sample_symbols": 39,
+        "sample_controls": 24,
+        "matching_printed_heights": 36,
+        "different_printed_heights": [
+          {
+            "source_id": "CONTOUR_Crv.2321554",
+            "audit_id": "108",
+            "source_m": 849.0,
+            "printed_m": 851.0,
+            "notes": "Triangle station; source VALUE 849 disagrees with printed 851."
+          }
+        ],
+        "unreadable_or_unverifiable_symbols": 2,
+        "review_file": "calibration/47J_9.review.csv"
+      }
+    }
+  ],
+  "excluded_coverage_probes": [
+    {
+      "sheet": "47F_9",
+      "region": "Maharashtra \u2014 Western Ghats near Pune",
+      "index_feature": {
+        "type": "Feature",
+        "properties": {
+          "id": "47F_9",
+          "OSM_SHEET_": "E 43H9"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                73.5,
+                19.0
+              ],
+              [
+                73.5,
+                18.75
+              ],
+              [
+                73.75,
+                18.75
+              ],
+              [
+                73.75,
+                19.0
+              ],
+              [
+                73.5,
+                19.0
+              ]
+            ]
+          ]
+        }
+      },
+      "toposheet": {
+        "name": "47F_9.tif",
+        "size": "7998483",
+        "url": "https://github.com/ramSeraph/india_topo_maps/releases/download/50k-osm-georef/47F_9.tif"
+      },
+      "output_dir": "data/contour_dem/47F_9-cross-country",
+      "audit_dir": "data/contours/47F_9/calibration-cross-country",
+      "exclusion_reason": "iomaps returned zero contour features; partition bounds do not imply complete coverage."
+    },
+    {
+      "sheet": "73H_3",
+      "region": "Odisha \u2014 eastern hill and agricultural terrain",
+      "index_feature": {
+        "type": "Feature",
+        "properties": {
+          "id": "73H_3",
+          "OSM_SHEET_": "F 45T3"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                85.0,
+                20.5
+              ],
+              [
+                85.0,
+                20.25
+              ],
+              [
+                85.25,
+                20.25
+              ],
+              [
+                85.25,
+                20.5
+              ],
+              [
+                85.0,
+                20.5
+              ]
+            ]
+          ]
+        }
+      },
+      "toposheet": {
+        "name": "73H_3.tif",
+        "size": "6760221",
+        "url": "https://github.com/ramSeraph/india_topo_maps/releases/download/50k-osm-georef/73H_3.tif"
+      },
+      "output_dir": "data/contour_dem/73H_3-cross-country",
+      "audit_dir": "data/contours/73H_3/calibration-cross-country",
+      "exclusion_reason": "No interior contour coverage (empty extract or boundary-only fragments)."
+    },
+    {
+      "sheet": "83B_10",
+      "region": "Assam \u2014 Brahmaputra floodplain near Tezpur",
+      "index_feature": {
+        "type": "Feature",
+        "properties": {
+          "id": "83B_10",
+          "OSM_SHEET_": "G 46I10"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                92.5,
+                26.75
+              ],
+              [
+                92.5,
+                26.5
+              ],
+              [
+                92.75,
+                26.5
+              ],
+              [
+                92.75,
+                26.75
+              ],
+              [
+                92.5,
+                26.75
+              ]
+            ]
+          ]
+        }
+      },
+      "toposheet": {
+        "name": "83B_10.tif",
+        "size": "5587053",
+        "url": "https://github.com/ramSeraph/india_topo_maps/releases/download/50k-osm-georef-extra3/83B_10.tif"
+      },
+      "output_dir": "data/contour_dem/83B_10-cross-country",
+      "audit_dir": "data/contours/83B_10/calibration-cross-country",
+      "exclusion_reason": "No interior contour coverage (empty extract or boundary-only fragments)."
+    },
+    {
+      "sheet": "56N_14",
+      "region": "Telangana \u2014 Godavari valley and plateau near Manthani",
+      "index_feature": {
+        "type": "Feature",
+        "properties": {
+          "id": "56N_14",
+          "OSM_SHEET_": "E 44H14"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                79.75,
+                18.75
+              ],
+              [
+                79.75,
+                18.5
+              ],
+              [
+                80.0,
+                18.5
+              ],
+              [
+                80.0,
+                18.75
+              ],
+              [
+                79.75,
+                18.75
+              ]
+            ]
+          ]
+        }
+      },
+      "toposheet": {
+        "name": "56N_14.tif",
+        "size": "5626875",
+        "url": "https://github.com/ramSeraph/india_topo_maps/releases/download/50k-osm-georef-extra4/56N_14.tif"
+      },
+      "output_dir": "data/contour_dem/56N_14-cross-country",
+      "audit_dir": "data/contours/56N_14/calibration-cross-country",
+      "exclusion_reason": "No interior contour coverage (empty extract or boundary-only fragments)."
+    }
+  ],
+  "source_values_preserved": true,
+  "final_models_include_all_detected_points": true,
+  "water_smoothing_used": false,
+  "complete_parquet_downloads": false,
+  "circle_radius_threshold_m": 13,
+  "triangle_nominal_side_m": 70,
+  "code_sha256": {
+    "contours_to_dem.py": "e1ed2d4ae68c7b6c956800ec9449535f08a38b789d534ab26f7afee5611cbe68",
+    "extract_sheet_dem.py": "5bce7d0a000d134b5cd374d06c2413a5502b492a8c98ce6674a185e6c5023f7b",
+    "audit_spot_heights.py": "53e466edea5045d83a9a9ecc7dcdf67b2b780660b8375c3044f2a5dd70d19cf7"
+  },
+  "datum_investigation": "data/contours/53A_16/datum-boundary-analysis.json",
+  "note": "A stratified candidate sample, all detected triangles and 24 controls per sheet were inspected. This is not an exhaustive omission/recall audit or an independent elevation accuracy estimate.",
+  "transport_validation": {
+    "selected_duckdb_version": "2.0.0",
+    "complete_parquet_downloads": false,
+    "live_comparisons": [
+      {
+        "sheet": "45F_4",
+        "features": 620,
+        "native_duckdb_2_scan_export_seconds": 21.7,
+        "total_seconds": 56.31,
+        "exact_geometry_and_source_attributes_match": true
+      },
+      {
+        "sheet": "73D_15",
+        "features": 5741,
+        "native_duckdb_2_scan_export_seconds": 60.1,
+        "total_seconds": 94.75,
+        "exact_geometry_and_source_attributes_match": true
+      }
+    ],
+    "note": "Individual live runs, not controlled performance benchmarks. Earlier 1.5.6 setup took roughly 12 minutes per scan/export. Community HTTP extensions unavailable for 2.0.0 macOS ARM64 when tested.",
+    "cache_httpfs_trial": {
+      "duckdb_version": "1.4.4",
+      "sheet": "45F_4",
+      "completed": true,
+      "scan_export_seconds": 898.1,
+      "total_seconds": 1113.1,
+      "selected_for_iomaps": false
+    },
+    "iomaps_compatibility_fixes": [
+      "Explicit longitude/easting-first GDAL export",
+      "DOUBLE bounding-box literals preserve filter pushdown",
+      "DuckDB relation count uses fetchall",
+      "GeoParquet output uses the Arrow table writer with DuckDB 2.0 conversion"
+    ],
+    "iomaps_code_sha256": {
+      "iomaps/commands/extract.py": "3e3302b480bcae816a457ae02de3825d9faf22e8fd48992443df2029a9b6609c",
+      "pyproject.toml": "2fe8943a64b76c47934e7a964cd205e78bc2f8d435a3109f017cc133601f9560",
+      "uv.lock": "205035b43b204fe4c8e963e8dcae3cb53ee9c62201bfcf5d6a66a3d97e1c1a56"
+    }
+  },
+  "glo30_comparison": "data/comparisons/73D_15-glo30-native-grid/report.json",
+  "current_code_sha256": {
+    "contours_to_dem.py": "e1ed2d4ae68c7b6c956800ec9449535f08a38b789d534ab26f7afee5611cbe68",
+    "extract_sheet_dem.py": "37073d85b69a51c934d6a85c3432559b3190b5b4d2c69b478d175a5dffd05087",
+    "audit_spot_heights.py": "53e466edea5045d83a9a9ecc7dcdf67b2b780660b8375c3044f2a5dd70d19cf7",
+    "compare_dem.py": "0b3d49f598326c40bae03eef8558a23fa27be1fdf1a6ee3890812a7e65746d7c"
+  },
+  "validation": {
+    "iomaps_duckdb_2_full_suite_passed": 100,
+    "dem_tests_passed": 18,
+    "pipeline_tests_passed": 3,
+    "reference_comparison_tests_passed": 3
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "upstream": {
+    "title": "contour_interpolate",
+    "version": "0.3",
+    "author": "Christoph Hormann",
+    "copyright": "Copyright (C) 2006-2007 Christoph Hormann",
+    "article": "https://www.imagico.de/pov/earth_interpolate.php",
+    "download_page": "https://www.imagico.de/contour_interpolate/index.php",
+    "source_archive": "https://www.imagico.de/contour_interpolate/contour_interpolate-0.3.zip",
+    "license": "GPL-3.0-or-later",
+    "source_files": [
+      {
+        "path": "contour_interpolate-0.3/DemProc.cpp",
+        "sha256": "dbedbf0a3261c1ee2755719b8dd0340a53a3a683b690584e8c75bee15456bf03"
+      },
+      {
+        "path": "contour_interpolate-0.3/DemProc.h",
+        "sha256": "a01e687ce31088d5761d979fdb8ec08762bb5564a60b29f9dc5d1305191b7bb5"
+      },
+      {
+        "path": "contour_interpolate-0.3/contour_interpolate.cpp",
+        "sha256": "41190061d0238a31051079aa2195927c1af532bd4835572c510c2529dcee0d12"
+      },
+      {
+        "path": "contour_interpolate-0.3/docu.html",
+        "sha256": "b5d275452436decf1a95abf55b0489753617b9b16cf8d9c4fd53e2404f1c48cf"
+      },
+      {
+        "path": "contour_interpolate-0.3/gpl-3.0.txt",
+        "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+      }
+    ]
+  },
+  "adaptation": {
+    "language": "Python",
+    "adaptation_date": "2026-10-22",
+    "files": [
+      "imagico_interpolate.py",
+      "imagico_dem.py"
+    ],
+    "license": "GPL-3.0-or-later",
+    "license_file": "LICENSE.imagico.txt",
+    "algorithm_stages": [
+      "32-direction inverse-distance initial interpolation",
+      "once-only unknown-contour height assignment from the preliminary surface",
+      "initial curvature/error refinement",
+      "extremum constraints",
+      "gradient-path constraints",
+      "final directional interpolation and curvature/error refinement"
+    ],
+    "differences": [
+      "NumPy arrays and SciPy Gaussian filters replace CImg; this is not a bit-for-bit numerical reproduction.",
+      "NaN and explicit masks replace zero-as-empty, preserving valid zero and negative elevations and zero residuals.",
+      "Unknown-height constraints cannot overwrite existing known heights, including point heights.",
+      "Known and assigned-unknown constraints are restored exactly after final refinement.",
+      "Unsupported ray-search cells are padded only for numerical filtering and remain masked in the output.",
+      "Extremum handling protects the destination height, uses bounded iterative flood fill, and handles isolated hills or depressions.",
+      "Gradient paths must connect two height anchors; ambiguous or unbounded paths are omitted.",
+      "No implicit sea-level clipping; the existing audited waterbody smoothing remains separate."
+    ],
+    "validation_and_final_constraints": "The optional contour-only validation withholds height points and records prediction errors. The final run repeats every numerical stage with all circle, triangle and native point heights, including recomputing unknown heights. Validation estimates are not reused as final constraints.",
+    "runtime_hashes": "Each new engine report records SHA-256 hashes of the Python port, adapter, provenance manifest and license."
+  }
+}

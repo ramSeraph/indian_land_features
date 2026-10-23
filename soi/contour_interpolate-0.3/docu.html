@@ -1,0 +1,308 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+  <title>Contour interpolation tool - Documentation</title>
+  <meta name="description" content="documentation for contour interpolation tool">
+  <meta name="keywords" content="Christoph Hormann, earth, DEM, SRTM, contour line, interpolation, CIMG, open source">
+  <meta name="author" content="Christoph Hormann, mailto:chris_hormann@gmx.de">
+  <meta http-equiv="content-language" content="en">
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+
+  <style type="text/css">
+  <!--
+
+body {
+  /*background-color:#E0E0E0;*/
+  background-color:#FFFFFF;
+  color:#000000;
+  font-family:verdana,sans-serif;
+  margin: 0;
+}
+
+a:link { color:#6060FF; }
+a:visited { color:#AA60FF; }
+a:active { color:#FF40FF; }
+
+
+div.text {
+	padding-left:12px;
+}
+
+.small {
+  font-size:80%;
+}
+
+h1 {
+  font-size:180%;
+  color:#404080;
+}
+
+h2 {
+  font-size:150%;
+  color:#404080;
+}
+
+h3 {
+  font-size:120%;
+  color:#404080;
+}
+
+h1.intro {
+  font-size:180%;
+  color:#9040FF;
+}
+
+h2.intro {
+  font-size:150%;
+}
+
+h3.intro {
+  font-size:120%;
+}
+
+div.doc {
+  margin-left:20px;
+}
+
+div.sub, div.sub2 {
+  margin-left:20px;
+}
+
+dl {
+  font-size:90%;
+}
+
+dl dt {
+  padding-top: 5px;
+}
+
+strong.feature {
+  font-weight:bold;
+}
+
+code.color {
+  font-family:"Courier New", Courier, monospace;
+  color:#2000AA;
+}
+
+em.category {
+  font-style:italic;
+}
+
+div.footer {
+  margin:0px;
+  margin-top:20px;
+	background-color: #AAAAB0; 
+  color:#FFFFFF;
+  padding: 2px; 
+  padding-left: 5px; 
+  border: 1px outset;
+  font-size:80%;
+  font-style:italic;
+}
+
+div.head {
+  margin:0px;
+	background-color: #AAAAB0; 
+  border: 1px outset;
+}
+
+div.head div.title {
+  padding: 6px; 
+  padding-left: 12px; 
+  font-size:150%;
+  font-weight:bold;
+  color:#EEEEFF;
+}
+
+div.head div.subtitle {
+  padding-top: 4px; 
+  padding-right: 6px; 
+	float:right;
+	text-align:right;
+  position: absolute; right: 0px; top: 0px;
+  font-size:90%;
+  font-style:italic;
+  color:#FFFFFF;
+}
+
+#typ0 {
+  background-color:#FFFFFF;
+}
+
+#typ1 {
+  background-color:#CCCCCC;
+}
+
+#typ2 {
+  background-color:#DDCCFF;
+}
+
+#typ3 {
+  background-color:#FFDDCC;
+}
+
+#typ4 {
+  background-color:#DDDDDD;
+}
+
+#typ5 {
+  background-color:#EEEEEE;
+}
+
+#typ6 {
+  background-color:#000000;
+}
+
+#typ7 {
+  background-color:#DDE4FF;
+}
+
+
+/*---- POV-Code ----*/
+
+p.pov_code {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 10pt;
+  margin-left:20px;
+}
+
+.pov_msg {color: #0000FF; font-weight: bold;}    /*Message streams*/
+.pov_med {color: #0000FF;}                       /*Media*/
+.pov_litmod {color: #2000AA;}                    /*Light modifiers*/
+.pov_medmod {color: #2000AA;}                    /*Media modifiers*/
+.pov_func {color: #2000AA;}                      /*Functions (float, vector, string)*/
+.pov_ptrn {color: #2000AA;}                      /*Patterns*/
+.pov_globmod {color: #2000AA;}                   /*Global modifiers*/
+.pov_io {color: #0000FF; font-weight: bold;}     /*File I/O*/
+.pov_mlcom {color: #006400; font-style: italic;} /*Multi-line comment*/
+.pov_slcom {color: #006400; font-style: italic;} /*Single line comment*/
+.pov_cam {color: #0000FF;}                       /*Camera*/
+.pov_obmod {color: #2000AA;}                     /*Object modifiers*/
+.pov_atmod {color: #2000AA;}                     /*Atmospheric modifiers*/
+.pov_cammod {color: #2000AA;}                    /*Camera modifiers*/
+.pov_inter {color: #0000FF;}                     /*Interior*/
+.pov_syn {color: #9600DC;}                       /*Syntax ([...])*/
+.pov_mod {color: #2000AA;}                       /*Modifiers (general)*/
+.pov_mat {color: #0000FF;}                       /*Materials*/
+.pov_atmo {color: #0000FF;}                      /*Atmospheric objects*/
+.pov_math {color: #FF0000;}                      /*Mathematical operators*/
+.pov_cond {color: #0000FF; font-weight: bold;}   /*Conditionals*/
+.pov_dot {color: #2000AA;}                       /*Dot operators*/
+.pov_matmod {color: #2000AA;}                    /*Material modifiers*/
+.pov_glob {color: #0000FF;}                      /*Global*/
+.pov_num {color: #008B8B;}                       /*Numbers*/
+.pov_lite {color: #0000FF;}                      /*Light source*/
+.pov_squig {color: #CC0000;}                     /*{}*/
+.pov_str {color: #FF0000;}                       /*Strings*/
+.pov_obj {color: #0000FF;}                       /*Objects*/
+.pov_dirc {color: #0000FF; font-weight: bold;}   /*Directives*/
+.pov_ident {color: #8B008B; font-weight: bold;}  /*Identifiers*/
+  -->
+  </style>
+
+</head>
+
+<body>
+
+
+<div class="head">
+  <div class="title">
+    Tools and include files
+  </div>
+  <div class="subtitle">
+    created by <a href="mailto:chris_hormann@gmx.de">Christoph Hormann</a><br>
+    <a href="http://www.imagico.de/">http://www.imagico.de/</a>
+  </div>
+</div> 
+
+<div class="text">
+
+<h2>Contour interpolation tool - Documentation</h2>
+
+<p>This text describes the use of the <code>contour_interpolate</code> tool that implements an
+interpolation algorithm for calculating a value grid fully filled with values from gridded contour files.</p>
+
+<h3>Compiling the program</h3>
+
+<p>This tool requires the <a target="_blank" href="http://cimg.sourceforge.net/">CImg</a> image processing library
+and the <a target="_blank" href="http://www.gdal.org/">GDAL</a> library to be built and should be compilable on all platforms supported by these libraries.</p>
+
+<h3>The algorithm</h3>
+
+<p>The input data for this interpolation system are the contour lines drawn into the DEM grid supplemental grid files contain the water surfaces (which are supposed to be flattened) and contours of constant but unknown heights (usually small lakes).  It is fundamentally important that the grid coordinate system does not have a strong distortion in the covered area (i.e. the scale is similar in both grid directions and angles are approximately correct).</p>
+
+<p>The following steps are followed to calculate the heights of the pixels between the contours:</p>
+
+<ol>
+<li>A first approximation interpolation is calculated using directional search in 32 directions from every pixel and weighting all found contour heights in those directions with the inverse distance.</li>
+<li>Based on this first approximation the unknown height contours are drawn into the contour map using the average height along their path.</li>
+<li>This approximation is slightly smoothed using a gaussian blur filter and then at the contour line pixels the difference to the known heights is calculated.  This is a simple approximation of the surface curvature at those points.</li>
+<li>This curvature map forms the basis of a new approximation which is now done using iterative blur filter runs and before each resetting the values on the contour pixels. The result is an interpolated version of the error/curvature map.</li>
+<li>The resulting interpolated correction map is added (slightly diminished by a factor of 0.85) to the smoothed (and therefore slightly incorrect at the contour pixels) initial approximation.</li>
+<li>The last three steps are repeated (normally once, could use more for better results) with a decreased amount of smoothing.</li>
+<li>From this elevation model the local minima and maxima are determined and their heights set to avoid flat hill/mountain tops.</li>
+<li>Furthermore from this approximation gradient lines are calculated following the gradient directions of the elevation model.  Along those lines heights are linearly interpolated between the know contour pixels.  Density of these gradient lines is selectable by the user.  The original contour pixels together with the set minima/maxima altitudes and the gradient lines form the new basis of the final approximation.</li>
+<li>The final interpolation is done the same way as the first (steps 1 to 4) just with different settings and 10 iterations instead of 2.</li>
+<li>Finally the water mask image is applied and the results written to a file.</li>
+</ol>
+
+<h3>Program options</h3>
+
+<p>the program offers the following command line options:</p>
+
+<dl>
+  <dt>-i contour-file:water-file:undefined-height-contour-file ...</dt>
+  <dd>Specifies an gridded contour file data source.  This option has to be specified last and several input sources may be listed.  Each consists of three files:  The normal contours (pixel values denote height), the water surfaces (pixel values denote height as well) and the undefined height contours (integer pixel values denote the identifying index of the contour, all pixels with the same value get the same height)</dd>
+
+  <dt>-o File:StartX:EndX:StartY:EndY:SizeX:SizeY</dt>
+  <dd>Output file (with corner coordinates and resolution specified)</dd>
+
+  <dt>-s Height</dt>
+  <dd>Height value to be interpreted as sea level in the input data.  Default: 0.0.</dd>
+
+  <dt>-so Height</dt>
+  <dd>Height level to assign to all sea surface pixels in the output file.  Default: 0.0.</dd>
+
+  <dt>-z</dt>
+  <dd>Use this to clip all height values below sea level.  Default: off.</dd>
+
+  <dt>-sz 0|1|2</dt>
+  <dd>Setting this to values different from 0 activates an enlarging of the sea surface near the coast line.  Default: 0.</dd>
+
+  <dt>-e Value</dt>
+  <dd>Error bound (in height units) for the interpolation algorithm.  Note the technique does not guarantee the error to stay below this value.  Too low values can lead to terracing artefacts.  Default: 1000.0.</dd>
+
+  <dt>-g Value</dt>
+  <dd>Grid stepping for the gradient line calculation step.  Default: 4.</dd>
+
+  <dt>-n</dt>
+  <dd>Dry run, only draw the input data, no interpolation.  Default: off.</dd>
+
+  <dt>-h</dt>
+  <dd>show available options</dd>
+
+</dl>
+
+<p>various progree information is printed to stderr during operation.  Several additiona output images are written (test_*.png) containing debugging information.</p>
+
+<a name="legal"></a>
+<h3>Legal stuff</h3>
+
+<p>This program is licensed under the GNU GPL version 3.  A copy of the license should
+be included in the program package.  If you can not find it you can read it on
+<a target="_blank" href="http://www.gnu.org/licenses/gpl-3.0.html">http://www.gnu.org/licenses/gpl-3.0.html</a>
+</p>
+
+<p class="sig">Christoph Hormann, August 2007</p>
+
+</div>
+
+<div class="footer">
+built on Sat, 09 Feb 2013 14:13 by <a href="mailto:chris_hormann@gmx.de">Christoph Hormann</a>
+</div>
+</body>
+</html>

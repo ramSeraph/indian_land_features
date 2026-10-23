@@ -1,0 +1,87 @@
+{
+  "sheet": "56M_9",
+  "calibration_sheet": "56M_5",
+  "thresholds_changed_for_this_sheet": false,
+  "reviewed_csv": "calibration/56M_9.review.csv",
+  "toposheet_url": "https://github.com/ramSeraph/india_topo_maps/releases/download/50k-osm-georef/56M_9.tif",
+  "files": [
+    {
+      "path": "data/contours/56M_9/contours.geojsonl",
+      "sha256": "a6c91f4b681c8cae368222ef6bc961216419aa63025587391e75835c1ed89f1a"
+    },
+    {
+      "path": "data/contours/56M_9/toposheet.tif",
+      "sha256": "7f3fe73f298713bfbfcb8763003126b5fc92a60b85351d79e6c77d3273073b53"
+    }
+  ],
+  "triangle_criteria": {
+    "nominal_side_m": 70,
+    "side_range_m": [
+      56.0,
+      84.0
+    ],
+    "minimum_side_ratio": 0.8,
+    "maximum_edge_error_m": 1.0,
+    "maximum_area_error_fraction": 0.03
+  },
+  "extraction_and_classification_counts": {
+    "input_features": 691,
+    "circular_spot_heights": 92,
+    "triangular_spot_heights": 12,
+    "duplicate_parts": 1,
+    "contour_parts": 598,
+    "spot_heights": 104
+  },
+  "visual_review_counts": {
+    "height_symbol_value_match": 88,
+    "unverified_map_association": 2,
+    "height_symbol_value_discrepancy": 2,
+    "height_symbol_triangle": 12,
+    "contour": 24
+  },
+  "flagged_features": [
+    {
+      "source_id": "CONTOUR_Crv.4536592",
+      "source_value_m": 187.0,
+      "printed_height_m": "",
+      "review": "unverified_map_association",
+      "note": "An 187 label is visible farther west along the railway in the 1200 m crop; association with this vector centre is uncertain."
+    },
+    {
+      "source_id": "CONTOUR_Crv.4536594",
+      "source_value_m": 176.0,
+      "printed_height_m": 175,
+      "review": "height_symbol_value_discrepancy",
+      "note": "Printed label reads 175; source VALUE is 176.0. Keep source value and flag the discrepancy; the map is not independent elevation truth."
+    },
+    {
+      "source_id": "CONTOUR_Crv.4535886",
+      "source_value_m": 178.0,
+      "printed_height_m": "",
+      "review": "unverified_map_association",
+      "note": "Vector centre lies in a blue lake in the SOI GeoTIFF; no height symbol or label found in the 1200 m crop. It also overlaps CartoDEM waterbody 25382; that mask is for smoothing, not height validation."
+    },
+    {
+      "source_id": "CONTOUR_Crv.4535867",
+      "source_value_m": 178.0,
+      "printed_height_m": 118,
+      "review": "height_symbol_value_discrepancy",
+      "note": "Printed label reads 118; source VALUE is 178.0. Keep source value and flag the discrepancy; the map is not independent elevation truth."
+    },
+    {
+      "source_id": "CONTOUR_Crv.4536566",
+      "source_value_m": 275.0,
+      "printed_height_m": "",
+      "review": "contour",
+      "note": "Closed terrain contour visible; retain line geometry. Contour elevation not independently read. Its unusual VALUE=275 matches the nearby spot-height label, but the contour itself has no readable 275 label in this crop; attribute needs review."
+    }
+  ],
+  "waterbody_role": "CartoDEM polygons are a shared smoothing mask for consistency with other DEM data; they are not symbol or elevation validation evidence.",
+  "limitations": [
+    "Candidate and small-contour review, not an exhaustive raster search; recall is not established.",
+    "The SOI map verifies symbol interpretation and printed-label agreement, not independent terrain accuracy.",
+    "Source elevations and all candidate points remain unchanged; flagged cases need resolution before production use."
+  ],
+  "dem_path": "data/contour_dem/56M_9-auto-symbols/dem.tif",
+  "coverage_fraction": 0.9964293080013815
+}

@@ -1,0 +1,249 @@
+[
+  {
+    "elevation_m": 529.0,
+    "symbol_type": "circle",
+    "centre": [
+      76.78644931857563,
+      31.194923909640554
+    ],
+    "vertices": 74,
+    "audit_id": "recovered-01",
+    "review": "height_symbol",
+    "printed_height_m": 529.0,
+    "notes": "Exact fragment join forms a circle; height point and printed elevation verified in raster crop."
+  },
+  {
+    "elevation_m": 1042.0,
+    "symbol_type": "circle",
+    "centre": [
+      76.7972227830757,
+      31.13309432046624
+    ],
+    "vertices": 75,
+    "audit_id": "recovered-02",
+    "review": "height_symbol",
+    "printed_height_m": 1042.0,
+    "notes": "Exact fragment join forms a circle; height point and printed elevation verified in raster crop."
+  },
+  {
+    "elevation_m": 557.0,
+    "symbol_type": "circle",
+    "centre": [
+      76.80171611324397,
+      31.162126195200308
+    ],
+    "vertices": 75,
+    "audit_id": "recovered-03",
+    "review": "height_symbol",
+    "printed_height_m": 557.0,
+    "notes": "Exact fragment join forms a circle; height point and printed elevation verified in raster crop."
+  },
+  {
+    "elevation_m": 1009.0,
+    "symbol_type": "circle",
+    "centre": [
+      76.85522596246267,
+      31.110791110712675
+    ],
+    "vertices": 75,
+    "audit_id": "recovered-04",
+    "review": "height_symbol",
+    "printed_height_m": 1009.0,
+    "notes": "Exact fragment join forms a circle; height point and printed elevation verified in raster crop."
+  },
+  {
+    "elevation_m": 998.0,
+    "symbol_type": "circle",
+    "centre": [
+      76.83709567227018,
+      31.05743125187059
+    ],
+    "vertices": 75,
+    "audit_id": "recovered-05",
+    "review": "height_symbol",
+    "printed_height_m": 998.0,
+    "notes": "Exact fragment join forms a circle; height point and printed elevation verified in raster crop."
+  },
+  {
+    "elevation_m": 1174.0,
+    "symbol_type": "circle",
+    "centre": [
+      76.86568740486102,
+      31.041663902377213
+    ],
+    "vertices": 75,
+    "audit_id": "recovered-06",
+    "review": "height_symbol",
+    "printed_height_m": 1174.0,
+    "notes": "Exact fragment join forms a circle; height point and printed elevation verified in raster crop."
+  },
+  {
+    "elevation_m": 1305.0,
+    "symbol_type": "circle",
+    "centre": [
+      76.87481744228943,
+      31.031170491584646
+    ],
+    "vertices": 75,
+    "audit_id": "recovered-07",
+    "review": "height_symbol",
+    "printed_height_m": 1305.0,
+    "notes": "Exact fragment join forms a circle; height point and printed elevation verified in raster crop."
+  },
+  {
+    "elevation_m": 1221.0,
+    "symbol_type": "circle",
+    "centre": [
+      76.85217720035463,
+      31.024713331395564
+    ],
+    "vertices": 75,
+    "audit_id": "recovered-08",
+    "review": "height_symbol",
+    "printed_height_m": 1221.0,
+    "notes": "Exact fragment join forms a circle; height point and printed elevation verified in raster crop."
+  },
+  {
+    "elevation_m": 664.0,
+    "symbol_type": "circle",
+    "centre": [
+      76.80404123747387,
+      31.003396441131354
+    ],
+    "vertices": 75,
+    "audit_id": "recovered-09",
+    "review": "height_symbol",
+    "printed_height_m": 664.0,
+    "notes": "Exact fragment join forms a circle; height point and printed elevation verified in raster crop."
+  },
+  {
+    "elevation_m": 768.0,
+    "symbol_type": "circle",
+    "centre": [
+      76.84943178843172,
+      31.002140385913403
+    ],
+    "vertices": 75,
+    "audit_id": "recovered-10",
+    "review": "height_symbol",
+    "printed_height_m": 768.0,
+    "notes": "Exact fragment join forms a circle; height point and printed elevation verified in raster crop."
+  },
+  {
+    "elevation_m": 1356.0,
+    "symbol_type": "circle",
+    "centre": [
+      76.93369893916936,
+      31.015711322129718
+    ],
+    "vertices": 75,
+    "audit_id": "recovered-11",
+    "review": "height_symbol",
+    "printed_height_m": 1356.0,
+    "notes": "Exact fragment join forms a circle; height point and printed elevation verified in raster crop."
+  },
+  {
+    "elevation_m": 1356.0,
+    "symbol_type": "circle",
+    "centre": [
+      76.98127014024934,
+      31.24741052818999
+    ],
+    "vertices": 75,
+    "audit_id": "recovered-12",
+    "review": "height_symbol",
+    "printed_height_m": 1356.0,
+    "notes": "Exact fragment join forms a circle; height point and printed elevation verified in raster crop."
+  },
+  {
+    "elevation_m": 1322.0,
+    "symbol_type": "circle",
+    "centre": [
+      76.89377162362993,
+      31.05430303332964
+    ],
+    "vertices": 75,
+    "audit_id": "recovered-13",
+    "review": "height_symbol",
+    "printed_height_m": 1322.0,
+    "notes": "Exact fragment join forms a circle; height point and printed elevation verified in raster crop."
+  },
+  {
+    "elevation_m": 1181.0,
+    "symbol_type": "circle",
+    "centre": [
+      76.9191526218938,
+      31.141507929866744
+    ],
+    "vertices": 75,
+    "audit_id": "recovered-14",
+    "review": "height_symbol",
+    "printed_height_m": 1181.0,
+    "notes": "Exact fragment join forms a circle; height point and printed elevation verified in raster crop."
+  },
+  {
+    "elevation_m": 1392.0,
+    "symbol_type": "circle",
+    "centre": [
+      76.9955262771734,
+      31.158927712024756
+    ],
+    "vertices": 75,
+    "audit_id": "recovered-15",
+    "review": "height_symbol",
+    "printed_height_m": 1392.0,
+    "notes": "Exact fragment join forms a circle; height point and printed elevation verified in raster crop."
+  },
+  {
+    "elevation_m": 1419.0,
+    "symbol_type": "circle",
+    "centre": [
+      76.9936443016366,
+      31.183300400285056
+    ],
+    "vertices": 75,
+    "audit_id": "recovered-16",
+    "review": "height_symbol",
+    "printed_height_m": 1423,
+    "notes": "Exact fragment join forms a circle; source 1419 differs from printed 1423. Source value retained."
+  },
+  {
+    "elevation_m": 1472.0,
+    "symbol_type": "circle",
+    "centre": [
+      76.98655420109085,
+      31.229198976895514
+    ],
+    "vertices": 75,
+    "audit_id": "recovered-17",
+    "review": "height_symbol",
+    "printed_height_m": 1472.0,
+    "notes": "Exact fragment join forms a circle; height point and printed elevation verified in raster crop."
+  },
+  {
+    "elevation_m": 1619.0,
+    "symbol_type": "circle",
+    "centre": [
+      76.93776331418817,
+      31.240522299518624
+    ],
+    "vertices": 75,
+    "audit_id": "recovered-18",
+    "review": "height_symbol",
+    "printed_height_m": 1619.0,
+    "notes": "Exact fragment join forms a circle; height point and printed elevation verified in raster crop."
+  },
+  {
+    "elevation_m": 1449.0,
+    "symbol_type": "circle",
+    "centre": [
+      76.96395031643753,
+      31.239785470380124
+    ],
+    "vertices": 77,
+    "audit_id": "recovered-19",
+    "review": "height_symbol",
+    "printed_height_m": 1449.0,
+    "notes": "Exact fragment join forms a circle; height point and printed elevation verified in raster crop."
+  }
+]

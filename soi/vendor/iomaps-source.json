@@ -1,0 +1,5 @@
+{
+  "repository": "https://github.com/ramSeraph/indianopenmaps.git",
+  "commit": "20b8154a0bdeec49fd1db5a5986c436faccd3c93",
+  "patch": "iomaps-local-input.patch"
+}

@@ -1,0 +1,551 @@
+{
+  "scope": "Vector-only height recovery with 10 m and 10% small-fragment limits, enabled in the DEM pipeline.",
+  "sheets": {
+    "47J_9": {
+      "changed_source_parts": 0,
+      "candidate_cycles": 0,
+      "contour_geometries_unchanged": true,
+      "all_heights_unchanged": true,
+      "classified_input": "data/contour_dem/47J_9-sheet-interval-audit",
+      "contours_sha256": "ecba78ce2e423666f57bdad7de30085e74905d21948a7b8d1fe28bfd1bc328c0"
+    },
+    "45F_4": {
+      "changed_source_parts": 0,
+      "candidate_cycles": 0,
+      "contour_geometries_unchanged": true,
+      "all_heights_unchanged": true,
+      "classified_input": "data/contour_dem/45F_4-sheet-interval-audit",
+      "contours_sha256": "6d5eee5352dc773383d23ae192cbf2a3956e3f447318f4f6a20af75b29a6f07b"
+    },
+    "56M_5": {
+      "changed_source_parts": 0,
+      "candidate_cycles": 0,
+      "contour_geometries_unchanged": true,
+      "all_heights_unchanged": true,
+      "classified_input": "data/contour_dem/56M_5-sheet-interval-audit",
+      "contours_sha256": "c70aadef3a4b3704bc1656a043dcf44b9d77c0fd6a54c59dabb297357ab47cc7"
+    },
+    "56M_9": {
+      "changed_source_parts": 0,
+      "candidate_cycles": 0,
+      "contour_geometries_unchanged": true,
+      "all_heights_unchanged": true,
+      "classified_input": "data/contour_dem/56M_9-sheet-interval-audit",
+      "contours_sha256": "55227a1dcbe5a2e2d1bc479b0cdac7052fe10e506e3d333fcc7e3d51f08af66c"
+    },
+    "73D_15": {
+      "changed_source_parts": 0,
+      "candidate_cycles": 0,
+      "contour_geometries_unchanged": true,
+      "all_heights_unchanged": true,
+      "classified_input": "data/contour_dem/73D_15-sheet-interval-audit",
+      "contours_sha256": "4d95509e55f4011eaa63f87160bf6cfbcb3c96afe84886e3abe0d697978ba170"
+    },
+    "83E_11": {
+      "changed_source_parts": 0,
+      "candidate_cycles": 0,
+      "contour_geometries_unchanged": true,
+      "all_heights_unchanged": true,
+      "classified_input": "data/contour_dem/83E_11-sheet-interval-audit",
+      "contours_sha256": "8b90058cafb5ddba2e956f67e07f566cae527250f021ab870ef20d80a338d38b"
+    },
+    "53A_16": {
+      "production_run": "data/contour_dem/53A_16-height-autocorrect",
+      "classification": "data/contour_dem/53A_16-height-autocorrect/classification.json",
+      "baseline": "data/contour_dem/53A_16-sheet-interval-audit",
+      "remaining_before_height_recovery": 26,
+      "remaining_after_nesting_only": 20,
+      "remaining_after_small_fragment_recovery": 14,
+      "newly_recovered_case_ids": [
+        "C005",
+        "C006",
+        "C013",
+        "C014",
+        "C025",
+        "C026"
+      ],
+      "remaining_case_ids": [
+        "C009",
+        "C010",
+        "C011",
+        "C012",
+        "C015",
+        "C016",
+        "C017",
+        "C021",
+        "C022",
+        "C033",
+        "C034",
+        "C035",
+        "C036",
+        "C037"
+      ],
+      "height_recovery": {
+        "mode": "auto",
+        "interval_m": 20.0,
+        "interval_status": "supported",
+        "supported_cycles": 6,
+        "methods": {
+          "small_fragment_between_same_height_endpoints": 3,
+          "closed_loop_between_regular_contours": 3
+        },
+        "changed_source_parts": 7,
+        "fragment_max_length_m": 10.0,
+        "fragment_max_fraction": 0.1,
+        "boundary_margin_m": 30,
+        "audit": "height_recovery.geojsonl",
+        "derived_contours": "recovered_contours.geojsonl",
+        "source_contours": "contours.geojsonl",
+        "source_files_changed": false
+      },
+      "recovered_cycles": [
+        {
+          "recovery_id": "H0001",
+          "method": "small_fragment_between_same_height_endpoints",
+          "original_elevations_m": [
+            880.0,
+            1240.0
+          ],
+          "proposed_elevation_m": 880.0,
+          "regular_contour_interval_m": 20.0,
+          "source_ids": [
+            "CONTOUR_Crv.2483523",
+            "CONTOUR_Crv.2490961"
+          ],
+          "boundary_distance_m": 2436.3944403144083,
+          "cycle_length_m": 129.3907507224746,
+          "decision": "supported_recovery",
+          "outer_reference": null,
+          "inner_references": [],
+          "fragment_recovery": {
+            "length_m": 6.631893723643195,
+            "fraction_of_loop": 0.05125477429115236,
+            "maximum_length_m": 10.0,
+            "maximum_fraction_of_loop": 0.1,
+            "replacement_elevation_m": 880.0,
+            "decision": "recover_within_size_limits"
+          },
+          "nesting_decision": "retain_missing_reference",
+          "changed_source_ids": [
+            "CONTOUR_Crv.2490961"
+          ],
+          "changed_length_m": 6.631893723643195,
+          "case_ids": [
+            "C005",
+            "C006"
+          ]
+        },
+        {
+          "recovery_id": "H0002",
+          "method": "small_fragment_between_same_height_endpoints",
+          "original_elevations_m": [
+            1060.0,
+            1360.0
+          ],
+          "proposed_elevation_m": 1060.0,
+          "regular_contour_interval_m": 20.0,
+          "source_ids": [
+            "CONTOUR_Crv.2450452",
+            "CONTOUR_Crv.2491005"
+          ],
+          "boundary_distance_m": 6708.910951025238,
+          "cycle_length_m": 800.9010618150185,
+          "decision": "supported_recovery",
+          "outer_reference": null,
+          "inner_references": [
+            {
+              "elevation_m": 1080.0,
+              "source_ids": [
+                "CONTOUR_Crv.2465406"
+              ]
+            }
+          ],
+          "fragment_recovery": {
+            "length_m": 5.947772567759545,
+            "fraction_of_loop": 0.00742635120782657,
+            "maximum_length_m": 10.0,
+            "maximum_fraction_of_loop": 0.1,
+            "replacement_elevation_m": 1060.0,
+            "decision": "recover_within_size_limits"
+          },
+          "nesting_decision": "retain_missing_reference",
+          "changed_source_ids": [
+            "CONTOUR_Crv.2491005"
+          ],
+          "changed_length_m": 5.947772567759545,
+          "case_ids": [
+            "C025",
+            "C026"
+          ]
+        },
+        {
+          "recovery_id": "H0003",
+          "method": "small_fragment_between_same_height_endpoints",
+          "original_elevations_m": [
+            400.0,
+            1000.0
+          ],
+          "proposed_elevation_m": 1000.0,
+          "regular_contour_interval_m": 20.0,
+          "source_ids": [
+            "CONTOUR_Crv.2426859",
+            "CONTOUR_Crv.2428751",
+            "CONTOUR_Crv.2490638"
+          ],
+          "boundary_distance_m": 1041.9557488942612,
+          "cycle_length_m": 12541.838687789197,
+          "decision": "supported_recovery",
+          "outer_reference": {
+            "elevation_m": 980.0,
+            "source_ids": [
+              "CONTOUR_Crv.2426079",
+              "CONTOUR_Crv.2426080",
+              "CONTOUR_Crv.2427465"
+            ]
+          },
+          "inner_references": [
+            {
+              "elevation_m": 1020.0,
+              "source_ids": [
+                "CONTOUR_Crv.2430433"
+              ]
+            },
+            {
+              "elevation_m": 1020.0,
+              "source_ids": [
+                "CONTOUR_Crv.2475304"
+              ]
+            },
+            {
+              "elevation_m": 1020.0,
+              "source_ids": [
+                "CONTOUR_Crv.2474375"
+              ]
+            },
+            {
+              "elevation_m": 1020.0,
+              "source_ids": [
+                "CONTOUR_Crv.2474597"
+              ]
+            }
+          ],
+          "fragment_recovery": {
+            "length_m": 2.744334693537165,
+            "fraction_of_loop": 0.000218814382950808,
+            "maximum_length_m": 10.0,
+            "maximum_fraction_of_loop": 0.1,
+            "replacement_elevation_m": 1000.0,
+            "decision": "recover_within_size_limits"
+          },
+          "nesting_decision": "retain_open_inner_reference",
+          "changed_source_ids": [
+            "CONTOUR_Crv.2490638"
+          ],
+          "changed_length_m": 2.744334693537165,
+          "case_ids": [
+            "C013",
+            "C014"
+          ]
+        },
+        {
+          "recovery_id": "H0004",
+          "method": "closed_loop_between_regular_contours",
+          "original_elevations_m": [
+            1360.0,
+            1380.0
+          ],
+          "proposed_elevation_m": 1360.0,
+          "regular_contour_interval_m": 20.0,
+          "source_ids": [
+            "CONTOUR_Crv.2468220",
+            "CONTOUR_Crv.2470852",
+            "CONTOUR_Crv.2473844",
+            "CONTOUR_Crv.2474834"
+          ],
+          "boundary_distance_m": 1154.3099966107882,
+          "cycle_length_m": 2041.4820769850978,
+          "decision": "supported_recovery",
+          "outer_reference": {
+            "elevation_m": 1340.0,
+            "source_ids": [
+              "CONTOUR_Crv.2446812",
+              "CONTOUR_Crv.2453731"
+            ]
+          },
+          "inner_references": [
+            {
+              "elevation_m": 1380.0,
+              "source_ids": [
+                "CONTOUR_Crv.2470386"
+              ]
+            },
+            {
+              "elevation_m": 1380.0,
+              "source_ids": [
+                "CONTOUR_Crv.2477433"
+              ]
+            }
+          ],
+          "direct_inner_off_series_elevations_m": [],
+          "direct_outer_off_series_elevations_m": [],
+          "changed_source_ids": [
+            "CONTOUR_Crv.2474834"
+          ],
+          "changed_length_m": 297.58807743951746,
+          "case_ids": [
+            "C003",
+            "C004"
+          ]
+        },
+        {
+          "recovery_id": "H0005",
+          "method": "closed_loop_between_regular_contours",
+          "original_elevations_m": [
+            1260.0,
+            1280.0
+          ],
+          "proposed_elevation_m": 1260.0,
+          "regular_contour_interval_m": 20.0,
+          "source_ids": [
+            "CONTOUR_Crv.2428474",
+            "CONTOUR_Crv.2429058",
+            "CONTOUR_Crv.2486498",
+            "CONTOUR_Crv.2487972",
+            "CONTOUR_Crv.2490634"
+          ],
+          "boundary_distance_m": 823.316116033077,
+          "cycle_length_m": 8097.4178500758935,
+          "decision": "supported_recovery",
+          "outer_reference": {
+            "elevation_m": 1240.0,
+            "source_ids": [
+              "CONTOUR_Crv.2429301",
+              "CONTOUR_Crv.2430281",
+              "CONTOUR_Crv.2464560",
+              "CONTOUR_Crv.2475641"
+            ]
+          },
+          "inner_references": [
+            {
+              "elevation_m": 1280.0,
+              "source_ids": [
+                "CONTOUR_Crv.2429292",
+                "CONTOUR_Crv.2429302"
+              ]
+            },
+            {
+              "elevation_m": 1280.0,
+              "source_ids": [
+                "CONTOUR_Crv.2480931"
+              ]
+            }
+          ],
+          "direct_inner_off_series_elevations_m": [
+            1270.0
+          ],
+          "direct_outer_off_series_elevations_m": [],
+          "changed_source_ids": [
+            "CONTOUR_Crv.2487972",
+            "CONTOUR_Crv.2490634"
+          ],
+          "changed_length_m": 266.4152345520985,
+          "case_ids": [
+            "C001",
+            "C002"
+          ]
+        },
+        {
+          "recovery_id": "H0006",
+          "method": "closed_loop_between_regular_contours",
+          "original_elevations_m": [
+            1860.0,
+            1880.0
+          ],
+          "proposed_elevation_m": 1880.0,
+          "regular_contour_interval_m": 20.0,
+          "source_ids": [
+            "CONTOUR_Crv.2426762",
+            "CONTOUR_Crv.2462154",
+            "CONTOUR_Crv.2470849",
+            "CONTOUR_Crv.2470856"
+          ],
+          "boundary_distance_m": 3027.633239720809,
+          "cycle_length_m": 14410.838726846288,
+          "decision": "supported_recovery",
+          "outer_reference": {
+            "elevation_m": 1860.0,
+            "source_ids": [
+              "CONTOUR_Crv.2427474",
+              "CONTOUR_Crv.2460726",
+              "CONTOUR_Crv.2470964",
+              "CONTOUR_Crv.2473841"
+            ]
+          },
+          "inner_references": [
+            {
+              "elevation_m": 1900.0,
+              "source_ids": [
+                "CONTOUR_Crv.2429217"
+              ]
+            },
+            {
+              "elevation_m": 1900.0,
+              "source_ids": [
+                "CONTOUR_Crv.2449080",
+                "CONTOUR_Crv.2452589",
+                "CONTOUR_Crv.2466267",
+                "CONTOUR_Crv.2473124",
+                "CONTOUR_Crv.2474123"
+              ]
+            },
+            {
+              "elevation_m": 1900.0,
+              "source_ids": [
+                "CONTOUR_Crv.2463697"
+              ]
+            },
+            {
+              "elevation_m": 1900.0,
+              "source_ids": [
+                "CONTOUR_Crv.2477574"
+              ]
+            }
+          ],
+          "direct_inner_off_series_elevations_m": [],
+          "direct_outer_off_series_elevations_m": [],
+          "changed_source_ids": [
+            "CONTOUR_Crv.2470849"
+          ],
+          "changed_length_m": 528.5771435178349,
+          "case_ids": [
+            "C019",
+            "C020"
+          ]
+        }
+      ],
+      "all_155_height_points_unchanged": true,
+      "triangle_export_unchanged": true,
+      "original_classified_contours_unchanged": true,
+      "contour_geometries_unchanged": true,
+      "cartographic_contact_features_unchanged": true,
+      "relaxed_sections_unchanged": true,
+      "cartographic_contacts": {
+        "radius_m": 15.0,
+        "radius_source": "half_grid_spacing",
+        "contact_locations": 8,
+        "geometry_patterns": {
+          "short_contact_lens": 8
+        },
+        "relaxed_length_m": 349.37109869844824,
+        "audit": "contour_contacts.geojsonl",
+        "relaxed_sections": "relaxed_contour_sections.geojsonl",
+        "source_heights_changed": false
+      },
+      "source_extract_unchanged": true,
+      "dem_created": false,
+      "expected_exit_code": 2,
+      "failure_reason": "14 unresolved conflicting sample locations",
+      "unresolved_review": "data/contour_dem/53A_16-height-autocorrect/unresolved_review.json",
+      "c005_reference_dem_calibration": {
+        "report": "data/comparisons/53A_16-C005-glo30/report.json",
+        "terrain_plot": "data/comparisons/53A_16-C005-glo30/terrain-check.png",
+        "endpoint_samples_m": [
+          868.0903930664062,
+          870.413330078125
+        ],
+        "maximum_within_100m_m": 887.546142578125,
+        "scope": "Calibration only; not an input to automatic recovery.",
+        "interpretation": "Supports the 880 m loop; native sampling cannot independently exclude an extremely narrow spike."
+      },
+      "source_files": [
+        {
+          "path": "data/contours/53A_16/contours.geojsonl",
+          "sha256": "de733aca00f8c8d2369d4084f73b7321e8e4edd5daa162ee51899c3c7e4f3a55"
+        }
+      ],
+      "outputs": [
+        {
+          "path": "data/contour_dem/53A_16-height-autocorrect/classification.json",
+          "sha256": "5fcf4f32406af5ea2db2f2c037ab2b625f1b1463d75dd7a0e668152a13ecad5f"
+        },
+        {
+          "path": "data/contour_dem/53A_16-height-autocorrect/height_recovery.geojsonl",
+          "sha256": "5da68596f76fd4a078d6c0fcecce9c028aa4cd363f113d3a99936e66a785c1a0"
+        },
+        {
+          "path": "data/contour_dem/53A_16-height-autocorrect/recovered_contours.geojsonl",
+          "sha256": "d2a341d31ccf6b2f50d6549dde77fe7b6099a65c4437f88f7f13aec975eb894b"
+        },
+        {
+          "path": "data/contour_dem/53A_16-height-autocorrect/spots.geojsonl",
+          "sha256": "c2598f49b4d1ab26b3b6b755b9969efd2cb4456e3d4a19676c6d639074c1dfba"
+        },
+        {
+          "path": "data/contour_dem/53A_16-height-autocorrect/conflicting_constraints.geojsonl",
+          "sha256": "dc69d797ed4ef176cdbca5cdfe1576dba976875a1efc6481a677e9b29b2a67cf"
+        }
+      ],
+      "review_partition": {
+        "interior_case_ids": [
+          "C011",
+          "C012",
+          "C015",
+          "C016",
+          "C021",
+          "C022"
+        ],
+        "boundary_case_or_candidate_ids": [
+          "C009",
+          "C010",
+          "C017",
+          "C033",
+          "C034",
+          "C035",
+          "C036",
+          "C037"
+        ],
+        "interior_report": "data/contour_dem/53A_16-height-autocorrect/interior_review.json",
+        "boundary_report": "data/contour_dem/53A_16-height-autocorrect/boundary_review.json",
+        "total_unresolved_unchanged": 14
+      }
+    }
+  },
+  "test_results": {
+    "test_contour_height_recovery.py": "47 passed",
+    "test_contours_to_dem.py": "25 passed",
+    "test_extract_sheet_dem.py": "3 passed",
+    "test_contour_form_lines.py": "25 passed",
+    "test_contour_contacts.py": "9 passed"
+  },
+  "scripts": [
+    {
+      "path": "contour_height_recovery.py",
+      "sha256": "b72588f76e7c3a7a072dd7b84cbacb7042fa0603fe7811373e2a92ce6a3e75a7"
+    },
+    {
+      "path": "contours_to_dem.py",
+      "sha256": "a33cb8a8f4502cd83a5d9a9322d1f84b3f4217b4ab3a8df6406069c03edb52df"
+    },
+    {
+      "path": "extract_sheet_dem.py",
+      "sha256": "cd7c8eac8d641697152b5ea17f16b81259390b448cbbe86fca04e73b2ac52b10"
+    },
+    {
+      "path": "audit_height_recovery.py",
+      "sha256": "827272131e53feb43bfbc35c92d05cdca10f03594ba947a17abce40f38def62e"
+    },
+    {
+      "path": "test_contour_height_recovery.py",
+      "sha256": "78934735d4e0b87aaf29ff13f5a0e9df2e553bb255724b4eb5690598d637c122"
+    },
+    {
+      "path": "test_contours_to_dem.py",
+      "sha256": "fbaab14fa9084a41a47f5541ec5fdf5f0c023c68036e1bb594a8fb6771e0919c"
+    },
+    {
+      "path": "test_extract_sheet_dem.py",
+      "sha256": "fbc88dfb4b905a32362b780ca55112ad8437a3f2b141dd324892cd3458c88e65"
+    }
+  ],
+  "tests_passed": 109
+}

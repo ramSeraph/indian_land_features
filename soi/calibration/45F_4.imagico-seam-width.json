@@ -1,0 +1,283 @@
+{
+  "sheet": "45F_4",
+  "experiment": "Artificial vertical split of one known-constraint raster; independently interpolate halves and compare against the saved joint final DEM.",
+  "resolution_m": 30.0,
+  "shape": [
+    936,
+    848
+  ],
+  "split_column": 400,
+  "all_height_points_included": true,
+  "seed_phase_aligned": true,
+  "source_conflicts_or_unknown_contours_tested": false,
+  "seconds": 25.8798416670179,
+  "joint_valid_cells": 750836,
+  "lost_support_cells": 334,
+  "max_lost_support_distance_m": 2295.0,
+  "distance_bands": [
+    {
+      "from_m": 0,
+      "to_m": 300,
+      "count": 18358,
+      "mean_abs_m": 1.1163281672737229,
+      "p50_abs_m": 0.8022031541350287,
+      "p95_abs_m": 3.5534720029893485,
+      "p99_abs_m": 5.385341981348409,
+      "max_abs_m": 9.750418754176621,
+      "fraction_over_1m": 0.4148600065366598,
+      "fraction_over_5m": 0.020427061771434798
+    },
+    {
+      "from_m": 300,
+      "to_m": 500,
+      "count": 12843,
+      "mean_abs_m": 0.9840763793963602,
+      "p50_abs_m": 0.6262583491600537,
+      "p95_abs_m": 3.394705499943583,
+      "p99_abs_m": 4.603710789820681,
+      "max_abs_m": 6.2119838911421255,
+      "fraction_over_1m": 0.3231332243245348,
+      "fraction_over_5m": 0.004438215370240598
+    },
+    {
+      "from_m": 500,
+      "to_m": 1000,
+      "count": 29484,
+      "mean_abs_m": 0.8835582816410888,
+      "p50_abs_m": 0.4559911170593267,
+      "p95_abs_m": 3.121558013947792,
+      "p99_abs_m": 4.507180017151024,
+      "max_abs_m": 5.544270336407834,
+      "fraction_over_1m": 0.2759123592456926,
+      "fraction_over_5m": 0.0028829195495862162
+    },
+    {
+      "from_m": 1000,
+      "to_m": 1500,
+      "count": 31312,
+      "mean_abs_m": 0.716820291479783,
+      "p50_abs_m": 0.2796090995168612,
+      "p95_abs_m": 2.5332166378747654,
+      "p99_abs_m": 4.944228562431194,
+      "max_abs_m": 6.235388304730662,
+      "fraction_over_1m": 0.24511369443025038,
+      "fraction_over_5m": 0.009421308124680634
+    },
+    {
+      "from_m": 1500,
+      "to_m": 2000,
+      "count": 31361,
+      "mean_abs_m": 0.4841546755697751,
+      "p50_abs_m": 0.2683491498524404,
+      "p95_abs_m": 1.6067686846037077,
+      "p99_abs_m": 2.8795519656207147,
+      "max_abs_m": 4.765568401041975,
+      "fraction_over_1m": 0.15407671949236312,
+      "fraction_over_5m": 0.0
+    },
+    {
+      "from_m": 2000,
+      "to_m": 3000,
+      "count": 60906,
+      "mean_abs_m": 0.25956892826727807,
+      "p50_abs_m": 0.10228875066543708,
+      "p95_abs_m": 1.0699636068424354,
+      "p99_abs_m": 1.643240462397229,
+      "max_abs_m": 2.658239463320797,
+      "fraction_over_1m": 0.058861195941286575,
+      "fraction_over_5m": 0.0
+    },
+    {
+      "from_m": 3000,
+      "to_m": 3600,
+      "count": 36910,
+      "mean_abs_m": 0.11688713542097136,
+      "p50_abs_m": 0.026057435401511952,
+      "p95_abs_m": 0.46779725670128514,
+      "p99_abs_m": 1.2905074793954634,
+      "max_abs_m": 2.4618621616264136,
+      "fraction_over_1m": 0.017122730967217555,
+      "fraction_over_5m": 0.0
+    },
+    {
+      "from_m": 3600,
+      "to_m": 5000,
+      "count": 86472,
+      "mean_abs_m": 0.07081207855884314,
+      "p50_abs_m": 0.006866374409341347,
+      "p95_abs_m": 0.3213424715644336,
+      "p99_abs_m": 0.719281261719346,
+      "max_abs_m": 2.1360072484773696,
+      "fraction_over_1m": 0.006186973818114535,
+      "fraction_over_5m": 0.0
+    },
+    {
+      "from_m": 5000,
+      "to_m": 10000,
+      "count": 300670,
+      "mean_abs_m": 0.03537301071678435,
+      "p50_abs_m": 0.0009629832157145302,
+      "p95_abs_m": 0.1768178711198743,
+      "p99_abs_m": 0.5888556773919922,
+      "max_abs_m": 1.4986361985899066,
+      "fraction_over_1m": 0.0027438720191572154,
+      "fraction_over_5m": 0.0
+    },
+    {
+      "from_m": 10000,
+      "to_m": null,
+      "count": 142186,
+      "mean_abs_m": 0.008834127010615266,
+      "p50_abs_m": 1.577041267353252e-05,
+      "p95_abs_m": 0.036203433688577036,
+      "p99_abs_m": 0.15523141032894433,
+      "max_abs_m": 0.9217217709685883,
+      "fraction_over_1m": 0.0,
+      "fraction_over_5m": 0.0
+    }
+  ],
+  "outside_replacement_strip": [
+    {
+      "width_into_each_half_m": 300,
+      "count": 732144,
+      "mean_abs_m": 0.15633064089820317,
+      "p50_abs_m": 0.0053173177948764305,
+      "p95_abs_m": 0.8615797767038017,
+      "p99_abs_m": 2.4321591954111446,
+      "max_abs_m": 6.235388304730662,
+      "fraction_over_1m": 0.0414795450075395,
+      "fraction_over_5m": 0.0005968771170698661
+    },
+    {
+      "width_into_each_half_m": 500,
+      "count": 719301,
+      "mean_abs_m": 0.14155137808676285,
+      "p50_abs_m": 0.004716463687941541,
+      "p95_abs_m": 0.7770156050649177,
+      "p99_abs_m": 2.2533193822051203,
+      "max_abs_m": 6.235388304730662,
+      "fraction_over_1m": 0.03645066529867191,
+      "fraction_over_5m": 0.0005282906599601558
+    },
+    {
+      "width_into_each_half_m": 1000,
+      "count": 689817,
+      "mean_abs_m": 0.1098366891991365,
+      "p50_abs_m": 0.0035634829725950112,
+      "p95_abs_m": 0.5947510282289723,
+      "p99_abs_m": 1.6898572474320932,
+      "max_abs_m": 6.235388304730662,
+      "fraction_over_1m": 0.026215648498079926,
+      "fraction_over_5m": 0.00042764965200915603
+    },
+    {
+      "width_into_each_half_m": 1500,
+      "count": 658505,
+      "mean_abs_m": 0.08097453848712732,
+      "p50_abs_m": 0.0026296994343795177,
+      "p95_abs_m": 0.4462340855374049,
+      "p99_abs_m": 1.199085091980714,
+      "max_abs_m": 4.765568401041975,
+      "fraction_over_1m": 0.015807017410649882,
+      "fraction_over_5m": 0.0
+    },
+    {
+      "width_into_each_half_m": 2000,
+      "count": 627144,
+      "mean_abs_m": 0.06081308867807404,
+      "p50_abs_m": 0.0018779546173988138,
+      "p95_abs_m": 0.3294369089931188,
+      "p99_abs_m": 0.9469645292565902,
+      "max_abs_m": 2.658239463320797,
+      "fraction_over_1m": 0.008892694500784509,
+      "fraction_over_5m": 0.0
+    },
+    {
+      "width_into_each_half_m": 3000,
+      "count": 566238,
+      "mean_abs_m": 0.039434404863105676,
+      "p50_abs_m": 0.00098430890729162,
+      "p95_abs_m": 0.2119436455486693,
+      "p99_abs_m": 0.5922074917900962,
+      "max_abs_m": 2.4618621616264136,
+      "fraction_over_1m": 0.0035179553473980905,
+      "fraction_over_5m": 0.0
+    },
+    {
+      "width_into_each_half_m": 3600,
+      "count": 529328,
+      "mean_abs_m": 0.03403363202492061,
+      "p50_abs_m": 0.0007211585703004175,
+      "p95_abs_m": 0.18015324215629958,
+      "p99_abs_m": 0.5348386442086819,
+      "max_abs_m": 2.1360072484773696,
+      "fraction_over_1m": 0.00256929540851797,
+      "fraction_over_5m": 0.0
+    },
+    {
+      "width_into_each_half_m": 5000,
+      "count": 442856,
+      "mean_abs_m": 0.026852277750209756,
+      "p50_abs_m": 0.0003482931955574031,
+      "p95_abs_m": 0.13209314560499763,
+      "p99_abs_m": 0.4806799714893377,
+      "max_abs_m": 1.4986361985899066,
+      "fraction_over_1m": 0.0018629080333110537,
+      "fraction_over_5m": 0.0
+    },
+    {
+      "width_into_each_half_m": 10000,
+      "count": 142186,
+      "mean_abs_m": 0.008834127010615266,
+      "p50_abs_m": 1.577041267353252e-05,
+      "p95_abs_m": 0.036203433688577036,
+      "p99_abs_m": 0.15523141032894433,
+      "max_abs_m": 0.9217217709685883,
+      "fraction_over_1m": 0.0,
+      "fraction_over_5m": 0.0
+    }
+  ],
+  "farthest_change": [
+    {
+      "error_threshold_m": 0.1,
+      "distance_m": 11685.0
+    },
+    {
+      "error_threshold_m": 0.5,
+      "distance_m": 11685.0
+    },
+    {
+      "error_threshold_m": 1,
+      "distance_m": 8775.0
+    },
+    {
+      "error_threshold_m": 2,
+      "distance_m": 4125.0
+    },
+    {
+      "error_threshold_m": 5,
+      "distance_m": 1455.0
+    },
+    {
+      "error_threshold_m": 10,
+      "distance_m": 0
+    }
+  ],
+  "inputs": [
+    {
+      "path": "data/contour_dem/45F_4-imagico/dem.tif",
+      "sha256": "f3a917ef216eec35fefa0273d57a25a7053c4842af975fcf36fca885dc9aa4ff"
+    },
+    {
+      "path": "data/contour_dem/45F_4-imagico/interpolation_inputs.npz",
+      "sha256": "85b9958930bf810c9c3c9d3da281267f6227e6d06db0537b1dd50cd0f8226266"
+    }
+  ],
+  "algorithm_sha256": "00edb789402303c31781a18eba2106e867236c823c61a256c4f20a7b5e4d62d0",
+  "limitations": [
+    "Measures artificial-edge influence, not the proposed repair with fixed outer boundary values.",
+    "One split orientation and terrain sample cannot establish a universal replacement width.",
+    "Reference DEM is Float32; tiny differences can reflect storage rounding."
+  ],
+  "probe_script_sha256": "8961dfb3fb0cd9a52e7d1f3c98b0279beb721bfe388036aba7a04c25c9739836"
+}

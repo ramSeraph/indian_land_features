@@ -1,0 +1,2558 @@
+{
+  "scope": "One inferred regular contour interval per selected sheet, plus local cartographic contact relaxation; vector-only classification and sample checks.",
+  "settings": {
+    "form_line_interval": "auto",
+    "edge_sliver_tolerance_m": 2,
+    "contour_contact_radius_m": 15,
+    "sample_spacing_m": 15
+  },
+  "sheets": {
+    "47J_9": {
+      "output_dir": "data/contour_dem/47J_9-sheet-interval-audit",
+      "source_sha256": "2c8bbb7d15bd3b6e38eb1549f47ceb5296dd3df5c46d2b03756723a89cf7d850",
+      "counts": {
+        "input_features": 1409,
+        "zero_length_line_parts": 9,
+        "triangular_spot_heights": 15,
+        "circular_spot_heights": 95,
+        "excluded_outside_edge_sliver_parts": 44,
+        "excluded_form_line_candidate_parts": 37,
+        "contour_parts": 1231,
+        "spot_heights": 110
+      },
+      "form_line_decisions": {
+        "exclude_form_line_candidate": 37
+      },
+      "sheet_interval": {
+        "scope": "selected_sheet",
+        "assumption": "one_regular_interval_per_sheet",
+        "minimum_reference_length_m": 33681.61262935196,
+        "reference_lengths_m": [
+          {
+            "elevation_m": 580.0,
+            "length_m": 24112.27730355952,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 590.0,
+            "length_m": 4289.838288890319,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 600.0,
+            "length_m": 76980.42001743567,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 610.0,
+            "length_m": 3695.7832773952914,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 620.0,
+            "length_m": 112466.58678271623,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 630.0,
+            "length_m": 9868.412161618258,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 640.0,
+            "length_m": 185698.35374491883,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 650.0,
+            "length_m": 15108.031241125102,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 660.0,
+            "length_m": 280688.3866938541,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 670.0,
+            "length_m": 6172.5749259053355,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 680.0,
+            "length_m": 336816.1262935196,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 690.0,
+            "length_m": 5862.947342752383,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 700.0,
+            "length_m": 317354.58235798695,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 710.0,
+            "length_m": 7950.641521173828,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 720.0,
+            "length_m": 282310.7278732432,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 730.0,
+            "length_m": 5318.242581057031,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 740.0,
+            "length_m": 203835.72272512806,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 750.0,
+            "length_m": 1749.620958924144,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 760.0,
+            "length_m": 130840.9307926319,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 770.0,
+            "length_m": 5534.455449266729,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 780.0,
+            "length_m": 83783.59053162861,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 790.0,
+            "length_m": 1576.7648983688966,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 800.0,
+            "length_m": 43385.979978597585,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 810.0,
+            "length_m": 722.1754926173132,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 820.0,
+            "length_m": 16445.007876471765,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 830.0,
+            "length_m": 361.3151172775145,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 840.0,
+            "length_m": 9847.281084144923,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 850.0,
+            "length_m": 380.06228318749316,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 860.0,
+            "length_m": 6285.526965758383,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 880.0,
+            "length_m": 1970.3363115426714,
+            "used_for_interval": false
+          }
+        ],
+        "status": "supported",
+        "interval_m": 20.0,
+        "reference_elevation_m": 680.0,
+        "gap_support_fraction": 1.0,
+        "reference_lattice_support_fraction": 1.0
+      },
+      "cartographic_contacts": 0,
+      "relaxed_contour_length_m": 0,
+      "remaining_conflict_locations": 0,
+      "all_points_unchanged": true,
+      "point_baseline": "data/contour_dem/47J_9-form-lines-excluded/spots.geojsonl",
+      "point_comparison_coordinate_decimal_places": 8
+    },
+    "53A_16": {
+      "output_dir": "data/contour_dem/53A_16-sheet-interval-audit",
+      "source_sha256": "de733aca00f8c8d2369d4084f73b7321e8e4edd5daa162ee51899c3c7e4f3a55",
+      "counts": {
+        "input_features": 8888,
+        "zero_length_line_parts": 1,
+        "circular_spot_heights": 155,
+        "duplicate_parts": 6,
+        "reconstructed_spot_heights": 19,
+        "reconstructed_symbol_fragments": 59,
+        "excluded_outside_edge_sliver_parts": 437,
+        "contour_parts": 8524,
+        "spot_heights": 155
+      },
+      "form_line_decisions": {},
+      "sheet_interval": {
+        "scope": "selected_sheet",
+        "assumption": "one_regular_interval_per_sheet",
+        "minimum_reference_length_m": 48925.791942118376,
+        "reference_lengths_m": [
+          {
+            "elevation_m": 360.0,
+            "length_m": 2691.803048803305,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 380.0,
+            "length_m": 6069.474207152679,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 390.0,
+            "length_m": 194.6420417859698,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 400.0,
+            "length_m": 10875.309318109092,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 420.0,
+            "length_m": 15974.016246867566,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 430.0,
+            "length_m": 222.79019189395493,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 440.0,
+            "length_m": 23867.195550861088,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 450.0,
+            "length_m": 420.22716609101013,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 460.0,
+            "length_m": 29945.2386405133,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 470.0,
+            "length_m": 609.5827809629224,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 480.0,
+            "length_m": 38180.651669873856,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 490.0,
+            "length_m": 309.7411446405879,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 500.0,
+            "length_m": 48067.11365273477,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 510.0,
+            "length_m": 844.4765441536108,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 520.0,
+            "length_m": 73138.53260499332,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 530.0,
+            "length_m": 1514.6419813998798,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 540.0,
+            "length_m": 79983.56095400476,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 550.0,
+            "length_m": 1123.9740378936006,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 560.0,
+            "length_m": 90598.31234835058,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 570.0,
+            "length_m": 247.55769555715366,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 580.0,
+            "length_m": 105469.86129003977,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 590.0,
+            "length_m": 1020.7147994019815,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 600.0,
+            "length_m": 111888.78115475968,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 610.0,
+            "length_m": 1697.1861372192723,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 620.0,
+            "length_m": 111815.19373071614,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 630.0,
+            "length_m": 1027.2216394723978,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 640.0,
+            "length_m": 127817.62052100274,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 650.0,
+            "length_m": 838.6894468368579,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 660.0,
+            "length_m": 146356.95125619555,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 670.0,
+            "length_m": 1354.146576225198,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 680.0,
+            "length_m": 153050.02046243855,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 685.0,
+            "length_m": 120.17544227349086,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 690.0,
+            "length_m": 843.8169563131286,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 700.0,
+            "length_m": 172687.9967121893,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 710.0,
+            "length_m": 413.95210847106426,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 720.0,
+            "length_m": 190464.85734196167,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 730.0,
+            "length_m": 1129.1976860071668,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 740.0,
+            "length_m": 214554.22357974746,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 750.0,
+            "length_m": 1758.5577036965026,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 760.0,
+            "length_m": 218833.2760847685,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 770.0,
+            "length_m": 1265.716090601372,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 780.0,
+            "length_m": 240699.59109850603,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 790.0,
+            "length_m": 1565.5954950147395,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 800.0,
+            "length_m": 249788.1504206806,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 810.0,
+            "length_m": 1116.5914200685258,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 820.0,
+            "length_m": 275092.52511339454,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 830.0,
+            "length_m": 1321.7562185062166,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 840.0,
+            "length_m": 334108.9840420428,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 850.0,
+            "length_m": 2730.0324188578716,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 860.0,
+            "length_m": 379645.9288886935,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 870.0,
+            "length_m": 2355.082174324636,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 880.0,
+            "length_m": 385598.77161808603,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 890.0,
+            "length_m": 2797.1166197431553,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 900.0,
+            "length_m": 427318.21096423187,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 910.0,
+            "length_m": 2623.39482240282,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 920.0,
+            "length_m": 447534.2391972303,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 930.0,
+            "length_m": 4057.46826828931,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 940.0,
+            "length_m": 489257.91942118376,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 950.0,
+            "length_m": 6664.066796748359,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 960.0,
+            "length_m": 475880.9063516389,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 970.0,
+            "length_m": 3600.0466816726816,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 980.0,
+            "length_m": 474006.10755866475,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 990.0,
+            "length_m": 5164.776904687486,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 993.0,
+            "length_m": 93.97544187702215,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1000.0,
+            "length_m": 475484.1712117192,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1010.0,
+            "length_m": 3446.215087778858,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1020.0,
+            "length_m": 419462.0411415864,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1030.0,
+            "length_m": 2797.5976217709886,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1040.0,
+            "length_m": 443593.29184497945,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1050.0,
+            "length_m": 5421.784007643654,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1060.0,
+            "length_m": 427743.06051672244,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1070.0,
+            "length_m": 5398.239714899268,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1080.0,
+            "length_m": 371076.55006593483,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1090.0,
+            "length_m": 2554.9910764211586,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1100.0,
+            "length_m": 404916.48466724413,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1110.0,
+            "length_m": 1490.5629156143027,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1120.0,
+            "length_m": 372466.8370515234,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1130.0,
+            "length_m": 2209.7713547061835,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1140.0,
+            "length_m": 371073.7943501593,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1150.0,
+            "length_m": 3527.944859191582,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1160.0,
+            "length_m": 358453.13906990766,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1170.0,
+            "length_m": 1639.94345634574,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1180.0,
+            "length_m": 326868.9997109743,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1190.0,
+            "length_m": 1786.9554270069382,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1200.0,
+            "length_m": 325794.011205387,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1210.0,
+            "length_m": 2213.6411088310406,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1220.0,
+            "length_m": 296083.09488600795,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1230.0,
+            "length_m": 2250.6766194643633,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1240.0,
+            "length_m": 282610.33928610885,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1250.0,
+            "length_m": 2925.564914875523,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1260.0,
+            "length_m": 266602.6991741777,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1270.0,
+            "length_m": 2972.536760649702,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1280.0,
+            "length_m": 242349.42753585533,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1290.0,
+            "length_m": 2310.9947212634934,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1300.0,
+            "length_m": 231979.76050610232,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1310.0,
+            "length_m": 950.5615663274148,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1320.0,
+            "length_m": 203190.37453196527,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1330.0,
+            "length_m": 1911.0636533330583,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1340.0,
+            "length_m": 188250.67667221156,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1350.0,
+            "length_m": 2269.156180597059,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1360.0,
+            "length_m": 170523.66701684505,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1370.0,
+            "length_m": 315.17142887470493,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1380.0,
+            "length_m": 153463.22753279936,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1390.0,
+            "length_m": 612.9003819189707,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1400.0,
+            "length_m": 155792.77656944862,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1410.0,
+            "length_m": 145.06389783545964,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1420.0,
+            "length_m": 141677.62112857884,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1430.0,
+            "length_m": 712.4220466156635,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1440.0,
+            "length_m": 134573.6898334751,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1450.0,
+            "length_m": 1310.2286448059103,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1460.0,
+            "length_m": 128428.31524191616,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1470.0,
+            "length_m": 1206.0054554341675,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1480.0,
+            "length_m": 116960.32568735776,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1500.0,
+            "length_m": 119842.72014389886,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1510.0,
+            "length_m": 232.77938136122648,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1520.0,
+            "length_m": 111142.34670782814,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1530.0,
+            "length_m": 492.51794022621664,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1540.0,
+            "length_m": 108712.9237594529,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1550.0,
+            "length_m": 999.2895206295769,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1560.0,
+            "length_m": 107806.82575921153,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1570.0,
+            "length_m": 700.8873410517135,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1580.0,
+            "length_m": 99726.4480931628,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1590.0,
+            "length_m": 105.46261458491031,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1600.0,
+            "length_m": 96114.50362888446,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1610.0,
+            "length_m": 1437.1370666092546,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1620.0,
+            "length_m": 81250.62259795616,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1630.0,
+            "length_m": 817.3622541627816,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1640.0,
+            "length_m": 74250.90200842393,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1650.0,
+            "length_m": 1173.6985300987212,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1660.0,
+            "length_m": 67833.49941239867,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1670.0,
+            "length_m": 288.5900253110204,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1680.0,
+            "length_m": 61149.25057256272,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1690.0,
+            "length_m": 381.36090604675735,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1700.0,
+            "length_m": 57519.23542964638,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1710.0,
+            "length_m": 97.81334700335029,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1720.0,
+            "length_m": 46454.4050290785,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1730.0,
+            "length_m": 232.40235980109776,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1740.0,
+            "length_m": 42157.07881406324,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1750.0,
+            "length_m": 459.50937444250746,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1760.0,
+            "length_m": 18643.88173298795,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1770.0,
+            "length_m": 405.0482072049706,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1780.0,
+            "length_m": 30388.86937246295,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1790.0,
+            "length_m": 120.07991607032102,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1800.0,
+            "length_m": 25642.34781756641,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1820.0,
+            "length_m": 20375.98160578472,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1830.0,
+            "length_m": 207.05782082293973,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1840.0,
+            "length_m": 17192.379578489035,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1860.0,
+            "length_m": 16095.135318515397,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1880.0,
+            "length_m": 13882.261583328456,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1900.0,
+            "length_m": 12799.409465417068,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1920.0,
+            "length_m": 9521.583247552995,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1940.0,
+            "length_m": 6852.614801320453,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1960.0,
+            "length_m": 5231.766591169121,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1970.0,
+            "length_m": 136.65940379337556,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1980.0,
+            "length_m": 3232.753599520571,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2000.0,
+            "length_m": 2309.052569288045,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2020.0,
+            "length_m": 1621.8472578086964,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2040.0,
+            "length_m": 1226.924449391264,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2060.0,
+            "length_m": 600.5209563791369,
+            "used_for_interval": false
+          }
+        ],
+        "status": "supported",
+        "interval_m": 20.0,
+        "reference_elevation_m": 940.0,
+        "gap_support_fraction": 1.0,
+        "reference_lattice_support_fraction": 1.0
+      },
+      "cartographic_contacts": 8,
+      "relaxed_contour_length_m": 349.37109869844824,
+      "remaining_conflict_locations": 26,
+      "all_points_unchanged": true,
+      "point_baseline": "data/contour_dem/53A_16-edge-filtered/spots.geojsonl",
+      "point_comparison_coordinate_decimal_places": 8
+    },
+    "45F_4": {
+      "output_dir": "data/contour_dem/45F_4-sheet-interval-audit",
+      "source_sha256": "9360ea90624a49a0bc1bc7f9c52fe8c42c1f73d68705c907689fb1643e4e7b2f",
+      "counts": {
+        "input_features": 620,
+        "circular_spot_heights": 140,
+        "triangular_spot_heights": 10,
+        "duplicate_parts": 1,
+        "excluded_outside_edge_sliver_parts": 4,
+        "contour_parts": 478,
+        "spot_heights": 150
+      },
+      "form_line_decisions": {},
+      "sheet_interval": {
+        "scope": "selected_sheet",
+        "assumption": "one_regular_interval_per_sheet",
+        "minimum_reference_length_m": 13677.955901197529,
+        "reference_lengths_m": [
+          {
+            "elevation_m": 170.0,
+            "length_m": 3240.0812141870665,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 180.0,
+            "length_m": 19928.487754023055,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 190.0,
+            "length_m": 36066.97839275111,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 200.0,
+            "length_m": 136779.55901197527,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 205.0,
+            "length_m": 335.77052623066055,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 210.0,
+            "length_m": 23478.391647808858,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 220.0,
+            "length_m": 13008.155170287522,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 230.0,
+            "length_m": 417.21512032798887,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 240.0,
+            "length_m": 963.3560390222685,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 260.0,
+            "length_m": 527.493190809906,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 270.0,
+            "length_m": 268.08655859467456,
+            "used_for_interval": false
+          }
+        ],
+        "status": "supported",
+        "interval_m": 10.0,
+        "reference_elevation_m": 200.0,
+        "gap_support_fraction": 1.0,
+        "reference_lattice_support_fraction": 1.0
+      },
+      "cartographic_contacts": 0,
+      "relaxed_contour_length_m": 0,
+      "remaining_conflict_locations": 0,
+      "all_points_unchanged": true,
+      "point_baseline": "data/contour_dem/45F_4-cross-country/spots.geojsonl",
+      "point_comparison_coordinate_decimal_places": 8
+    },
+    "56M_5": {
+      "output_dir": "data/contour_dem/56M_5-sheet-interval-audit",
+      "source_sha256": "a5a6ef998ba4d0aa5ebc8d356365b991f2b77cb5da46832fc91d9ed2fd24db43",
+      "counts": {
+        "input_features": 817,
+        "circular_spot_heights": 84,
+        "triangular_spot_heights": 1,
+        "duplicate_parts": 1,
+        "excluded_outside_edge_sliver_parts": 29,
+        "contour_parts": 704,
+        "spot_heights": 85
+      },
+      "form_line_decisions": {},
+      "sheet_interval": {
+        "scope": "selected_sheet",
+        "assumption": "one_regular_interval_per_sheet",
+        "minimum_reference_length_m": 34773.796500250486,
+        "reference_lengths_m": [
+          {
+            "elevation_m": 160.0,
+            "length_m": 109982.56053083898,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 170.0,
+            "length_m": 59371.05440973332,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 180.0,
+            "length_m": 347737.9650025048,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 190.0,
+            "length_m": 33862.35707482108,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 200.0,
+            "length_m": 281861.38815605536,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 210.0,
+            "length_m": 18982.85573602039,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 220.0,
+            "length_m": 190881.99515580625,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 230.0,
+            "length_m": 5053.495018801514,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 240.0,
+            "length_m": 26831.825935834175,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 250.0,
+            "length_m": 3291.5215554495185,
+            "used_for_interval": false
+          }
+        ],
+        "status": "supported",
+        "interval_m": 20.0,
+        "reference_elevation_m": 180.0,
+        "gap_support_fraction": 0.7992476393772611,
+        "reference_lattice_support_fraction": 0.9400192389501988
+      },
+      "cartographic_contacts": 0,
+      "relaxed_contour_length_m": 0,
+      "remaining_conflict_locations": 0,
+      "all_points_unchanged": true,
+      "point_baseline": "data/contour_dem/56M_5-symbols/spots.geojsonl",
+      "point_comparison_coordinate_decimal_places": 8
+    },
+    "56M_9": {
+      "output_dir": "data/contour_dem/56M_9-sheet-interval-audit",
+      "source_sha256": "a6c91f4b681c8cae368222ef6bc961216419aa63025587391e75835c1ed89f1a",
+      "counts": {
+        "input_features": 691,
+        "circular_spot_heights": 92,
+        "triangular_spot_heights": 12,
+        "duplicate_parts": 1,
+        "excluded_outside_edge_sliver_parts": 41,
+        "contour_parts": 550,
+        "spot_heights": 104
+      },
+      "form_line_decisions": {},
+      "sheet_interval": {
+        "scope": "selected_sheet",
+        "assumption": "one_regular_interval_per_sheet",
+        "minimum_reference_length_m": 37316.211863428674,
+        "reference_lengths_m": [
+          {
+            "elevation_m": 150.0,
+            "length_m": 437.00957704269405,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 160.0,
+            "length_m": 147392.41454305404,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 170.0,
+            "length_m": 8197.019719288746,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 180.0,
+            "length_m": 373162.11863428674,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 190.0,
+            "length_m": 41431.87933534741,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 200.0,
+            "length_m": 284010.3274171514,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 210.0,
+            "length_m": 23838.59997492527,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 220.0,
+            "length_m": 124686.4968586155,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 230.0,
+            "length_m": 14457.677487782603,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 240.0,
+            "length_m": 53071.52126438083,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 250.0,
+            "length_m": 15150.629418428547,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 260.0,
+            "length_m": 8377.36971052854,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 270.0,
+            "length_m": 483.67718303898107,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 275.0,
+            "length_m": 243.46986920403344,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 280.0,
+            "length_m": 4182.299919360106,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 290.0,
+            "length_m": 1356.9799965360046,
+            "used_for_interval": false
+          }
+        ],
+        "status": "supported",
+        "interval_m": 20.0,
+        "reference_elevation_m": 180.0,
+        "gap_support_fraction": 0.796909616307181,
+        "reference_lattice_support_fraction": 0.9595294878881441
+      },
+      "cartographic_contacts": 0,
+      "relaxed_contour_length_m": 0,
+      "remaining_conflict_locations": 0,
+      "all_points_unchanged": true,
+      "point_baseline": "data/contour_dem/56M_9-symbols/spots.geojsonl",
+      "point_comparison_coordinate_decimal_places": 8
+    },
+    "73D_15": {
+      "output_dir": "data/contour_dem/73D_15-sheet-interval-audit",
+      "source_sha256": "c40b7b5bbee4c1e9b08c22bb3a306570bf10bbcaff5627d99b8068334f5c4fbf",
+      "counts": {
+        "input_features": 5741,
+        "triangular_spot_heights": 21,
+        "circular_spot_heights": 101,
+        "excluded_outside_edge_sliver_parts": 85,
+        "contour_parts": 5611,
+        "spot_heights": 122
+      },
+      "form_line_decisions": {},
+      "sheet_interval": {
+        "scope": "selected_sheet",
+        "assumption": "one_regular_interval_per_sheet",
+        "minimum_reference_length_m": 51996.86293237659,
+        "reference_lengths_m": [
+          {
+            "elevation_m": 50.0,
+            "length_m": 4382.591896663697,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 60.0,
+            "length_m": 57511.44616301818,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 70.0,
+            "length_m": 3355.692032900804,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 80.0,
+            "length_m": 122575.04837813029,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 90.0,
+            "length_m": 3999.3459228482775,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 100.0,
+            "length_m": 289007.65419190994,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 110.0,
+            "length_m": 5666.278407013502,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 120.0,
+            "length_m": 457928.40859192243,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 130.0,
+            "length_m": 13372.598658949812,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 140.0,
+            "length_m": 498172.8634932207,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 150.0,
+            "length_m": 13675.200279256052,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 160.0,
+            "length_m": 511680.70853720384,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 170.0,
+            "length_m": 15294.339030239833,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 180.0,
+            "length_m": 519968.6293237659,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 190.0,
+            "length_m": 15712.113828311258,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 200.0,
+            "length_m": 481540.020241493,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 210.0,
+            "length_m": 15019.015139539886,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 220.0,
+            "length_m": 414062.8589070229,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 230.0,
+            "length_m": 15710.714116284718,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 240.0,
+            "length_m": 350278.95095812797,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 250.0,
+            "length_m": 11657.10648979772,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 260.0,
+            "length_m": 302702.659919652,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 270.0,
+            "length_m": 9897.058740895522,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 280.0,
+            "length_m": 252806.2895518653,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 290.0,
+            "length_m": 4501.04699537761,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 300.0,
+            "length_m": 215155.813186398,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 310.0,
+            "length_m": 6260.716464920733,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 320.0,
+            "length_m": 170133.39859460102,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 330.0,
+            "length_m": 5694.4979775745505,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 340.0,
+            "length_m": 134525.8935876421,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 350.0,
+            "length_m": 4792.334312076085,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 360.0,
+            "length_m": 105288.25659972911,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 370.0,
+            "length_m": 2450.345354584722,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 380.0,
+            "length_m": 84376.32355212698,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 390.0,
+            "length_m": 2108.0895460329048,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 400.0,
+            "length_m": 72714.7240089025,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 410.0,
+            "length_m": 984.7237557980861,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 420.0,
+            "length_m": 60001.6969329637,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 430.0,
+            "length_m": 937.9165497684351,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 440.0,
+            "length_m": 48040.19458331898,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 450.0,
+            "length_m": 1567.8211005343862,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 460.0,
+            "length_m": 37409.629788745646,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 470.0,
+            "length_m": 708.6206607247918,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 480.0,
+            "length_m": 31547.762171409166,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 490.0,
+            "length_m": 280.1340467640089,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 500.0,
+            "length_m": 25529.37719065121,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 510.0,
+            "length_m": 1150.155607921995,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 520.0,
+            "length_m": 20441.55834596586,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 530.0,
+            "length_m": 713.9003348884437,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 540.0,
+            "length_m": 17186.0782086755,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 550.0,
+            "length_m": 307.10918581655494,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 560.0,
+            "length_m": 14624.868805221344,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 580.0,
+            "length_m": 12044.336516589483,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 590.0,
+            "length_m": 444.6562875799998,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 600.0,
+            "length_m": 9367.791099003744,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 610.0,
+            "length_m": 767.47730672743,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 620.0,
+            "length_m": 5628.581303402558,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 640.0,
+            "length_m": 4985.30419478037,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 650.0,
+            "length_m": 182.48370315806713,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 660.0,
+            "length_m": 3363.3202947395566,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 670.0,
+            "length_m": 389.91543911337794,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 680.0,
+            "length_m": 2141.5504283017945,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 690.0,
+            "length_m": 186.84426140153948,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 700.0,
+            "length_m": 1434.36626317953,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 720.0,
+            "length_m": 310.02546915061157,
+            "used_for_interval": false
+          }
+        ],
+        "status": "supported",
+        "interval_m": 20.0,
+        "reference_elevation_m": 180.0,
+        "gap_support_fraction": 1.0,
+        "reference_lattice_support_fraction": 1.0
+      },
+      "cartographic_contacts": 0,
+      "relaxed_contour_length_m": 0,
+      "remaining_conflict_locations": 0,
+      "all_points_unchanged": true,
+      "point_baseline": "data/contour_dem/73D_15-cross-country/spots.geojsonl",
+      "point_comparison_coordinate_decimal_places": 8
+    },
+    "83E_11": {
+      "output_dir": "data/contour_dem/83E_11-sheet-interval-audit",
+      "source_sha256": "9f1f01767177ecbd2c8488c726a2c304fab587e408d774e1db4f2512c598a08e",
+      "counts": {
+        "input_features": 15755,
+        "zero_length_line_parts": 6,
+        "circular_spot_heights": 84,
+        "duplicate_parts": 1,
+        "triangular_spot_heights": 14,
+        "excluded_outside_edge_sliver_parts": 739,
+        "contour_parts": 15057,
+        "spot_heights": 98
+      },
+      "form_line_decisions": {},
+      "sheet_interval": {
+        "scope": "selected_sheet",
+        "assumption": "one_regular_interval_per_sheet",
+        "minimum_reference_length_m": 31994.12442125428,
+        "reference_lengths_m": [
+          {
+            "elevation_m": 480.0,
+            "length_m": 433.15044642885323,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 500.0,
+            "length_m": 1522.9725279271872,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 520.0,
+            "length_m": 2773.175268825241,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 540.0,
+            "length_m": 3789.104538144563,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 560.0,
+            "length_m": 4812.279355794986,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 580.0,
+            "length_m": 6222.306732430088,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 600.0,
+            "length_m": 6642.152821684016,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 620.0,
+            "length_m": 31632.753726805142,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 640.0,
+            "length_m": 39088.834707671864,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 660.0,
+            "length_m": 50753.984809646485,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 680.0,
+            "length_m": 56707.14259828444,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 700.0,
+            "length_m": 64237.51380912117,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 720.0,
+            "length_m": 78380.21146816442,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 740.0,
+            "length_m": 89392.68791611012,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 750.0,
+            "length_m": 159.74995596092478,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 760.0,
+            "length_m": 99655.33284809135,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 770.0,
+            "length_m": 160.26503843597484,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 780.0,
+            "length_m": 107151.40804824444,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 800.0,
+            "length_m": 121105.98688099433,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 820.0,
+            "length_m": 132612.5877128266,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 830.0,
+            "length_m": 5.138886459102221,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 840.0,
+            "length_m": 152857.48788851383,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 860.0,
+            "length_m": 183525.52608943384,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 870.0,
+            "length_m": 805.7417105306029,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 880.0,
+            "length_m": 217009.98000385266,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 890.0,
+            "length_m": 726.0957417262538,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 900.0,
+            "length_m": 231827.57792331048,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 910.0,
+            "length_m": 332.2331248659703,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 920.0,
+            "length_m": 232716.54186215403,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 930.0,
+            "length_m": 563.6023835607776,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 940.0,
+            "length_m": 246308.53629999442,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 950.0,
+            "length_m": 1365.2649852999211,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 960.0,
+            "length_m": 260256.69351212893,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 970.0,
+            "length_m": 1055.7976411759869,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 980.0,
+            "length_m": 260392.4788675569,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 990.0,
+            "length_m": 363.4897586425247,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1000.0,
+            "length_m": 276680.8498713352,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1010.0,
+            "length_m": 480.7215589800554,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1020.0,
+            "length_m": 263802.42101132823,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1030.0,
+            "length_m": 1276.6129388013671,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1040.0,
+            "length_m": 262915.69898682955,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1050.0,
+            "length_m": 567.2854965494143,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1060.0,
+            "length_m": 271354.1094220863,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1070.0,
+            "length_m": 953.8722905573743,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1080.0,
+            "length_m": 289846.34231789544,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1090.0,
+            "length_m": 723.2051298919922,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1100.0,
+            "length_m": 296078.1617046351,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1110.0,
+            "length_m": 910.7261759969846,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1120.0,
+            "length_m": 278036.3936767697,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1130.0,
+            "length_m": 865.1498415617095,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1140.0,
+            "length_m": 271579.8383936622,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1150.0,
+            "length_m": 1418.050001482884,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1160.0,
+            "length_m": 281073.4535471107,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1170.0,
+            "length_m": 659.0926416125667,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1180.0,
+            "length_m": 283715.3821280264,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1190.0,
+            "length_m": 1916.506459572209,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1200.0,
+            "length_m": 284165.48932816193,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1210.0,
+            "length_m": 222.37790766848647,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1220.0,
+            "length_m": 268797.5431961426,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1230.0,
+            "length_m": 1253.9829662447967,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1240.0,
+            "length_m": 264555.5861358105,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1250.0,
+            "length_m": 515.974398764609,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1260.0,
+            "length_m": 277437.34739177447,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1270.0,
+            "length_m": 672.489204005609,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1280.0,
+            "length_m": 295735.47510391864,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1290.0,
+            "length_m": 811.3767848597618,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1300.0,
+            "length_m": 319941.2442125428,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1310.0,
+            "length_m": 914.0808710456937,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1320.0,
+            "length_m": 304902.254627926,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1330.0,
+            "length_m": 991.7311341112131,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1340.0,
+            "length_m": 298620.31768905837,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1350.0,
+            "length_m": 726.7761863216479,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1360.0,
+            "length_m": 298734.3620533715,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1370.0,
+            "length_m": 763.7248901558559,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1380.0,
+            "length_m": 301032.7945812679,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1390.0,
+            "length_m": 824.5754834562165,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1400.0,
+            "length_m": 311701.8435152057,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1410.0,
+            "length_m": 1380.3781472603023,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1420.0,
+            "length_m": 292089.08104656945,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1430.0,
+            "length_m": 279.6472368174412,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1440.0,
+            "length_m": 286344.69084607984,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1450.0,
+            "length_m": 228.35231357362474,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1460.0,
+            "length_m": 284605.30459935154,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1470.0,
+            "length_m": 208.1157137301234,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1480.0,
+            "length_m": 295020.45548473817,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1490.0,
+            "length_m": 714.9724149898191,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1500.0,
+            "length_m": 315330.34936787206,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1510.0,
+            "length_m": 546.2796026770868,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1520.0,
+            "length_m": 295413.9569247284,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1530.0,
+            "length_m": 410.9855804758181,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1540.0,
+            "length_m": 286254.61788639385,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1550.0,
+            "length_m": 1382.554301903222,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1560.0,
+            "length_m": 283809.91922961164,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1570.0,
+            "length_m": 385.05901160627343,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1580.0,
+            "length_m": 288929.5134289533,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1590.0,
+            "length_m": 528.5095218231007,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1600.0,
+            "length_m": 303805.8243074645,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1610.0,
+            "length_m": 1398.1489577447533,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1620.0,
+            "length_m": 290001.59097305755,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1630.0,
+            "length_m": 663.0932142248934,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1640.0,
+            "length_m": 287164.17678845284,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1650.0,
+            "length_m": 2124.984079886482,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1660.0,
+            "length_m": 286136.2448951365,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1670.0,
+            "length_m": 1733.6232788183677,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1680.0,
+            "length_m": 289599.2339022922,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1690.0,
+            "length_m": 830.009527935787,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1700.0,
+            "length_m": 307554.16273643606,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1710.0,
+            "length_m": 2338.532977933171,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1720.0,
+            "length_m": 279486.8557523874,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1730.0,
+            "length_m": 918.0338903351682,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1740.0,
+            "length_m": 265244.2422000901,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1750.0,
+            "length_m": 1793.2095878749824,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1760.0,
+            "length_m": 261128.4228252501,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1770.0,
+            "length_m": 2578.2726579323676,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1780.0,
+            "length_m": 249326.940279963,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1790.0,
+            "length_m": 1317.4486948921322,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1800.0,
+            "length_m": 255532.3780724477,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1810.0,
+            "length_m": 1242.8566194411262,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1820.0,
+            "length_m": 230104.80562782145,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1830.0,
+            "length_m": 1687.9147094883792,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1840.0,
+            "length_m": 217478.62951450734,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1850.0,
+            "length_m": 814.8200356692009,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1860.0,
+            "length_m": 211101.7099218384,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1870.0,
+            "length_m": 1164.2184000192408,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1880.0,
+            "length_m": 205705.37269876318,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1890.0,
+            "length_m": 1577.761265398581,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1900.0,
+            "length_m": 214998.59452041186,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1910.0,
+            "length_m": 1500.7292602354044,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1920.0,
+            "length_m": 188132.42975103582,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1930.0,
+            "length_m": 2135.2486390460504,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1940.0,
+            "length_m": 165617.46319938064,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1950.0,
+            "length_m": 1632.194080216601,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1960.0,
+            "length_m": 151944.89797648418,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1970.0,
+            "length_m": 910.0582910024912,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 1980.0,
+            "length_m": 134607.43931859717,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 1990.0,
+            "length_m": 2327.3509145033945,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2000.0,
+            "length_m": 123640.5698487328,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 2010.0,
+            "length_m": 777.5807509264625,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2020.0,
+            "length_m": 104889.91499207514,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 2030.0,
+            "length_m": 1589.4230532136642,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2040.0,
+            "length_m": 89568.4661337899,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 2050.0,
+            "length_m": 216.05954594101084,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2060.0,
+            "length_m": 79839.4886185879,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 2070.0,
+            "length_m": 559.9353791057539,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2080.0,
+            "length_m": 67383.62642452463,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 2090.0,
+            "length_m": 641.6377029777041,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2100.0,
+            "length_m": 63788.862006536816,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 2110.0,
+            "length_m": 1030.0854887902674,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2120.0,
+            "length_m": 56554.7594202867,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 2130.0,
+            "length_m": 881.978016575041,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2140.0,
+            "length_m": 49964.69228322012,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 2150.0,
+            "length_m": 497.07921932423534,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2160.0,
+            "length_m": 42260.74556381578,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 2170.0,
+            "length_m": 116.46996754179003,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2180.0,
+            "length_m": 33041.24921456035,
+            "used_for_interval": true
+          },
+          {
+            "elevation_m": 2190.0,
+            "length_m": 170.16530847653186,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2200.0,
+            "length_m": 28124.70024323391,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2210.0,
+            "length_m": 221.83476894369744,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2220.0,
+            "length_m": 19411.087163102264,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2230.0,
+            "length_m": 446.0554097580905,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2240.0,
+            "length_m": 13913.134743358678,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2260.0,
+            "length_m": 11606.05400451228,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2270.0,
+            "length_m": 258.7126330315368,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2280.0,
+            "length_m": 7030.57253012698,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2290.0,
+            "length_m": 330.419097090122,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2300.0,
+            "length_m": 4751.940654713037,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2320.0,
+            "length_m": 3077.644740572559,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2340.0,
+            "length_m": 2115.1245301513945,
+            "used_for_interval": false
+          },
+          {
+            "elevation_m": 2360.0,
+            "length_m": 661.6501429640344,
+            "used_for_interval": false
+          }
+        ],
+        "status": "supported",
+        "interval_m": 20.0,
+        "reference_elevation_m": 1300.0,
+        "gap_support_fraction": 1.0,
+        "reference_lattice_support_fraction": 1.0
+      },
+      "cartographic_contacts": 0,
+      "relaxed_contour_length_m": 0,
+      "remaining_conflict_locations": 0,
+      "all_points_unchanged": true,
+      "point_baseline": "data/contour_dem/83E_11-edge-filtered/spots.geojsonl",
+      "point_comparison_coordinate_decimal_places": 8
+    }
+  },
+  "scripts": [
+    {
+      "path": "contours_to_dem.py",
+      "sha256": "03be8301d5277d9a77c38c7dc5e99167d1ba6e52162392cfb73170341da04acf"
+    },
+    {
+      "path": "contour_form_lines.py",
+      "sha256": "18d7da25373efe35bb067c16e441f519d22a3405dc661b03128ed8112a2074ed"
+    },
+    {
+      "path": "contour_contacts.py",
+      "sha256": "18db23707504f53d134480dc8a372da5cb9d66ed870e8b2cdfe188f23531dec4"
+    },
+    {
+      "path": "extract_sheet_dem.py",
+      "sha256": "b60440810c45a8738824f08e55b9bd191ee27452b2d4458594ed620ef5dae35a"
+    }
+  ]
+}

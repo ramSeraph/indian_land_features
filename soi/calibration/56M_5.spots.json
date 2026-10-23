@@ -1,0 +1,13 @@
+{
+  "sheet": "56M_5",
+  "toposheet_url": "https://github.com/ramSeraph/india_topo_maps/releases/download/50k-osm-georef-extra4/56M_5.tif",
+  "toposheet_sha256": "5cca8d22355b36789651b494e5f770e65a2f9eaadb46c98a645b7a483c56a9a9",
+  "spots": [
+    {
+      "source_id": "CONTOUR_Crv.4519423",
+      "geometry_sha256": "fdf8dc52778c6b6245784040e50a1bd9c254b1903fb01784763640973e729150",
+      "value_m": 177,
+      "reason": "GeoTIFF shows a black triangular height symbol with printed height 177 at this location; audit crop 096. Convert this reviewed symbol to its polygon centroid, retaining the source elevation."
+    }
+  ]
+}

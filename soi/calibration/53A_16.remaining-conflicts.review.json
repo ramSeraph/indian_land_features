@@ -1,0 +1,1375 @@
+{
+  "sheet": "53A_16",
+  "remaining_count": 14,
+  "current_case": "C011",
+  "source_heights_changed": false,
+  "cases": [
+    {
+      "case_id": "C001",
+      "coordinates": [
+        76.7597644,
+        31.1247889
+      ],
+      "elevations_m": [
+        1260.0,
+        1280.0
+      ],
+      "candidate_grids": [
+        {
+          "source_epsg": 4326,
+          "outer_distance_m": 931.2743522054468,
+          "quarter_distance_m": 23.40384117982994,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4145,
+          "outer_distance_m": 1050.4200576242288,
+          "quarter_distance_m": 6.783579145391337,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4146,
+          "outer_distance_m": 1049.722732093092,
+          "quarter_distance_m": 0.45563045433949567,
+          "inside_sheet": true
+        }
+      ],
+      "comparison_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C001-comparison.png",
+      "raw_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C001-raw-native.png",
+      "status": "recovered_in_derived_copy",
+      "observation": "Two source endpoints join at different heights (1260/1280 m). The raster does not show a clear dashed form line; settlement symbols obscure part of the continuation. No readable contour label establishes the correct height in this crop.",
+      "working_interpretation": "Candidate internal quarter-sheet seam: 23.40 m from the nominal latitude split but 0.46 m from the tested EPSG:4146 split. This alignment alone does not establish the source datum or the correct height.",
+      "height_colour_views": [
+        "data/contours/53A_16/line-conflict-audit/toposheet-review/C001-height-context-600m.png",
+        "data/contours/53A_16/line-conflict-audit/toposheet-review/C001-height-context-1200m.png"
+      ],
+      "neighbourhood_evidence": {
+        "connected_case": "C002",
+        "intervening_recorded_height_m": 1280,
+        "source_ids": [
+          "CONTOUR_Crv.2490634",
+          "CONTOUR_Crv.2487972"
+        ],
+        "continuation_heights_m": [
+          1260,
+          1260
+        ],
+        "interpretation": "Likely height-attribute error on the U-shaped 1280 m section joining two 1260 m continuations; its neighbouring contour sequence is consistent with 1260 m. This is a candidate interpretation, not an applied correction.",
+        "source_heights_changed": false
+      },
+      "after_height_recovery": "recovered_in_derived_copy",
+      "user_review": "Accepted likely height-attribute error; 1260 m for C001/C002, 1360 m for C003/C004.",
+      "recovery": {
+        "recovery_id": "H0005",
+        "method": "closed_loop_between_regular_contours",
+        "original_elevations_m": [
+          1260.0,
+          1280.0
+        ],
+        "recovered_elevation_m": 1260.0,
+        "changed_source_ids": [
+          "CONTOUR_Crv.2487972",
+          "CONTOUR_Crv.2490634"
+        ],
+        "changed_length_m": 266.4152345520985,
+        "audit": "data/contour_dem/53A_16-height-autocorrect/height_recovery.geojsonl"
+      },
+      "review_group": "recovered_history"
+    },
+    {
+      "case_id": "C002",
+      "coordinates": [
+        76.7607297,
+        31.1250808
+      ],
+      "elevations_m": [
+        1260.0,
+        1280.0
+      ],
+      "candidate_grids": [
+        {
+          "source_epsg": 4326,
+          "outer_distance_m": 1023.3363728241183,
+          "quarter_distance_m": 8.95787275503739,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4145,
+          "outer_distance_m": 1142.4820833647411,
+          "quarter_distance_m": 25.57710782274383,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4146,
+          "outer_distance_m": 1141.7847598801018,
+          "quarter_distance_m": 31.905058926321654,
+          "inside_sheet": true
+        }
+      ],
+      "comparison_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C002-comparison.png",
+      "raw_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C002-raw-native.png",
+      "status": "recovered_in_derived_copy",
+      "after_height_recovery": "recovered_in_derived_copy",
+      "user_review": "Accepted likely height-attribute error; 1260 m for C001/C002, 1360 m for C003/C004.",
+      "recovery": {
+        "recovery_id": "H0005",
+        "method": "closed_loop_between_regular_contours",
+        "original_elevations_m": [
+          1260.0,
+          1280.0
+        ],
+        "recovered_elevation_m": 1260.0,
+        "changed_source_ids": [
+          "CONTOUR_Crv.2487972",
+          "CONTOUR_Crv.2490634"
+        ],
+        "changed_length_m": 266.4152345520985,
+        "audit": "data/contour_dem/53A_16-height-autocorrect/height_recovery.geojsonl"
+      },
+      "review_group": "recovered_history"
+    },
+    {
+      "case_id": "C003",
+      "coordinates": [
+        76.7638128,
+        31.124798300000005
+      ],
+      "elevations_m": [
+        1360.0,
+        1380.0
+      ],
+      "candidate_grids": [
+        {
+          "source_epsg": 4326,
+          "outer_distance_m": 1317.3892237755865,
+          "quarter_distance_m": 22.361726728554473,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4145,
+          "outer_distance_m": 1436.534929111818,
+          "quarter_distance_m": 5.745827215927088,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4146,
+          "outer_distance_m": 1435.837603862718,
+          "quarter_distance_m": 0.5821563033478804,
+          "inside_sheet": true
+        }
+      ],
+      "comparison_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C003-comparison.png",
+      "raw_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C003-raw-native.png",
+      "status": "recovered_in_derived_copy",
+      "after_height_recovery": "recovered_in_derived_copy",
+      "user_review": "Accepted likely height-attribute error; 1260 m for C001/C002, 1360 m for C003/C004.",
+      "recovery": {
+        "recovery_id": "H0004",
+        "method": "closed_loop_between_regular_contours",
+        "original_elevations_m": [
+          1360.0,
+          1380.0
+        ],
+        "recovered_elevation_m": 1360.0,
+        "changed_source_ids": [
+          "CONTOUR_Crv.2474834"
+        ],
+        "changed_length_m": 297.58807743951746,
+        "audit": "data/contour_dem/53A_16-height-autocorrect/height_recovery.geojsonl"
+      },
+      "review_group": "recovered_history"
+    },
+    {
+      "case_id": "C004",
+      "coordinates": [
+        76.7665681,
+        31.124769
+      ],
+      "elevations_m": [
+        1360.0,
+        1380.0
+      ],
+      "candidate_grids": [
+        {
+          "source_epsg": 4326,
+          "outer_distance_m": 1580.1759927852816,
+          "quarter_distance_m": 25.61016695090827,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4145,
+          "outer_distance_m": 1699.3216983662992,
+          "quarter_distance_m": 8.997213864697876,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4146,
+          "outer_distance_m": 1698.6243728904933,
+          "quarter_distance_m": 2.669211145162889,
+          "inside_sheet": true
+        }
+      ],
+      "comparison_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C004-comparison.png",
+      "raw_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C004-raw-native.png",
+      "status": "recovered_in_derived_copy",
+      "after_height_recovery": "recovered_in_derived_copy",
+      "user_review": "Accepted likely height-attribute error; 1260 m for C001/C002, 1360 m for C003/C004.",
+      "recovery": {
+        "recovery_id": "H0004",
+        "method": "closed_loop_between_regular_contours",
+        "original_elevations_m": [
+          1360.0,
+          1380.0
+        ],
+        "recovered_elevation_m": 1360.0,
+        "changed_source_ids": [
+          "CONTOUR_Crv.2474834"
+        ],
+        "changed_length_m": 297.58807743951746,
+        "audit": "data/contour_dem/53A_16-height-autocorrect/height_recovery.geojsonl"
+      },
+      "review_group": "recovered_history"
+    },
+    {
+      "case_id": "C005",
+      "coordinates": [
+        76.7755982,
+        31.0963155
+      ],
+      "elevations_m": [
+        880.0,
+        1240.0
+      ],
+      "candidate_grids": [
+        {
+          "source_epsg": 4326,
+          "outer_distance_m": 2442.1512740953294,
+          "quarter_distance_m": 3180.1425027453747,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4145,
+          "outer_distance_m": 2561.297007609148,
+          "quarter_distance_m": 3163.5392125341687,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4146,
+          "outer_distance_m": 2560.5996832437754,
+          "quarter_distance_m": 3157.211132197633,
+          "inside_sheet": true
+        }
+      ],
+      "comparison_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C005-comparison.png",
+      "raw_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C005-raw-native.png",
+      "status": "recovered_by_small_fragment_rule",
+      "after_height_recovery": "recovered_in_derived_copy",
+      "height_colour_views": [
+        "data/contours/53A_16/line-conflict-audit/toposheet-review/C005-height-context-500m.png"
+      ],
+      "observation": "A 6.63 m segment at 1240 m closes an otherwise 122.76 m loop at 880 m. The size-limited fallback now recovers it to 880 m in the working copy.",
+      "recovery": {
+        "recovery_id": "H0001",
+        "method": "small_fragment_between_same_height_endpoints",
+        "original_elevations_m": [
+          880.0,
+          1240.0
+        ],
+        "recovered_elevation_m": 880.0,
+        "changed_source_ids": [
+          "CONTOUR_Crv.2490961"
+        ],
+        "changed_length_m": 6.631893723643195,
+        "audit": "data/contour_dem/53A_16-height-autocorrect/height_recovery.geojsonl",
+        "fragment_limits_and_measurements": {
+          "length_m": 6.631893723643195,
+          "fraction_of_loop": 0.05125477429115236,
+          "maximum_length_m": 10.0,
+          "maximum_fraction_of_loop": 0.1,
+          "replacement_elevation_m": 880.0,
+          "decision": "recover_within_size_limits"
+        }
+      },
+      "observation_before_small_fragment_recovery": "A 6.63 m segment at 1240 m closes an otherwise 122.76 m loop at 880 m. The automatic recovery prototype retains it because it lacks the required enclosing/inner regular-contour references.",
+      "reference_dem_calibration": {
+        "report": "data/comparisons/53A_16-C005-glo30/report.json",
+        "terrain_plot": "data/comparisons/53A_16-C005-glo30/terrain-check.png",
+        "endpoint_samples_m": [
+          868.0903930664062,
+          870.413330078125
+        ],
+        "maximum_within_100m_m": 887.546142578125,
+        "scope": "Calibration only; not an input to automatic recovery.",
+        "interpretation": "Supports the 880 m loop; native sampling cannot independently exclude an extremely narrow spike."
+      },
+      "user_review": "User identified a likely erroneous height or an extremely narrow spike, requested a reference DEM check, and authorized size-limited automatic correction.",
+      "review_group": "recovered_history"
+    },
+    {
+      "case_id": "C006",
+      "coordinates": [
+        76.7756677,
+        31.096314299999992
+      ],
+      "elevations_m": [
+        880.0,
+        1240.0
+      ],
+      "candidate_grids": [
+        {
+          "source_epsg": 4326,
+          "outer_distance_m": 2448.781863840916,
+          "quarter_distance_m": 3180.275622069305,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4145,
+          "outer_distance_m": 2567.9275973646063,
+          "quarter_distance_m": 3163.672391206266,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4146,
+          "outer_distance_m": 2567.2302730026363,
+          "quarter_distance_m": 3157.3443106946984,
+          "inside_sheet": true
+        }
+      ],
+      "comparison_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C006-comparison.png",
+      "raw_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C006-raw-native.png",
+      "status": "recovered_by_small_fragment_rule",
+      "after_height_recovery": "recovered_in_derived_copy",
+      "height_colour_views": [
+        "data/contours/53A_16/line-conflict-audit/toposheet-review/C005-height-context-500m.png"
+      ],
+      "observation": "A 6.63 m segment at 1240 m closes an otherwise 122.76 m loop at 880 m. The size-limited fallback now recovers it to 880 m in the working copy.",
+      "recovery": {
+        "recovery_id": "H0001",
+        "method": "small_fragment_between_same_height_endpoints",
+        "original_elevations_m": [
+          880.0,
+          1240.0
+        ],
+        "recovered_elevation_m": 880.0,
+        "changed_source_ids": [
+          "CONTOUR_Crv.2490961"
+        ],
+        "changed_length_m": 6.631893723643195,
+        "audit": "data/contour_dem/53A_16-height-autocorrect/height_recovery.geojsonl",
+        "fragment_limits_and_measurements": {
+          "length_m": 6.631893723643195,
+          "fraction_of_loop": 0.05125477429115236,
+          "maximum_length_m": 10.0,
+          "maximum_fraction_of_loop": 0.1,
+          "replacement_elevation_m": 880.0,
+          "decision": "recover_within_size_limits"
+        }
+      },
+      "observation_before_small_fragment_recovery": "A 6.63 m segment at 1240 m closes an otherwise 122.76 m loop at 880 m. The automatic recovery prototype retains it because it lacks the required enclosing/inner regular-contour references.",
+      "reference_dem_calibration": {
+        "report": "data/comparisons/53A_16-C005-glo30/report.json",
+        "terrain_plot": "data/comparisons/53A_16-C005-glo30/terrain-check.png",
+        "endpoint_samples_m": [
+          868.0903930664062,
+          870.413330078125
+        ],
+        "maximum_within_100m_m": 887.546142578125,
+        "scope": "Calibration only; not an input to automatic recovery.",
+        "interpretation": "Supports the 880 m loop; native sampling cannot independently exclude an extremely narrow spike."
+      },
+      "user_review": "User identified a likely erroneous height or an extremely narrow spike, requested a reference DEM check, and authorized size-limited automatic correction.",
+      "review_group": "recovered_history"
+    },
+    {
+      "case_id": "C009",
+      "coordinates": [
+        76.7921247,
+        31.000033899999995
+      ],
+      "elevations_m": [
+        460.0,
+        480.0
+      ],
+      "candidate_grids": [
+        {
+          "source_epsg": 4326,
+          "outer_distance_m": 3.758281849260874,
+          "quarter_distance_m": 7914.767403826652,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4145,
+          "outer_distance_m": 19.09830408480392,
+          "quarter_distance_m": 7794.025998538081,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4146,
+          "outer_distance_m": 25.293926713985776,
+          "quarter_distance_m": 7794.602698306692,
+          "inside_sheet": true
+        }
+      ],
+      "comparison_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C009-comparison.png",
+      "raw_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C009-raw-native.png",
+      "status": "deferred_boundary_review",
+      "after_height_recovery": "remaining",
+      "height_colour_views": [
+        "data/contours/53A_16/line-conflict-audit/toposheet-review/C009-height-context-160m.png",
+        "data/contours/53A_16/line-conflict-audit/toposheet-review/C009-height-context-500m.png"
+      ],
+      "observation": "A 141.53 m open 460 m contour joins two separate 480 m stubs, 3.96 m and 4.08 m long, at the southern sheet boundary. The joins are 3.76 m and 3.78 m inside the nominal WGS84 sheet. The stubs reach the boundary and do not close a ring; automatic height recovery leaves this boundary case unresolved.",
+      "review_images_opened": true,
+      "review_group": "boundary_or_boundary_candidate",
+      "review_group_reason": "Southern boundary: join 3.76 m inside the nominal edge; the short adjoining stub reaches that edge."
+    },
+    {
+      "case_id": "C010",
+      "coordinates": [
+        76.7924563,
+        31.000034099999997
+      ],
+      "elevations_m": [
+        460.0,
+        480.0
+      ],
+      "candidate_grids": [
+        {
+          "source_epsg": 4326,
+          "outer_distance_m": 3.780395703815771,
+          "quarter_distance_m": 7883.099422991419,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4145,
+          "outer_distance_m": 19.120135377425875,
+          "quarter_distance_m": 7762.358017702742,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4146,
+          "outer_distance_m": 25.315758833589957,
+          "quarter_distance_m": 7762.934717471317,
+          "inside_sheet": true
+        }
+      ],
+      "comparison_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C010-comparison.png",
+      "raw_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C010-raw-native.png",
+      "status": "deferred_boundary_review",
+      "after_height_recovery": "remaining",
+      "height_colour_views": [
+        "data/contours/53A_16/line-conflict-audit/toposheet-review/C009-height-context-160m.png",
+        "data/contours/53A_16/line-conflict-audit/toposheet-review/C009-height-context-500m.png"
+      ],
+      "observation": "A 141.53 m open 460 m contour joins two separate 480 m stubs, 3.96 m and 4.08 m long, at the southern sheet boundary. The joins are 3.76 m and 3.78 m inside the nominal WGS84 sheet. The stubs reach the boundary and do not close a ring; automatic height recovery leaves this boundary case unresolved.",
+      "review_images_opened": true,
+      "review_group": "boundary_or_boundary_candidate",
+      "review_group_reason": "Southern boundary: join 3.78 m inside the nominal edge; the short adjoining stub reaches that edge."
+    },
+    {
+      "case_id": "C011",
+      "coordinates": [
+        76.8039438,
+        31.124830099999997
+      ],
+      "elevations_m": [
+        740.0,
+        760.0
+      ],
+      "candidate_grids": [
+        {
+          "source_epsg": 4326,
+          "outer_distance_m": 5144.903376188272,
+          "quarter_distance_m": 18.836449553487043,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4145,
+          "outer_distance_m": 5264.049081166582,
+          "quarter_distance_m": 2.263668354532994,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4146,
+          "outer_distance_m": 5263.351757938422,
+          "quarter_distance_m": 4.064656149655115,
+          "inside_sheet": true
+        }
+      ],
+      "comparison_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C011-comparison.png",
+      "raw_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C011-raw-native.png",
+      "status": "current_review",
+      "after_height_recovery": "remaining",
+      "review_group": "interior",
+      "height_colour_views": [
+        "data/contours/53A_16/line-conflict-audit/toposheet-review/C011-height-context-200m.png",
+        "data/contours/53A_16/line-conflict-audit/toposheet-review/C011-height-context-600m.png"
+      ],
+      "observation": "A 19.99 m segment recorded at 740 m joins 760 m continuations at both ends. Nearby parallel contours follow the 720/740/760/780/800 m sequence. The two joins are over 5 km from the outer sheet edge. Still unresolved by the current automatic rules; no height correction applied.",
+      "review_images_opened": true,
+      "recovery_diagnostic": {
+        "trace": "data/contours/53A_16/line-conflict-audit/C011-recovery-trace.json",
+        "candidate_gate": "Requires two-height closed loop; the adjoining 760 m chains are different open chains.",
+        "fragment_length_m": 19.985574079531194,
+        "fallback_limit_m": 10,
+        "matching_recovery_audit_entries": 0,
+        "source_heights_changed": false
+      },
+      "imagico_calibration": {
+        "automatically_selected": false,
+        "unknown_source_id": "CONTOUR_Crv.2490643",
+        "estimates_m": {
+          "5_m_grid": 758.8374034121571,
+          "10_m_grid": 759.0300231862283,
+          "30_m_grid": 760.0
+        },
+        "point_heights_used": 1,
+        "coarse_grid_caveat": "At 30 m the unknown fragment shares its only pixel with a known 760 m contour and adds no new constraint pixels.",
+        "findings": "calibration/imagico.findings.json"
+      }
+    },
+    {
+      "case_id": "C012",
+      "coordinates": [
+        76.804124,
+        31.12473809999999
+      ],
+      "elevations_m": [
+        740.0,
+        760.0
+      ],
+      "candidate_grids": [
+        {
+          "source_epsg": 4326,
+          "outer_distance_m": 5162.095166455877,
+          "quarter_distance_m": 29.036306234621748,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4145,
+          "outer_distance_m": 5281.2408722108075,
+          "quarter_distance_m": 12.463727244081914,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4146,
+          "outer_distance_m": 5280.543546794311,
+          "quarter_distance_m": 6.135402278828458,
+          "inside_sheet": true
+        }
+      ],
+      "comparison_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C012-comparison.png",
+      "raw_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C012-raw-native.png",
+      "status": "current_review",
+      "after_height_recovery": "remaining",
+      "review_group": "interior",
+      "height_colour_views": [
+        "data/contours/53A_16/line-conflict-audit/toposheet-review/C011-height-context-200m.png",
+        "data/contours/53A_16/line-conflict-audit/toposheet-review/C011-height-context-600m.png"
+      ],
+      "observation": "A 19.99 m segment recorded at 740 m joins 760 m continuations at both ends. Nearby parallel contours follow the 720/740/760/780/800 m sequence. The two joins are over 5 km from the outer sheet edge. Still unresolved by the current automatic rules; no height correction applied.",
+      "review_images_opened": true,
+      "recovery_diagnostic": {
+        "trace": "data/contours/53A_16/line-conflict-audit/C011-recovery-trace.json",
+        "candidate_gate": "Requires two-height closed loop; the adjoining 760 m chains are different open chains.",
+        "fragment_length_m": 19.985574079531194,
+        "fallback_limit_m": 10,
+        "matching_recovery_audit_entries": 0,
+        "source_heights_changed": false
+      },
+      "imagico_calibration": {
+        "automatically_selected": false,
+        "unknown_source_id": "CONTOUR_Crv.2490643",
+        "estimates_m": {
+          "5_m_grid": 758.8374034121571,
+          "10_m_grid": 759.0300231862283,
+          "30_m_grid": 760.0
+        },
+        "point_heights_used": 1,
+        "coarse_grid_caveat": "At 30 m the unknown fragment shares its only pixel with a known 760 m contour and adds no new constraint pixels.",
+        "findings": "calibration/imagico.findings.json"
+      }
+    },
+    {
+      "case_id": "C013",
+      "coordinates": [
+        76.8058035,
+        31.039650099999996
+      ],
+      "elevations_m": [
+        400.0,
+        1000.0
+      ],
+      "candidate_grids": [
+        {
+          "source_epsg": 4326,
+          "outer_distance_m": 4395.851548748404,
+          "quarter_distance_m": 6605.695975124468,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4145,
+          "outer_distance_m": 4411.177025332929,
+          "quarter_distance_m": 6484.954614106608,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4146,
+          "outer_distance_m": 4417.372763906788,
+          "quarter_distance_m": 6485.531315466249,
+          "inside_sheet": true
+        }
+      ],
+      "comparison_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C013-comparison.png",
+      "raw_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C013-raw-native.png",
+      "status": "recovered_by_small_fragment_rule",
+      "after_height_recovery": "recovered_in_derived_copy",
+      "recovery": {
+        "recovery_id": "H0003",
+        "method": "small_fragment_between_same_height_endpoints",
+        "original_elevations_m": [
+          400.0,
+          1000.0
+        ],
+        "recovered_elevation_m": 1000.0,
+        "changed_source_ids": [
+          "CONTOUR_Crv.2490638"
+        ],
+        "changed_length_m": 2.744334693537165,
+        "audit": "data/contour_dem/53A_16-height-autocorrect/height_recovery.geojsonl",
+        "fragment_limits_and_measurements": {
+          "length_m": 2.744334693537165,
+          "fraction_of_loop": 0.000218814382950808,
+          "maximum_length_m": 10.0,
+          "maximum_fraction_of_loop": 0.1,
+          "replacement_elevation_m": 1000.0,
+          "decision": "recover_within_size_limits"
+        }
+      },
+      "review_group": "recovered_history"
+    },
+    {
+      "case_id": "C014",
+      "coordinates": [
+        76.8058169,
+        31.039628199999996
+      ],
+      "elevations_m": [
+        400.0,
+        1000.0
+      ],
+      "candidate_grids": [
+        {
+          "source_epsg": 4326,
+          "outer_distance_m": 4393.42360172233,
+          "quarter_distance_m": 6604.418303797663,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4145,
+          "outer_distance_m": 4408.749055385968,
+          "quarter_distance_m": 6483.6769425901175,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4146,
+          "outer_distance_m": 4414.944793993505,
+          "quarter_distance_m": 6484.253643883012,
+          "inside_sheet": true
+        }
+      ],
+      "comparison_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C014-comparison.png",
+      "raw_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C014-raw-native.png",
+      "status": "recovered_by_small_fragment_rule",
+      "after_height_recovery": "recovered_in_derived_copy",
+      "recovery": {
+        "recovery_id": "H0003",
+        "method": "small_fragment_between_same_height_endpoints",
+        "original_elevations_m": [
+          400.0,
+          1000.0
+        ],
+        "recovered_elevation_m": 1000.0,
+        "changed_source_ids": [
+          "CONTOUR_Crv.2490638"
+        ],
+        "changed_length_m": 2.744334693537165,
+        "audit": "data/contour_dem/53A_16-height-autocorrect/height_recovery.geojsonl",
+        "fragment_limits_and_measurements": {
+          "length_m": 2.744334693537165,
+          "fraction_of_loop": 0.000218814382950808,
+          "maximum_length_m": 10.0,
+          "maximum_fraction_of_loop": 0.1,
+          "replacement_elevation_m": 1000.0,
+          "decision": "recover_within_size_limits"
+        }
+      },
+      "review_group": "recovered_history"
+    },
+    {
+      "case_id": "C015",
+      "coordinates": [
+        76.8110178,
+        31.113877
+      ],
+      "elevations_m": [
+        620.0,
+        640.0
+      ],
+      "candidate_grids": [
+        {
+          "source_epsg": 4326,
+          "outer_distance_m": 5820.264927264815,
+          "quarter_distance_m": 1233.1842690070134,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4145,
+          "outer_distance_m": 5939.410643370885,
+          "quarter_distance_m": 1216.6191240374515,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4146,
+          "outer_distance_m": 5938.713320355774,
+          "quarter_distance_m": 1210.2907409262548,
+          "inside_sheet": true
+        }
+      ],
+      "comparison_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C015-comparison.png",
+      "raw_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C015-raw-native.png",
+      "status": "pending",
+      "after_height_recovery": "remaining",
+      "review_group": "interior"
+    },
+    {
+      "case_id": "C016",
+      "coordinates": [
+        76.8137052,
+        31.117716299999994
+      ],
+      "elevations_m": [
+        620.0,
+        640.0
+      ],
+      "candidate_grids": [
+        {
+          "source_epsg": 4326,
+          "outer_distance_m": 6076.36470306682,
+          "quarter_distance_m": 807.5301232487338,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4145,
+          "outer_distance_m": 6195.510415010505,
+          "quarter_distance_m": 790.9677160555963,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4146,
+          "outer_distance_m": 6194.813089598424,
+          "quarter_distance_m": 784.6393145503373,
+          "inside_sheet": true
+        }
+      ],
+      "comparison_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C016-comparison.png",
+      "raw_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C016-raw-native.png",
+      "status": "pending",
+      "after_height_recovery": "remaining",
+      "review_group": "interior"
+    },
+    {
+      "case_id": "C017",
+      "coordinates": [
+        76.8220237,
+        31.2489819
+      ],
+      "elevations_m": [
+        880.0,
+        920.0
+      ],
+      "candidate_grids": [
+        {
+          "source_epsg": 4326,
+          "outer_distance_m": 112.8773486014259,
+          "quarter_distance_m": 5046.179237857741,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4145,
+          "outer_distance_m": 95.07648223411866,
+          "quarter_distance_m": 4925.438081744417,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4146,
+          "outer_distance_m": 88.61543494975994,
+          "quarter_distance_m": 4926.014779616757,
+          "inside_sheet": true
+        }
+      ],
+      "comparison_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C017-comparison.png",
+      "raw_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C017-raw-native.png",
+      "status": "deferred_boundary_review",
+      "after_height_recovery": "remaining",
+      "review_group": "boundary_or_boundary_candidate",
+      "review_group_reason": "Northern boundary candidate: join 112.88 m inside the nominal edge; both adjoining source parts reach the northern clipping edge. Retained separately for boundary review."
+    },
+    {
+      "case_id": "C019",
+      "coordinates": [
+        76.8736732,
+        31.220880600000005
+      ],
+      "elevations_m": [
+        1860.0,
+        1880.0
+      ],
+      "candidate_grids": [
+        {
+          "source_epsg": 4326,
+          "outer_distance_m": 3228.5471546040776,
+          "quarter_distance_m": 126.42117586539128,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4145,
+          "outer_distance_m": 3210.8020695110654,
+          "quarter_distance_m": 5.679996670548617,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4146,
+          "outer_distance_m": 3204.340606270546,
+          "quarter_distance_m": 6.256694383340794,
+          "inside_sheet": true
+        }
+      ],
+      "comparison_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C019-comparison.png",
+      "raw_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C019-raw-native.png",
+      "status": "recovered_in_derived_copy",
+      "after_height_recovery": "recovered_in_derived_copy",
+      "recovery": {
+        "recovery_id": "H0006",
+        "method": "closed_loop_between_regular_contours",
+        "original_elevations_m": [
+          1860.0,
+          1880.0
+        ],
+        "recovered_elevation_m": 1880.0,
+        "changed_source_ids": [
+          "CONTOUR_Crv.2470849"
+        ],
+        "changed_length_m": 528.5771435178349,
+        "audit": "data/contour_dem/53A_16-height-autocorrect/height_recovery.geojsonl"
+      },
+      "review_group": "recovered_history"
+    },
+    {
+      "case_id": "C020",
+      "coordinates": [
+        76.8738342,
+        31.222474799999986
+      ],
+      "elevations_m": [
+        1860.0,
+        1880.0
+      ],
+      "candidate_grids": [
+        {
+          "source_epsg": 4326,
+          "outer_distance_m": 3051.794394849467,
+          "quarter_distance_m": 111.07878412780606,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4145,
+          "outer_distance_m": 3034.04953482193,
+          "quarter_distance_m": 9.66239486235473,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4146,
+          "outer_distance_m": 3027.5880659205195,
+          "quarter_distance_m": 9.08569529477021,
+          "inside_sheet": true
+        }
+      ],
+      "comparison_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C020-comparison.png",
+      "raw_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C020-raw-native.png",
+      "status": "recovered_in_derived_copy",
+      "after_height_recovery": "recovered_in_derived_copy",
+      "recovery": {
+        "recovery_id": "H0006",
+        "method": "closed_loop_between_regular_contours",
+        "original_elevations_m": [
+          1860.0,
+          1880.0
+        ],
+        "recovered_elevation_m": 1880.0,
+        "changed_source_ids": [
+          "CONTOUR_Crv.2470849"
+        ],
+        "changed_length_m": 528.5771435178349,
+        "audit": "data/contour_dem/53A_16-height-autocorrect/height_recovery.geojsonl"
+      },
+      "review_group": "recovered_history"
+    },
+    {
+      "case_id": "C021",
+      "coordinates": [
+        76.873772,
+        31.08155199999999
+      ],
+      "elevations_m": [
+        1120.0,
+        1140.0
+      ],
+      "candidate_grids": [
+        {
+          "source_epsg": 4326,
+          "outer_distance_m": 9041.633440387099,
+          "quarter_distance_m": 117.1786412391473,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4145,
+          "outer_distance_m": 9056.885860425706,
+          "quarter_distance_m": 3.5626786570956104,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4146,
+          "outer_distance_m": 9063.082145672975,
+          "quarter_distance_m": 2.9859779265296136,
+          "inside_sheet": true
+        }
+      ],
+      "comparison_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C021-comparison.png",
+      "raw_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C021-raw-native.png",
+      "status": "pending",
+      "after_height_recovery": "remaining",
+      "review_group": "interior"
+    },
+    {
+      "case_id": "C022",
+      "coordinates": [
+        76.8737049,
+        31.07609370000001
+      ],
+      "elevations_m": [
+        1120.0,
+        1140.0
+      ],
+      "candidate_grids": [
+        {
+          "source_epsg": 4326,
+          "outer_distance_m": 8436.470544774156,
+          "quarter_distance_m": 123.58855063287798,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4145,
+          "outer_distance_m": 8451.72305215305,
+          "quarter_distance_m": 2.8472216702091684,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4146,
+          "outer_distance_m": 8457.919332035583,
+          "quarter_distance_m": 3.423921029051591,
+          "inside_sheet": true
+        }
+      ],
+      "comparison_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C022-comparison.png",
+      "raw_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C022-raw-native.png",
+      "status": "pending",
+      "after_height_recovery": "remaining",
+      "review_group": "interior"
+    },
+    {
+      "case_id": "C025",
+      "coordinates": [
+        76.9291402,
+        31.1489257
+      ],
+      "elevations_m": [
+        1060.0,
+        1360.0
+      ],
+      "candidate_grids": [
+        {
+          "source_epsg": 4326,
+          "outer_distance_m": 6757.093175201535,
+          "quarter_distance_m": 2652.731660974878,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4145,
+          "outer_distance_m": 6634.756339209494,
+          "quarter_distance_m": 2669.169029554896,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4146,
+          "outer_distance_m": 6635.2123996915025,
+          "quarter_distance_m": 2675.4983440504134,
+          "inside_sheet": true
+        }
+      ],
+      "comparison_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C025-comparison.png",
+      "raw_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C025-raw-native.png",
+      "status": "recovered_by_small_fragment_rule",
+      "after_height_recovery": "recovered_in_derived_copy",
+      "recovery": {
+        "recovery_id": "H0002",
+        "method": "small_fragment_between_same_height_endpoints",
+        "original_elevations_m": [
+          1060.0,
+          1360.0
+        ],
+        "recovered_elevation_m": 1060.0,
+        "changed_source_ids": [
+          "CONTOUR_Crv.2491005"
+        ],
+        "changed_length_m": 5.947772567759545,
+        "audit": "data/contour_dem/53A_16-height-autocorrect/height_recovery.geojsonl",
+        "fragment_limits_and_measurements": {
+          "length_m": 5.947772567759545,
+          "fraction_of_loop": 0.00742635120782657,
+          "maximum_length_m": 10.0,
+          "maximum_fraction_of_loop": 0.1,
+          "replacement_elevation_m": 1060.0,
+          "decision": "recover_within_size_limits"
+        }
+      },
+      "review_group": "recovered_history"
+    },
+    {
+      "case_id": "C026",
+      "coordinates": [
+        76.9292024,
+        31.148929699999997
+      ],
+      "elevations_m": [
+        1060.0,
+        1360.0
+      ],
+      "candidate_grids": [
+        {
+          "source_epsg": 4326,
+          "outer_distance_m": 6751.161677788612,
+          "quarter_distance_m": 2653.175210483165,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4145,
+          "outer_distance_m": 6628.824841606224,
+          "quarter_distance_m": 2669.612526008399,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4146,
+          "outer_distance_m": 6629.280902101356,
+          "quarter_distance_m": 2675.9418406741065,
+          "inside_sheet": true
+        }
+      ],
+      "comparison_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C026-comparison.png",
+      "raw_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C026-raw-native.png",
+      "status": "recovered_by_small_fragment_rule",
+      "after_height_recovery": "recovered_in_derived_copy",
+      "recovery": {
+        "recovery_id": "H0002",
+        "method": "small_fragment_between_same_height_endpoints",
+        "original_elevations_m": [
+          1060.0,
+          1360.0
+        ],
+        "recovered_elevation_m": 1060.0,
+        "changed_source_ids": [
+          "CONTOUR_Crv.2491005"
+        ],
+        "changed_length_m": 5.947772567759545,
+        "audit": "data/contour_dem/53A_16-height-autocorrect/height_recovery.geojsonl",
+        "fragment_limits_and_measurements": {
+          "length_m": 5.947772567759545,
+          "fraction_of_loop": 0.00742635120782657,
+          "maximum_length_m": 10.0,
+          "maximum_fraction_of_loop": 0.1,
+          "replacement_elevation_m": 1060.0,
+          "decision": "recover_within_size_limits"
+        }
+      },
+      "review_group": "recovered_history"
+    },
+    {
+      "case_id": "C033",
+      "coordinates": [
+        76.9988104,
+        31.2226471
+      ],
+      "elevations_m": [
+        1040.0,
+        1060.0
+      ],
+      "candidate_grids": [
+        {
+          "source_epsg": 4326,
+          "outer_distance_m": 113.3524138827229,
+          "quarter_distance_m": 10826.88911064183,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4145,
+          "outer_distance_m": 8.984333708216441,
+          "quarter_distance_m": 10843.253989565716,
+          "inside_sheet": false
+        },
+        {
+          "source_epsg": 4146,
+          "outer_distance_m": 8.528271344529731,
+          "quarter_distance_m": 10849.58344673132,
+          "inside_sheet": false
+        }
+      ],
+      "comparison_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C033-comparison.png",
+      "raw_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C033-raw-native.png",
+      "status": "deferred_boundary_review",
+      "after_height_recovery": "remaining",
+      "review_group": "boundary_or_boundary_candidate",
+      "review_group_reason": "Eastern boundary candidate: join 113.35 m inside the nominal edge, 8.53 m from the tested Kalianpur edge; an adjoining part reaches the nominal eastern edge. Source datum unproven."
+    },
+    {
+      "case_id": "C034",
+      "coordinates": [
+        76.9988136,
+        31.221848499999997
+      ],
+      "elevations_m": [
+        1040.0,
+        1060.0
+      ],
+      "candidate_grids": [
+        {
+          "source_epsg": 4326,
+          "outer_distance_m": 113.04845240242636,
+          "quarter_distance_m": 10738.341542348904,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4145,
+          "outer_distance_m": 9.288294574399648,
+          "quarter_distance_m": 10754.706700080498,
+          "inside_sheet": false
+        },
+        {
+          "source_epsg": 4146,
+          "outer_distance_m": 8.832234881871338,
+          "quarter_distance_m": 10761.036141056977,
+          "inside_sheet": false
+        }
+      ],
+      "comparison_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C034-comparison.png",
+      "raw_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C034-raw-native.png",
+      "status": "deferred_boundary_review",
+      "after_height_recovery": "remaining",
+      "review_group": "boundary_or_boundary_candidate",
+      "review_group_reason": "Eastern boundary candidate: join 113.05 m inside the nominal edge, 8.83 m from the tested Kalianpur edge; an adjoining part reaches the nominal eastern edge. Source datum unproven."
+    },
+    {
+      "case_id": "C035",
+      "coordinates": [
+        76.9987856,
+        31.161273200000007
+      ],
+      "elevations_m": [
+        1280.0,
+        1320.0
+      ],
+      "candidate_grids": [
+        {
+          "source_epsg": 4326,
+          "outer_distance_m": 115.79027847551508,
+          "quarter_distance_m": 4021.8720846766373,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4145,
+          "outer_distance_m": 6.546543574309039,
+          "quarter_distance_m": 4038.238740498996,
+          "inside_sheet": false
+        },
+        {
+          "source_epsg": 4146,
+          "outer_distance_m": 6.09048208134056,
+          "quarter_distance_m": 4044.5678398026034,
+          "inside_sheet": false
+        }
+      ],
+      "comparison_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C035-comparison.png",
+      "raw_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C035-raw-native.png",
+      "status": "deferred_boundary_review",
+      "after_height_recovery": "remaining",
+      "review_group": "boundary_or_boundary_candidate",
+      "review_group_reason": "Previously classified near-edge height change: join 115.79 m inside the nominal eastern edge, 6.09 m from the tested Kalianpur edge; source datum unproven."
+    },
+    {
+      "case_id": "C036",
+      "coordinates": [
+        76.9988216,
+        31.158185099999997
+      ],
+      "elevations_m": [
+        1280.0,
+        1320.0
+      ],
+      "candidate_grids": [
+        {
+          "source_epsg": 4326,
+          "outer_distance_m": 112.36140954193242,
+          "quarter_distance_m": 3679.471331817156,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4145,
+          "outer_distance_m": 9.975416848586656,
+          "quarter_distance_m": 3695.846072663314,
+          "inside_sheet": false
+        },
+        {
+          "source_epsg": 4146,
+          "outer_distance_m": 9.519355629486624,
+          "quarter_distance_m": 3702.1746686515144,
+          "inside_sheet": false
+        }
+      ],
+      "comparison_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C036-comparison.png",
+      "raw_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C036-raw-native.png",
+      "status": "deferred_boundary_review",
+      "after_height_recovery": "remaining",
+      "review_group": "boundary_or_boundary_candidate",
+      "review_group_reason": "Eastern boundary candidate: join 112.36 m inside the nominal edge, 9.52 m from the tested Kalianpur edge; an adjoining part reaches the nominal eastern edge. Source datum unproven."
+    },
+    {
+      "case_id": "C037",
+      "coordinates": [
+        76.9999987,
+        31.0170532
+      ],
+      "elevations_m": [
+        920.0,
+        940.0
+      ],
+      "candidate_grids": [
+        {
+          "source_epsg": 4326,
+          "outer_distance_m": 0.12413814254596557,
+          "quarter_distance_m": 11936.044934372881,
+          "inside_sheet": true
+        },
+        {
+          "source_epsg": 4145,
+          "outer_distance_m": 122.21285242612629,
+          "quarter_distance_m": 11952.984134422437,
+          "inside_sheet": false
+        },
+        {
+          "source_epsg": 4146,
+          "outer_distance_m": 121.75679075399601,
+          "quarter_distance_m": 11946.650004068997,
+          "inside_sheet": false
+        }
+      ],
+      "comparison_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C037-comparison.png",
+      "raw_crop": "data/contours/53A_16/line-conflict-audit/toposheet-review/C037-raw-native.png",
+      "status": "deferred_boundary_review",
+      "after_height_recovery": "remaining",
+      "review_group": "boundary_or_boundary_candidate",
+      "review_group_reason": "Eastern boundary: join 0.12 m inside the nominal edge; adjoining stub is 0.20 m long."
+    }
+  ],
+  "count_before_height_recovery": 26,
+  "current_case_group": [
+    "C011",
+    "C012"
+  ],
+  "height_recovery_report": "data/contour_dem/53A_16-height-autocorrect/classification.json",
+  "unresolved_report": "data/contour_dem/53A_16-height-autocorrect/unresolved_review.json",
+  "count_before_small_fragment_recovery": 20,
+  "height_recovery_audit": "data/contour_dem/53A_16-height-autocorrect/height_recovery.geojsonl",
+  "deferred_recovery_generalization": {
+    "user_proposal": "Treat a discrepant section height as unknown and infer its height from enclosing and inner rings, potentially generalizing the original recovery rule.",
+    "status": "Deferred at user request while reviewing the next unresolved anomaly.",
+    "c005_limitation": "C005 has no complete enclosing/inner regular-contour reference pair."
+  },
+  "interior_review_count": 6,
+  "boundary_review_count": 8,
+  "active_review_report": "data/contour_dem/53A_16-height-autocorrect/interior_review.json",
+  "boundary_review_report": "data/contour_dem/53A_16-height-autocorrect/boundary_review.json",
+  "active_review_case_ids": [
+    "C011",
+    "C012",
+    "C015",
+    "C016",
+    "C021",
+    "C022"
+  ],
+  "boundary_review_case_ids": [
+    "C009",
+    "C010",
+    "C017",
+    "C033",
+    "C034",
+    "C035",
+    "C036",
+    "C037"
+  ],
+  "review_queue_correction": "The queue previously conflated all remaining DEM conflicts with active interior review. C009/C010 were unnecessarily shown again. Boundary cases and candidates now have a separate review report; all 14 conflicts remain in the numerical audit.",
+  "interpolation_backend_review": {
+    "original_issue": "https://github.com/ramSeraph/indian_land_features/issues/2",
+    "imagico_article": "https://www.imagico.de/pov/earth_interpolate.php",
+    "current_backend": "imagico_python",
+    "imagico_local_source": "contour_interpolate-0.3/DemProc.cpp",
+    "imagico_local_documentation": "contour_interpolate-0.3/docu.html",
+    "imagico_integrated": true,
+    "unknown_height_behaviour": "DEMPreProc first interpolates using known raster heights, averages that surface over pixels sharing each unknown-contour ID, and writes the constant average back as a contour constraint.",
+    "unknown_height_limitations": "Does not detect suspect source heights or enforce the regular contour elevation lattice. Explicit C011 calibration estimates 758.84 m at 5 m and 759.03 m at 10 m; production selection still leaves this fragment unresolved.",
+    "python_port": "imagico_interpolate.py",
+    "raster_adapter": "imagico_dem.py",
+    "provenance": "imagico_provenance.json",
+    "license": "LICENSE.imagico.txt",
+    "validation": "calibration/imagico.findings.json",
+    "production_conflict_gate": "The wrapper still rejects 14 known-height conflicts before the raster interpolator runs. This is a wrapper policy, not an interpolation failure. Boundary handling is under discussion; no datum shift or new boundary exemption has been applied.",
+    "final_height_points": "Validation holds points out, then the full final pipeline reruns with all circle, triangle and native point heights, recomputing unknown heights."
+  },
+  "boundary_datum_review": {
+    "production_index_crs": "EPSG:4326",
+    "decision": "Retain WGS84 for the sheet grid and clipping; use the corresponding WGS84 UTM zone for each DEM raster.",
+    "decision_source": "User: ok we stick with wgs84",
+    "alternative_datum_comparisons": "Diagnostic only; no Everest/Kalianpur shift is applied to the processing grid.",
+    "dem_crs_for_this_sheet": "EPSG:32643",
+    "candidate_index_datums": [
+      4326,
+      4145,
+      4146
+    ],
+    "interpretation": "Candidate boundaries reinterpret the same index coordinate numbers under each datum, then transform to WGS84. Released contour coordinates are unchanged. Mixed sheet evidence does not establish one global index datum.",
+    "83E_11_report": "data/contours/83E_11/line-conflict-audit/report.json",
+    "83E_11_nearest_outer_distance_ranges_m": {
+      "4326": [
+        0.010978460498762836,
+        0.9998628516270748
+      ],
+      "4145": [
+        51.74620558046896,
+        317.2605250882375
+      ],
+      "4146": [
+        49.59172107375793,
+        333.4388698419033
+      ]
+    },
+    "C017_caveat": "The north-boundary candidate remains 112.88 m from WGS84 and 95.08/88.62 m from the tested Kalianpur boundaries; unlike the east-edge cases, none places it directly on a boundary."
+  }
+}

@@ -1,0 +1,391 @@
+{
+  "scope": "Original investigation of 93 saved DEM sample conflicts, followed by explicit form-line candidate and outside edge sliver exclusion policies. Source heights and coordinates remain unchanged; mosaic seams remain unresolved.",
+  "sheets": {
+    "53A_16": {
+      "report": "data/contours/53A_16/line-conflict-audit/report.json",
+      "conflict_locations": 37,
+      "unmatched_locations": [],
+      "source_line_pairs": 55,
+      "involved_source_line_parts": 67,
+      "pair_categories": {
+        "endpoint_to_endpoint": 55
+      },
+      "location_junction_types": {
+        "two_line_height_change": 29,
+        "four_endpoint_junction": 8
+      },
+      "all_pairs_intersect_in_original_source_coordinates": true,
+      "candidate_grid_counts": [
+        {
+          "source_epsg": 4326,
+          "outer_within_2m": 4,
+          "outer_within_25m": 6,
+          "outer_or_quarter_within_25m": 10,
+          "existing_locations_inside_candidate_sheet": 37
+        },
+        {
+          "source_epsg": 4145,
+          "outer_within_2m": 0,
+          "outer_within_25m": 9,
+          "outer_or_quarter_within_25m": 18,
+          "existing_locations_inside_candidate_sheet": 29
+        },
+        {
+          "source_epsg": 4146,
+          "outer_within_2m": 0,
+          "outer_within_25m": 7,
+          "outer_or_quarter_within_25m": 16,
+          "existing_locations_inside_candidate_sheet": 29
+        }
+      ]
+    },
+    "83E_11": {
+      "report": "data/contours/83E_11/line-conflict-audit/report.json",
+      "conflict_locations": 10,
+      "unmatched_locations": [],
+      "source_line_pairs": 10,
+      "involved_source_line_parts": 17,
+      "pair_categories": {
+        "endpoint_to_endpoint": 10
+      },
+      "location_junction_types": {
+        "two_line_height_change": 10
+      },
+      "all_pairs_intersect_in_original_source_coordinates": true,
+      "candidate_grid_counts": [
+        {
+          "source_epsg": 4326,
+          "outer_within_2m": 10,
+          "outer_within_25m": 10,
+          "outer_or_quarter_within_25m": 10,
+          "existing_locations_inside_candidate_sheet": 10
+        },
+        {
+          "source_epsg": 4145,
+          "outer_within_2m": 0,
+          "outer_within_25m": 0,
+          "outer_or_quarter_within_25m": 0,
+          "existing_locations_inside_candidate_sheet": 2
+        },
+        {
+          "source_epsg": 4146,
+          "outer_within_2m": 0,
+          "outer_within_25m": 0,
+          "outer_or_quarter_within_25m": 0,
+          "existing_locations_inside_candidate_sheet": 2
+        }
+      ]
+    },
+    "47J_9": {
+      "report": "data/contours/47J_9/line-conflict-audit/report.json",
+      "conflict_locations": 46,
+      "unmatched_locations": [],
+      "source_line_pairs": 36,
+      "involved_source_line_parts": 60,
+      "pair_categories": {
+        "endpoint_to_interior_vertex": 36
+      },
+      "location_junction_types": {
+        "endpoint_meets_continuing_line": 46
+      },
+      "all_pairs_intersect_in_original_source_coordinates": true,
+      "candidate_grid_counts": [
+        {
+          "source_epsg": 4326,
+          "outer_within_2m": 0,
+          "outer_within_25m": 0,
+          "outer_or_quarter_within_25m": 0,
+          "existing_locations_inside_candidate_sheet": 46
+        },
+        {
+          "source_epsg": 4145,
+          "outer_within_2m": 0,
+          "outer_within_25m": 0,
+          "outer_or_quarter_within_25m": 0,
+          "existing_locations_inside_candidate_sheet": 46
+        },
+        {
+          "source_epsg": 4146,
+          "outer_within_2m": 0,
+          "outer_within_25m": 0,
+          "outer_or_quarter_within_25m": 0,
+          "existing_locations_inside_candidate_sheet": 46
+        }
+      ]
+    }
+  },
+  "47J_9_raster_finding": {
+    "locations_reviewed": 46,
+    "lower_source_line_parts": 36,
+    "interpretation": "Dashed relief/form-line branches are being treated as exact constant-height contours. The original source lines reproduce the drawn junctions; a grid shift does not explain this pattern.",
+    "representative_examples": [
+      "C004",
+      "C007",
+      "C005"
+    ],
+    "uncertainty": "Feature subtype is inferred from raster appearance and SOI conventions. Released TYPE=1 is shared by both classes. Rocky outcrops may be the depicted landform; no exact fixed branch heights or cliff explanation are established by these crops.",
+    "candidates": "calibration/47J_9.form-line-candidates.geojsonl",
+    "review_csv": "data/contours/47J_9/line-conflict-audit/toposheet-review/review.csv"
+  },
+  "53A_16_finding": "29 two-line height changes and 8 junctions forming four small lenses. Very short anomalous fragments coexist with joins near outer and internal grid lines. Kalianpur alignment remains suggestive for a subset, not a proven source datum or repair.",
+  "83E_11_finding": "All 10 mismatched joins are within 2 m of the nominal WGS84 outer grid, more closely than the tested Kalianpur grids.",
+  "references": [
+    {
+      "url": "https://surveyofindia.gov.in/documents/soichapter-v.pdf#page=55",
+      "section": "Paragraph 36",
+      "supports": "Fine broken form-lines portray relief at an intermediate altitude, not necessarily a prescribed contour level."
+    },
+    {
+      "url": "https://www.surveyofindia.gov.in/documents/soichapter-vi.pdf#page=93",
+      "section": "Hypsography feature catalogue",
+      "supports": "Form-line/sub-feature SUBBRW 7106 is distinct from regular contour and cliff classes."
+    }
+  ],
+  "limitations": [
+    "The original line audit covers reported sample conflicts; unsampled crossings may exist.",
+    "The outer seam audit covers only exact paired endpoints available in the cached extracts; no pairs on an edge does not establish agreement.",
+    "Candidate-grid inside counts do not represent a complete re-extraction.",
+    "Local filtering removes contradictory constraints from one sheet but does not establish the correct source height or repair a cross-sheet mosaic.",
+    "No height correction was applied in the original audit. Subsequent working-copy corrections are recorded in size_limited_height_recovery_followup; source seam and datum reconciliation remain unresolved."
+  ],
+  "scripts": [
+    {
+      "path": "audit_contour_conflicts.py",
+      "sha256": "52032a00733410b9929d914426cb0f0f3f7e45ae9773e5b58a4fde0ca957404a"
+    },
+    {
+      "path": "audit_conflicts_toposheet.py",
+      "sha256": "5930c7c917ce7faae8175949def1b0655e70b28d1ad346cbcd1dac67a0e7fe15"
+    },
+    {
+      "path": "audit_contour_seams.py",
+      "sha256": "a5f0ec4165edbcae859730225fbbd0aa4816fab917289131612a2af9dff459c5"
+    },
+    {
+      "path": "contours_to_dem.py",
+      "sha256": "ddc59cb2a1f251ff8b128689cc9363c274851dc73a2ab0369cb5bb55b1ded426"
+    },
+    {
+      "path": "extract_sheet_dem.py",
+      "sha256": "f98bc89bc8d3fdb960be230b765b95c549166f694fd25a6fc5fcc5b5ee538db5"
+    }
+  ],
+  "single_sheet_filtering": {
+    "edge_sliver_tolerance_m": 2,
+    "edge_sliver_rule": "More than half the uncut line length is outside the selected sheet and all retained geometry lies inside the boundary band. Height points are preserved.",
+    "form_line_policy": "Historical runs below supplied known intervals explicitly. New runs default to local automatic interval inference; uncertain branches remain constraints. See automatic_interval_followup.",
+    "form_line_calibration_limit": "The historical numeric-interval heuristic matched all 36 reviewed 47J_9 candidates. Current automatic inference retains two uncertain branches; it is not an exhaustive form-line classifier.",
+    "runs": {
+      "83E_11": {
+        "output_dir": "data/contour_dem/83E_11-edge-filtered",
+        "baseline_dir": "data/contour_dem/83E_11-cross-country",
+        "counts": {
+          "input_features": 15755,
+          "zero_length_line_parts": 6,
+          "circular_spot_heights": 84,
+          "duplicate_parts": 1,
+          "triangular_spot_heights": 14,
+          "excluded_outside_edge_sliver_parts": 739,
+          "contour_parts": 15057,
+          "spot_heights": 98
+        },
+        "source_extract_unchanged": true,
+        "all_height_points_unchanged": true,
+        "excluded_heights_preserved": true,
+        "seam_reconciled": false,
+        "dem_created": true,
+        "coverage_fraction": 0.9999789665752589
+      },
+      "47J_9": {
+        "output_dir": "data/contour_dem/47J_9-form-lines-excluded",
+        "baseline_dir": "data/contour_dem/47J_9-cross-country",
+        "counts": {
+          "input_features": 1409,
+          "zero_length_line_parts": 9,
+          "triangular_spot_heights": 15,
+          "circular_spot_heights": 95,
+          "excluded_outside_edge_sliver_parts": 44,
+          "excluded_form_line_candidate_parts": 36,
+          "contour_parts": 1232,
+          "spot_heights": 110
+        },
+        "source_extract_unchanged": true,
+        "all_height_points_unchanged": true,
+        "excluded_heights_preserved": true,
+        "seam_reconciled": false,
+        "dem_created": true,
+        "coverage_fraction": 0.9995477914058127,
+        "reviewed_form_line_matches": 36,
+        "additional_form_line_candidates": 0
+      },
+      "53A_16": {
+        "output_dir": "data/contour_dem/53A_16-edge-filtered",
+        "baseline_dir": "data/contour_dem/53A_16-cross-country-joined",
+        "counts": {
+          "input_features": 8888,
+          "zero_length_line_parts": 1,
+          "circular_spot_heights": 155,
+          "duplicate_parts": 6,
+          "reconstructed_spot_heights": 19,
+          "reconstructed_symbol_fragments": 59,
+          "excluded_outside_edge_sliver_parts": 437,
+          "contour_parts": 8524,
+          "spot_heights": 155
+        },
+        "source_extract_unchanged": true,
+        "all_height_points_unchanged": true,
+        "excluded_heights_preserved": true,
+        "seam_reconciled": false,
+        "dem_created": false,
+        "remaining_conflict_locations": 34
+      }
+    },
+    "unit_tests": {
+      "passed": 23,
+      "files": [
+        "test_contours_to_dem.py",
+        "test_extract_sheet_dem.py"
+      ]
+    }
+  },
+  "outer_seam_audits": {
+    "83E_11": {
+      "report": "data/contours/83E_11/seam-audit/report.json",
+      "sha256": "3274051da296654f87a9afa7740b30f2f9c06c84e87c6e15897f2997341822cc",
+      "matched_locations": 829,
+      "conflicting_locations": 10,
+      "edges": {
+        "west": {
+          "nominal_neighbours": [
+            "83E_7"
+          ],
+          "matched_locations": 332,
+          "conflicting_locations": 2,
+          "inside_minus_outside_counts": {
+            "0.0": 330,
+            "20.0": 2
+          }
+        },
+        "east": {
+          "nominal_neighbours": [
+            "83E_15"
+          ],
+          "matched_locations": 0,
+          "conflicting_locations": 0,
+          "inside_minus_outside_counts": {}
+        },
+        "south": {
+          "nominal_neighbours": [
+            "83E_12"
+          ],
+          "matched_locations": 308,
+          "conflicting_locations": 8,
+          "inside_minus_outside_counts": {
+            "-100.0": 2,
+            "-10.0": 4,
+            "0.0": 300,
+            "20.0": 2
+          }
+        },
+        "north": {
+          "nominal_neighbours": [
+            "83E_10"
+          ],
+          "matched_locations": 189,
+          "conflicting_locations": 0,
+          "inside_minus_outside_counts": {
+            "0.0": 189
+          }
+        }
+      }
+    },
+    "53A_16": {
+      "report": "data/contours/53A_16/seam-audit/report.json",
+      "sha256": "f8fe7972c646fa17034f1677b348280ec669453192da1d66413106e3ee50c29c",
+      "matched_locations": 617,
+      "conflicting_locations": 4,
+      "edges": {
+        "west": {
+          "nominal_neighbours": [
+            "53A_12"
+          ],
+          "matched_locations": 1,
+          "conflicting_locations": 0,
+          "inside_minus_outside_counts": {
+            "0.0": 1
+          }
+        },
+        "east": {
+          "nominal_neighbours": [
+            "53E_4"
+          ],
+          "matched_locations": 232,
+          "conflicting_locations": 0,
+          "inside_minus_outside_counts": {
+            "0.0": 232
+          }
+        },
+        "south": {
+          "nominal_neighbours": [
+            "53B_13"
+          ],
+          "matched_locations": 92,
+          "conflicting_locations": 1,
+          "inside_minus_outside_counts": {
+            "-20.0": 1,
+            "0.0": 91
+          }
+        },
+        "north": {
+          "nominal_neighbours": [
+            "53A_15"
+          ],
+          "matched_locations": 292,
+          "conflicting_locations": 3,
+          "inside_minus_outside_counts": {
+            "0.0": 289,
+            "20.0": 2,
+            "40.0": 1
+          }
+        }
+      }
+    }
+  },
+  "53A_16_raster_finding": {
+    "review_csv": "data/contours/53A_16/line-conflict-audit/toposheet-review/review.csv",
+    "crops_cover": "Original 37 locations; review CSV explicitly marks the 34 remaining after outside-edge sliver filtering.",
+    "removed_conflict_ids": [
+      "C018",
+      "C029",
+      "C030"
+    ],
+    "detailed_observations": {
+      "C005": {
+        "classification": "solid_contour_attribute_conflict",
+        "notes": "880/1240 m: very short high-valued fragment closes a solid loop; correct height not determined."
+      },
+      "C013": {
+        "classification": "solid_contour_attribute_conflict",
+        "notes": "400/1000 m: short 400 m fragment lies along a solid continuous contour near a 1021 spot label; source heights retained."
+      },
+      "C023": {
+        "classification": "cartographic_contour_contact",
+        "notes": "User confirms solid contours touch because their separation is too small to draw at the map scale. Both heights remain valid constraints away from the small relaxed contact region."
+      },
+      "C035": {
+        "classification": "near_edge_height_change",
+        "notes": "1280/1320 m: near east map edge; 116 m from nominal WGS84 boundary and about 6 m from tested Kalianpur boundary. Remains after the 2 m WGS84 outside-sliver filter; datum not established."
+      }
+    },
+    "interpretation": "The reviewed examples include solid-contour attribute changes and solid contours meeting. They do not establish that all 34 remaining conflicts are form lines.",
+    "source_heights_changed": false,
+    "current_review_queue": "calibration/53A_16.remaining-conflicts.review.json",
+    "remaining_after_contact_handling": 26,
+    "remaining_after_height_recovery": 14,
+    "current_unresolved_report": "data/contour_dem/53A_16-height-autocorrect/unresolved_review.json"
+  },
+  "automatic_interval_followup": "calibration/form-line-intervals.findings.json",
+  "sheet_interval_and_cartographic_contact_followup": "calibration/sheet-intervals-and-contacts.findings.json",
+  "height_recovery_followup": "calibration/height-recovery.findings.json",
+  "size_limited_height_recovery_followup": "calibration/height-autocorrect.findings.json"
+}

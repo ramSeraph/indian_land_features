@@ -1,0 +1,357 @@
+{
+  "date": "2026-10-22",
+  "method": "imagico_python",
+  "license": "GPL-3.0-or-later",
+  "provenance": "imagico_provenance.json",
+  "tests_passed": 121,
+  "lint": "ruff check passed for port, adapter, calibration script, main CLIs and new tests",
+  "full_sheets": [
+    {
+      "sheet": "56M_9",
+      "report": "data/contour_dem/56M_9-imagico/report.json",
+      "report_sha256": "4c701b5b1a8ab3cc2c92a4d77fe1b6b3ec2c618b38932f0b105be349b879cbc6",
+      "symbol_type_counts": {
+        "circle": 92,
+        "triangle": 12
+      },
+      "holdout": {
+        "count": 104,
+        "unavailable": 0,
+        "bias_m": -0.4988990095837522,
+        "mae_m": 3.4444914708200467,
+        "rmse_m": 4.545168201352068,
+        "max_abs_m": 15.351802332160673,
+        "method": "imagico_python",
+        "final_run_includes_all_points": true
+      },
+      "all_points_in_final": true,
+      "point_cell_check_count": 104,
+      "maximum_exported_point_cell_error_m": 0.0,
+      "coverage_fraction": 1.0,
+      "source_extract_hashes_unchanged": true,
+      "final_interpolation_seconds": 27.77897445904091,
+      "implementation_hashes_in_run_report": false
+    },
+    {
+      "sheet": "45F_4",
+      "report": "data/contour_dem/45F_4-imagico/report.json",
+      "report_sha256": "8dd3543de56828627ab88c5bf85b83e32b4b8ad9f36a3ac58f1e2f49b3054f6b",
+      "symbol_type_counts": {
+        "circle": 140,
+        "triangle": 10
+      },
+      "holdout": {
+        "count": 140,
+        "unavailable": 10,
+        "bias_m": -2.3359920805640786,
+        "mae_m": 4.3001791797468965,
+        "rmse_m": 5.726325069848772,
+        "max_abs_m": 19.014977460840356,
+        "method": "imagico_python",
+        "final_run_includes_all_points": true
+      },
+      "all_points_in_final": true,
+      "point_cell_check_count": 150,
+      "maximum_exported_point_cell_error_m": 6.103515630684342e-06,
+      "coverage_fraction": 0.9757338770566686,
+      "source_extract_hashes_unchanged": true,
+      "final_interpolation_seconds": 24.560607458930463,
+      "implementation_hashes_in_run_report": true
+    }
+  ],
+  "unknown_fragment_calibration": [
+    {
+      "cases": [
+        "C011",
+        "C012"
+      ],
+      "sheet": "53A_16",
+      "resolution_m": 5,
+      "report": "data/contour_dem/53A_16-C011-imagico-5m/report.json",
+      "report_sha256": "b5aed0304f5fa34c3d823569a3e3b5d0c023cc8c312d476842e615ca673aa5cd",
+      "automatically_selected": false,
+      "source_extracts_unchanged": true,
+      "unknown_source_id": "CONTOUR_Crv.2490643",
+      "original_height_m": 740,
+      "adjoining_known_height_m": 760,
+      "point_heights_used": 1,
+      "estimates": [
+        {
+          "unknown_id": 1,
+          "estimated_elevation_m": 758.8374034121571,
+          "initial_min_m": 756.9410808225888,
+          "initial_max_m": 760.0,
+          "pixels": 6,
+          "new_constraint_pixels": 4,
+          "known_overlap_pixels": 2
+        }
+      ],
+      "holdout_estimates": [
+        {
+          "unknown_id": 1,
+          "estimated_elevation_m": 758.8374034121571,
+          "initial_min_m": 756.9410808225888,
+          "initial_max_m": 760.0,
+          "pixels": 6,
+          "new_constraint_pixels": 4,
+          "known_overlap_pixels": 2
+        }
+      ]
+    },
+    {
+      "cases": [
+        "C011",
+        "C012"
+      ],
+      "sheet": "53A_16",
+      "resolution_m": 10,
+      "report": "data/contour_dem/53A_16-C011-imagico-10m/report.json",
+      "report_sha256": "c1a20a7039985305788f07af1c5263c48a013fdb4b1c07c983ebe40d784176cb",
+      "automatically_selected": false,
+      "source_extracts_unchanged": true,
+      "unknown_source_id": "CONTOUR_Crv.2490643",
+      "original_height_m": 740,
+      "adjoining_known_height_m": 760,
+      "point_heights_used": 1,
+      "estimates": [
+        {
+          "unknown_id": 1,
+          "estimated_elevation_m": 759.0300231862283,
+          "initial_min_m": 756.0251589468043,
+          "initial_max_m": 760.094933798109,
+          "pixels": 4,
+          "new_constraint_pixels": 2,
+          "known_overlap_pixels": 2
+        }
+      ],
+      "holdout_estimates": [
+        {
+          "unknown_id": 1,
+          "estimated_elevation_m": 759.0300231862283,
+          "initial_min_m": 756.0251589468043,
+          "initial_max_m": 760.094933798109,
+          "pixels": 4,
+          "new_constraint_pixels": 2,
+          "known_overlap_pixels": 2
+        }
+      ]
+    },
+    {
+      "cases": [
+        "C011",
+        "C012"
+      ],
+      "sheet": "53A_16",
+      "resolution_m": 30,
+      "report": "data/contour_dem/53A_16-C011-imagico-30m/report.json",
+      "report_sha256": "bde3279c26cbc3675c622c2a5a6143b0df4628bb3d6b6ebe242e4d71f1a90a3b",
+      "automatically_selected": false,
+      "source_extracts_unchanged": true,
+      "unknown_source_id": "CONTOUR_Crv.2490643",
+      "original_height_m": 740,
+      "adjoining_known_height_m": 760,
+      "point_heights_used": 1,
+      "estimates": [
+        {
+          "unknown_id": 1,
+          "estimated_elevation_m": 760.0,
+          "initial_min_m": 760.0,
+          "initial_max_m": 760.0,
+          "pixels": 1,
+          "new_constraint_pixels": 0,
+          "known_overlap_pixels": 1
+        }
+      ],
+      "holdout_estimates": [
+        {
+          "unknown_id": 1,
+          "estimated_elevation_m": 760.0,
+          "initial_min_m": 760.0,
+          "initial_max_m": 760.0,
+          "pixels": 1,
+          "new_constraint_pixels": 0,
+          "known_overlap_pixels": 1
+        }
+      ]
+    }
+  ],
+  "full_53A_16": {
+    "directory": "data/contour_dem/53A_16-imagico-preflight",
+    "remaining_conflicts": 14,
+    "dem_produced": false,
+    "unassigned_source_parts": 7,
+    "supported_recovery_cycles": 6
+  },
+  "license_and_upstream_hashes_verified": true,
+  "limitations": [
+    "Python adaptation with SciPy filtering; not a bit-for-bit CImg reproduction.",
+    "56M_9 ran before runtime implementation-hash metadata was added; numerical code is unchanged apart from formatting.",
+    "C011 selection is explicit calibration, not automatic selection or an increase to fragment-size limits.",
+    "The 30 m C011 unknown fragment occupies only a known contour pixel and adds no new constraints.",
+    "Grid spacing, coverage and point preservation do not establish independent terrain accuracy."
+  ],
+  "resource_benchmark": {
+    "machine": {
+      "cpu": "Apple M1",
+      "logical_cpus": 8,
+      "physical_cpus": 8,
+      "ram_bytes": 8589934592,
+      "observed_swap_used_mib": 3033.19,
+      "observed_free_disk_gib_rounded": 11
+    },
+    "method": "Separate sequential processes; peak resident memory from resource.getrusage(RUSAGE_SELF).ru_maxrss (bytes on macOS). Elapsed time covers build_dem with cached contours, validation, final interpolation and output writing; no downloads or water smoothing. Temporary raster outputs were removed after measurement.",
+    "measurements": [
+      {
+        "sheet": "56M_9",
+        "resolution_m": 30,
+        "shape": [
+          931,
+          881
+        ],
+        "contour_parts": 550,
+        "height_points": 104,
+        "peak_process_rss_bytes": 624394240,
+        "cached_sheet_build_seconds": 60.641214333008975,
+        "final_interpolation_seconds": 29.080535584012978,
+        "validation_interpolation_seconds": 29.498457459034398,
+        "output_bytes": 8578750,
+        "input_bytes": 2134891,
+        "source_sha256": "a6c91f4b681c8cae368222ef6bc961216419aa63025587391e75835c1ed89f1a"
+      },
+      {
+        "sheet": "83E_11",
+        "resolution_m": 30,
+        "shape": [
+          928,
+          830
+        ],
+        "contour_parts": 15057,
+        "height_points": 98,
+        "peak_process_rss_bytes": 927727616,
+        "cached_sheet_build_seconds": 65.22289062500931,
+        "final_interpolation_seconds": 24.68159600009676,
+        "validation_interpolation_seconds": 23.961735333083197,
+        "output_bytes": 51959986,
+        "input_bytes": 19912419,
+        "source_sha256": "9f1f01767177ecbd2c8488c726a2c304fab587e408d774e1db4f2512c598a08e"
+      }
+    ],
+    "implementation_files": [
+      {
+        "path": "contours_to_dem.py",
+        "sha256": "c5406304f7767e9ca53ca4e0fa37d4c1706fdef93585058160373c3b963e5651"
+      },
+      {
+        "path": "imagico_dem.py",
+        "sha256": "3f04083911235b7df86f28aea8ed55173f6ea863735463122750d23205821fef"
+      },
+      {
+        "path": "imagico_interpolate.py",
+        "sha256": "00edb789402303c31781a18eba2106e867236c823c61a256c4f20a7b5e4d62d0"
+      }
+    ],
+    "benchmark_script_sha256": "af36a22b9934c55a62762688473f5571bd8dfc2c53aa1054a006413a2ab7efd4",
+    "concurrency_not_benchmarked": true
+  },
+  "tiled_processing_discussion": {
+    "status": "Proposed workflow; neighbour reconciliation is not implemented.",
+    "approach": "Process independent sheets with a bounded worker queue, retain original edge contour and point constraints plus unknown-height selection/provenance, and re-interpolate shared neighbourhoods once adjacent sheets are available, including corner neighbours.",
+    "overlap_limit": "At 30 m the directional search reaches 3.6 km; gradient paths and repeated refinement can propagate farther. This is not a validated sufficient overlap width. Validate with larger overlaps or rerun affected sheets with neighbouring context.",
+    "constraints": "Keep measured point/contour heights distinct from inferred heights. Recompute unknown estimates with joint context. Raster blending alone does not resolve contradictory source labels.",
+    "grid": "WGS84 sheet boundaries; shared reconciliation jobs require a common working grid, including when neighbours use different UTM zones."
+  },
+  "seam_width_probe": {
+    "date": "2026-10-23",
+    "method": "Split saved final constraint rasters along one artificial vertical boundary, run each half independently with all points, and compare against the saved joint final DEM. Gradient/extremum seed phase was kept aligned.",
+    "results": [
+      {
+        "sheet": "56M_9",
+        "report": "calibration/56M_9.imagico-seam-width.json",
+        "outside_2km": {
+          "width_into_each_half_m": 2000,
+          "count": 681287,
+          "mean_abs_m": 0.03251376235508338,
+          "p50_abs_m": 5.688375381396327e-06,
+          "p95_abs_m": 0.1253741735685933,
+          "p99_abs_m": 0.8857058156551844,
+          "max_abs_m": 10.606735927958397,
+          "fraction_over_1m": 0.008381196177235145,
+          "fraction_over_5m": 0.00011302138452663856
+        },
+        "farthest_change": [
+          {
+            "error_threshold_m": 0.1,
+            "distance_m": 6045.0
+          },
+          {
+            "error_threshold_m": 0.5,
+            "distance_m": 5805.0
+          },
+          {
+            "error_threshold_m": 1,
+            "distance_m": 5805.0
+          },
+          {
+            "error_threshold_m": 2,
+            "distance_m": 5775.0
+          },
+          {
+            "error_threshold_m": 5,
+            "distance_m": 4275.0
+          },
+          {
+            "error_threshold_m": 10,
+            "distance_m": 4245.0
+          }
+        ],
+        "lost_support_cells": 0,
+        "max_lost_support_distance_m": 0
+      },
+      {
+        "sheet": "45F_4",
+        "report": "calibration/45F_4.imagico-seam-width.json",
+        "outside_2km": {
+          "width_into_each_half_m": 2000,
+          "count": 627144,
+          "mean_abs_m": 0.06081308867807404,
+          "p50_abs_m": 0.0018779546173988138,
+          "p95_abs_m": 0.3294369089931188,
+          "p99_abs_m": 0.9469645292565902,
+          "max_abs_m": 2.658239463320797,
+          "fraction_over_1m": 0.008892694500784509,
+          "fraction_over_5m": 0.0
+        },
+        "farthest_change": [
+          {
+            "error_threshold_m": 0.1,
+            "distance_m": 11685.0
+          },
+          {
+            "error_threshold_m": 0.5,
+            "distance_m": 11685.0
+          },
+          {
+            "error_threshold_m": 1,
+            "distance_m": 8775.0
+          },
+          {
+            "error_threshold_m": 2,
+            "distance_m": 4125.0
+          },
+          {
+            "error_threshold_m": 5,
+            "distance_m": 1455.0
+          },
+          {
+            "error_threshold_m": 10,
+            "distance_m": 0
+          }
+        ],
+        "lost_support_cells": 334,
+        "max_lost_support_distance_m": 2295.0
+      }
+    ],
+    "provisional_interpretation": "A 2 km inward band is a candidate trial width if the criterion is that 99% of unchanged cells differ from joint interpolation by less than 1 m. It is not a maximum-effect bound: differences exceeding 1 m reach 5.805 km on 56M_9 and 8.775 km on 45F_4, and 56M_9 has an isolated 10.61 m difference outside the 2 km band.",
+    "limitations": "This does not validate a local seam-repair patch, a fixed outer-boundary treatment, real adjacent-sheet source conflicts, other split orientations, or equivalence to a country-wide interpolation. Differences from joint interpolation are not terrain errors."
+  }
+}

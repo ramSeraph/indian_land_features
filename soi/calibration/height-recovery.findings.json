@@ -1,0 +1,120 @@
+{
+  "scope": "Vector-only experimental recovery; source files and production DEM path unchanged.",
+  "sheets": {
+    "47J_9": {
+      "changed_source_parts": 0,
+      "candidate_cycles": 0,
+      "contour_geometries_unchanged": true,
+      "all_heights_unchanged": true,
+      "classified_input": "data/contour_dem/47J_9-sheet-interval-audit",
+      "contours_sha256": "ecba78ce2e423666f57bdad7de30085e74905d21948a7b8d1fe28bfd1bc328c0"
+    },
+    "45F_4": {
+      "changed_source_parts": 0,
+      "candidate_cycles": 0,
+      "contour_geometries_unchanged": true,
+      "all_heights_unchanged": true,
+      "classified_input": "data/contour_dem/45F_4-sheet-interval-audit",
+      "contours_sha256": "6d5eee5352dc773383d23ae192cbf2a3956e3f447318f4f6a20af75b29a6f07b"
+    },
+    "56M_5": {
+      "changed_source_parts": 0,
+      "candidate_cycles": 0,
+      "contour_geometries_unchanged": true,
+      "all_heights_unchanged": true,
+      "classified_input": "data/contour_dem/56M_5-sheet-interval-audit",
+      "contours_sha256": "c70aadef3a4b3704bc1656a043dcf44b9d77c0fd6a54c59dabb297357ab47cc7"
+    },
+    "56M_9": {
+      "changed_source_parts": 0,
+      "candidate_cycles": 0,
+      "contour_geometries_unchanged": true,
+      "all_heights_unchanged": true,
+      "classified_input": "data/contour_dem/56M_9-sheet-interval-audit",
+      "contours_sha256": "55227a1dcbe5a2e2d1bc479b0cdac7052fe10e506e3d333fcc7e3d51f08af66c"
+    },
+    "73D_15": {
+      "changed_source_parts": 0,
+      "candidate_cycles": 0,
+      "contour_geometries_unchanged": true,
+      "all_heights_unchanged": true,
+      "classified_input": "data/contour_dem/73D_15-sheet-interval-audit",
+      "contours_sha256": "4d95509e55f4011eaa63f87160bf6cfbcb3c96afe84886e3abe0d697978ba170"
+    },
+    "83E_11": {
+      "changed_source_parts": 0,
+      "candidate_cycles": 0,
+      "contour_geometries_unchanged": true,
+      "all_heights_unchanged": true,
+      "classified_input": "data/contour_dem/83E_11-sheet-interval-audit",
+      "contours_sha256": "8b90058cafb5ddba2e956f67e07f566cae527250f021ab870ef20d80a338d38b"
+    },
+    "53A_16": {
+      "report": "data/contour_dem/53A_16-height-recovery-audit-checked/report.json",
+      "decisions": {
+        "retain_missing_reference": 2,
+        "retain_open_inner_reference": 1,
+        "supported_recovery": 3
+      },
+      "checks": {
+        "before": {
+          "height_conflicts": 26,
+          "cartographic_contacts": 8
+        },
+        "after": {
+          "height_conflicts": 20,
+          "cartographic_contacts": 8
+        }
+      },
+      "changed_source_parts": 4,
+      "point_heights_used_unchanged": 155,
+      "remaining_case_ids": [
+        "C005",
+        "C006",
+        "C009",
+        "C010",
+        "C011",
+        "C012",
+        "C013",
+        "C014",
+        "C015",
+        "C016",
+        "C017",
+        "C021",
+        "C022",
+        "C025",
+        "C026",
+        "C033",
+        "C034",
+        "C035",
+        "C036",
+        "C037"
+      ],
+      "recovered_case_ids": [
+        "C001",
+        "C002",
+        "C003",
+        "C004",
+        "C019",
+        "C020"
+      ]
+    }
+  },
+  "test_results": {
+    "test_contour_height_recovery.py": "33 passed"
+  },
+  "scripts": [
+    {
+      "path": "contour_height_recovery.py",
+      "sha256": "a699874a5af1d1c07fc5c6b2504013606b818f3f8a2c37ac35a2bfa9c338ea5e"
+    },
+    {
+      "path": "audit_height_recovery.py",
+      "sha256": "7a60373878b57c376888535ebea576610c7a2f6eced03dd6593fb501d96b0230"
+    },
+    {
+      "path": "test_contour_height_recovery.py",
+      "sha256": "145f3a449d71fba7eae7d65285dc067700650b5604a09c8db49da6db9b0642a5"
+    }
+  ]
+}

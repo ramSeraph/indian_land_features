@@ -1,0 +1,233 @@
+{
+  "scope": "Cached vector-only classification and constraint checks; no raster input, no TIN build.",
+  "sheets": {
+    "47J_9": {
+      "output_dir": "data/contour_dem/47J_9-auto-interval-audit",
+      "source_sha256": "2c8bbb7d15bd3b6e38eb1549f47ceb5296dd3df5c46d2b03756723a89cf7d850",
+      "counts": {
+        "input_features": 1409,
+        "zero_length_line_parts": 9,
+        "triangular_spot_heights": 15,
+        "circular_spot_heights": 95,
+        "excluded_outside_edge_sliver_parts": 44,
+        "excluded_form_line_candidate_parts": 35,
+        "contour_parts": 1233,
+        "spot_heights": 110
+      },
+      "decisions": {
+        "exclude_form_line_candidate": 35,
+        "retain_uncertain_interval": 2
+      },
+      "remaining_conflict_locations": 2,
+      "symbol_types": {
+        "triangle": 15,
+        "circle": 95
+      },
+      "point_comparison": {
+        "baseline": "data/contour_dem/47J_9-form-lines-excluded/spots.geojsonl",
+        "all_point_coordinates_heights_symbols_and_source_hashes_unchanged": true,
+        "coordinate_comparison_decimal_places": 8
+      },
+      "retained_uncertain_source_ids": [
+        "CONTOUR_Crv.2319356",
+        "CONTOUR_Crv.2319418"
+      ],
+      "reviewed_candidate_matches": 34,
+      "reviewed_candidates_retained": 2,
+      "additional_source_parts": 1,
+      "additional_fragment_review": {
+        "source_id": "CONTOUR_Crv.2319362",
+        "connected_to": "CONTOUR_Crv.2319363",
+        "observation": "The entire visible continuation follows dashed relief linework. It is one continuous same-height branch split into two source features.",
+        "crop": "data/contours/47J_9/line-conflict-audit/branch-extension-review/B001-comparison.png"
+      }
+    },
+    "53A_16": {
+      "output_dir": "data/contour_dem/53A_16-auto-interval-audit",
+      "source_sha256": "de733aca00f8c8d2369d4084f73b7321e8e4edd5daa162ee51899c3c7e4f3a55",
+      "counts": {
+        "input_features": 8888,
+        "zero_length_line_parts": 1,
+        "circular_spot_heights": 155,
+        "duplicate_parts": 6,
+        "reconstructed_spot_heights": 19,
+        "reconstructed_symbol_fragments": 59,
+        "excluded_outside_edge_sliver_parts": 437,
+        "contour_parts": 8524,
+        "spot_heights": 155
+      },
+      "decisions": {},
+      "remaining_conflict_locations": 34,
+      "symbol_types": {
+        "circle": 155
+      },
+      "point_comparison": {
+        "baseline": "data/contour_dem/53A_16-edge-filtered/spots.geojsonl",
+        "all_point_coordinates_heights_symbols_and_source_hashes_unchanged": true,
+        "coordinate_comparison_decimal_places": 8
+      }
+    },
+    "45F_4": {
+      "output_dir": "data/contour_dem/45F_4-auto-interval-audit",
+      "source_sha256": "9360ea90624a49a0bc1bc7f9c52fe8c42c1f73d68705c907689fb1643e4e7b2f",
+      "counts": {
+        "input_features": 620,
+        "circular_spot_heights": 140,
+        "triangular_spot_heights": 10,
+        "duplicate_parts": 1,
+        "excluded_outside_edge_sliver_parts": 4,
+        "contour_parts": 478,
+        "spot_heights": 150
+      },
+      "decisions": {},
+      "remaining_conflict_locations": 0,
+      "symbol_types": {
+        "circle": 140,
+        "triangle": 10
+      },
+      "point_comparison": {
+        "baseline": "data/contour_dem/45F_4-cross-country/spots.geojsonl",
+        "all_point_coordinates_heights_symbols_and_source_hashes_unchanged": true,
+        "coordinate_comparison_decimal_places": 8
+      }
+    },
+    "56M_5": {
+      "output_dir": "data/contour_dem/56M_5-auto-interval-audit",
+      "source_sha256": "a5a6ef998ba4d0aa5ebc8d356365b991f2b77cb5da46832fc91d9ed2fd24db43",
+      "counts": {
+        "input_features": 817,
+        "circular_spot_heights": 84,
+        "triangular_spot_heights": 1,
+        "duplicate_parts": 1,
+        "excluded_outside_edge_sliver_parts": 29,
+        "contour_parts": 704,
+        "spot_heights": 85
+      },
+      "decisions": {},
+      "remaining_conflict_locations": 0,
+      "symbol_types": {
+        "circle": 84,
+        "triangle": 1
+      },
+      "point_comparison": {
+        "baseline": "data/contour_dem/56M_5-symbols/spots.geojsonl",
+        "all_point_coordinates_heights_symbols_and_source_hashes_unchanged": true,
+        "coordinate_comparison_decimal_places": 8
+      }
+    },
+    "56M_9": {
+      "output_dir": "data/contour_dem/56M_9-auto-interval-audit",
+      "source_sha256": "a6c91f4b681c8cae368222ef6bc961216419aa63025587391e75835c1ed89f1a",
+      "counts": {
+        "input_features": 691,
+        "circular_spot_heights": 92,
+        "triangular_spot_heights": 12,
+        "duplicate_parts": 1,
+        "excluded_outside_edge_sliver_parts": 41,
+        "contour_parts": 550,
+        "spot_heights": 104
+      },
+      "decisions": {},
+      "remaining_conflict_locations": 0,
+      "symbol_types": {
+        "circle": 92,
+        "triangle": 12
+      },
+      "point_comparison": {
+        "baseline": "data/contour_dem/56M_9-symbols/spots.geojsonl",
+        "all_point_coordinates_heights_symbols_and_source_hashes_unchanged": true,
+        "coordinate_comparison_decimal_places": 8
+      }
+    },
+    "73D_15": {
+      "output_dir": "data/contour_dem/73D_15-auto-interval-audit",
+      "source_sha256": "c40b7b5bbee4c1e9b08c22bb3a306570bf10bbcaff5627d99b8068334f5c4fbf",
+      "counts": {
+        "input_features": 5741,
+        "triangular_spot_heights": 21,
+        "circular_spot_heights": 101,
+        "excluded_outside_edge_sliver_parts": 85,
+        "contour_parts": 5611,
+        "spot_heights": 122
+      },
+      "decisions": {},
+      "remaining_conflict_locations": 0,
+      "symbol_types": {
+        "triangle": 21,
+        "circle": 101
+      },
+      "point_comparison": {
+        "baseline": "data/contour_dem/73D_15-cross-country/spots.geojsonl",
+        "all_point_coordinates_heights_symbols_and_source_hashes_unchanged": true,
+        "coordinate_comparison_decimal_places": 8
+      }
+    },
+    "83E_11": {
+      "output_dir": "data/contour_dem/83E_11-auto-interval-audit",
+      "source_sha256": "9f1f01767177ecbd2c8488c726a2c304fab587e408d774e1db4f2512c598a08e",
+      "counts": {
+        "input_features": 15755,
+        "zero_length_line_parts": 6,
+        "circular_spot_heights": 84,
+        "duplicate_parts": 1,
+        "triangular_spot_heights": 14,
+        "excluded_outside_edge_sliver_parts": 739,
+        "contour_parts": 15057,
+        "spot_heights": 98
+      },
+      "decisions": {},
+      "remaining_conflict_locations": 0,
+      "symbol_types": {
+        "circle": 84,
+        "triangle": 14
+      },
+      "point_comparison": {
+        "baseline": "data/contour_dem/83E_11-edge-filtered/spots.geojsonl",
+        "all_point_coordinates_heights_symbols_and_source_hashes_unchanged": true,
+        "coordinate_comparison_decimal_places": 8
+      }
+    }
+  },
+  "scripts": [
+    {
+      "path": "contours_to_dem.py",
+      "sha256": "359f7fe293c120534fb0d6009197bafc910bb295b1a1aa5d4ba7f60e06c22b4a"
+    },
+    {
+      "path": "contour_form_lines.py",
+      "sha256": "348eb5b01f4f81c4d8427d4065fda26a4438d122b81a3c1aede6d7cd770f7e20"
+    },
+    {
+      "path": "extract_sheet_dem.py",
+      "sha256": "bf9ef38cb4d6e6f27158251d80c820b80dd9b589ef3bedaee82942adaec48da1"
+    }
+  ],
+  "settings": {
+    "form_line_interval": "auto",
+    "edge_sliver_tolerance_m": 2,
+    "reference_radii_m": [
+      500,
+      1000,
+      2000
+    ],
+    "minimum_reference_length_radius_fraction": 0.25,
+    "minimum_reference_length_fraction_of_strongest_level": 0.1,
+    "minimum_gap_vote_fraction": 0.8,
+    "minimum_parent_lattice_length_fraction": 0.9
+  },
+  "limitations": [
+    "Form-line positive calibration is concentrated on 47J_9; other trial sheets contain no matching branch-to-continuing-line topology.",
+    "Only the calibrated lower-half-step junction pattern is identified; form lines in general need not have half-interval heights.",
+    "Two 47J_9 conflicts remain under automatic inference; no raster-based override or height correction is applied.",
+    "Known gaps in source coverage are an input limitation, separate from classification performance."
+  ],
+  "verification": {
+    "unit_and_integration_tests": 49,
+    "test_files": [
+      "test_contour_form_lines.py",
+      "test_contours_to_dem.py",
+      "test_extract_sheet_dem.py"
+    ],
+    "all_passed": true
+  }
+}

@@ -1,0 +1,289 @@
+--- a/python/iomaps/commands/extract.py
++++ b/python/iomaps/commands/extract.py
+@@ -37,6 +37,7 @@
+     resolve_source,
+ )
+ from iomaps.core.helpers import GEOPARQUET_VERSIONS
++from iomaps.core.local_parquet import local_parquet_paths
+ from iomaps.core.source_assets import get_parquet_info_from_source as get_parquet_info_from_source
+ from iomaps.core.spatial_filter import (
+     get_shape_from_bounds,
+@@ -54,17 +55,22 @@
+ }
+ 
+ 
+-def get_duckdb_connection():
+-    """Create a DuckDB connection with spatial and httpfs extensions."""
++def get_duckdb_connection(local_only=False):
++    """Create a connection; local inputs need only the spatial extension."""
+     con = duckdb.connect()
+-    con.execute("INSTALL spatial; LOAD spatial;")
+-    con.execute("INSTALL httpfs; LOAD httpfs;")
++    try:
++        con.execute("LOAD spatial")
++    except duckdb.IOException:
++        con.execute("INSTALL spatial; LOAD spatial;")
++    if not local_only:
++        con.execute("INSTALL httpfs; LOAD httpfs;")
+     settings = {row[0] for row in con.execute("SELECT name FROM duckdb_settings()").fetchall()}
+     if "geometry_always_xy" in settings:
+         # DuckDB 2.0 requires an explicit axis-order choice for GDAL export.
+         # GeoParquet and our filter geometries use longitude/easting first.
+         con.execute("SET geometry_always_xy = true")
+-    con.execute("SET enable_server_cert_verification = true")
++    if not local_only:
++        con.execute("SET enable_server_cert_verification = true")
+     # Limit memory usage for large operations
+     con.execute("SET memory_limit = '2GB';")
+     con.execute("SET preserve_insertion_order = false;")
+@@ -384,8 +390,14 @@
+ @click.option(
+     "-s",
+     "--source",
+-    required=True,
+-    help="Source to extract from. Can be a name, route (starting with /), or number from 'iomaps cli sources'.",
++    help="Remote source name, route or number. Mutually exclusive with --parquet.",
++)
++@click.option(
++    "--parquet",
++    "parquets",
++    multiple=True,
++    type=click.Path(exists=True, dir_okay=False, resolve_path=True),
++    help="Local GeoParquet or .parquet.meta.json partition manifest; repeat for several inputs. Skips the remote catalog.",
+ )
+ @click.option(
+     "--http-client",
+@@ -400,6 +412,7 @@
+ @add_filter_options
+ def extract(
+     source,
++    parquets,
+     output_file,
+     log_level,
+     filter_file,
+@@ -432,6 +445,11 @@
+     # Early check: validate output file format before doing any network calls
+     effective_driver = validate_output_driver(output_file, output_driver)
+ 
++    if bool(source) == bool(parquets):
++        raise click.UsageError("Specify exactly one of --source or --parquet")
++    if parquets and (routes_file or routes_url or http_client != "default"):
++        raise click.UsageError("Local --parquet input cannot use catalog or HTTP options")
++
+     # Validate mutually exclusive options
+     if not validate_routes_options(routes_file, routes_url):
+         logging.error("--routes-file and --routes-url are mutually exclusive.")
+@@ -440,34 +458,35 @@
+     # Validate filter options
+     validate_filter_options(filter_file, bounds)
+ 
+-    # Fetch available vector sources
+-    logging.info("Fetching available sources...")
+-    vector_sources = get_vector_sources(routes_url=routes_url, routes_file=routes_file)
+-
+-    if vector_sources is None:
+-        logging.error("Failed to fetch sources. Aborting.")
+-        return
+-
+-    logging.info(f"Found {len(vector_sources)} available sources")
+-
+-    # Resolve requested source and get parquet info
+-    source_config = resolve_source(source, vector_sources)
+-
+-    if source_config is None:
+-        logging.info("Run 'iomaps cli sources' to see available sources.")
+-        return
+-
+-    parquet_info = get_parquet_info_from_source(source_config)
+-
+-    if parquet_info is None:
++    if not parquets:
++        # Fetch available vector sources
++        logging.info("Fetching available sources...")
++        vector_sources = get_vector_sources(routes_url=routes_url, routes_file=routes_file)
++
++        if vector_sources is None:
++            logging.error("Failed to fetch sources. Aborting.")
++            return
++
++        logging.info(f"Found {len(vector_sources)} available sources")
++
++        # Resolve requested source and get parquet info
++        source_config = resolve_source(source, vector_sources)
++
++        if source_config is None:
++            logging.info("Run 'iomaps cli sources' to see available sources.")
++            return
++
++        parquet_info = get_parquet_info_from_source(source_config)
++
++        if parquet_info is None:
++            source_name = source_config.get("name", source)
++            logging.error(f"Could not determine parquet URL for source '{source_name}'")
++            return
++
+         source_name = source_config.get("name", source)
+-        logging.error(f"Could not determine parquet URL for source '{source_name}'")
+-        return
+-
+-    source_name = source_config.get("name", source)
+-    logging.info(f"Resolved source '{source}' ({source_name}) to {parquet_info['base_url']}")
+-    if parquet_info["is_partitioned"]:
+-        logging.info(f"  Source is partitioned, meta: {parquet_info['meta_url']}")
++        logging.info(f"Resolved source '{source}' ({source_name}) to {parquet_info['base_url']}")
++        if parquet_info["is_partitioned"]:
++            logging.info(f"  Source is partitioned, meta: {parquet_info['meta_url']}")
+ 
+     # Get filter shape (needed for partition filtering and spatial query)
+     filter_shape = None
+@@ -488,7 +507,15 @@
+     # Collect parquet URLs
+     parquet_urls = []
+ 
+-    if parquet_info["is_partitioned"]:
++    if parquets:
++        try:
++            parquet_urls = local_parquet_paths(parquets, filter_shape)
++        except (ValueError, OSError) as exc:
++            raise click.ClickException(str(exc)) from exc
++        if not parquet_urls:
++            raise click.ClickException("No local partitions intersect the filter")
++        logging.info("Reading %d local Parquet files", len(parquet_urls))
++    elif parquet_info["is_partitioned"]:
+         # Fetch metadata for partitions
+         partition_metadata = fetch_partition_metadata(parquet_info["meta_url"])
+         if partition_metadata is None:
+@@ -506,7 +533,7 @@
+         parquet_urls.append(parquet_info["base_url"])
+ 
+     # Create DuckDB connection and execute
+-    con = get_duckdb_connection()
++    con = get_duckdb_connection(local_only=True) if parquets else get_duckdb_connection()
+ 
+     try:
+         if http_client != "default":
+--- /dev/null
++++ b/python/iomaps/core/local_parquet.py
+@@ -0,0 +1,45 @@
++"""Resolve local GeoParquet files without consulting the remote catalog."""
++
++import json
++from pathlib import Path
++
++from shapely.geometry import box
++
++
++def local_parquet_paths(inputs, filter_shape=None):
++    paths = []
++    seen = set()
++    for value in inputs:
++        path = Path(value).resolve()
++        if path.name.endswith(".parquet.meta.json"):
++            extents = json.loads(path.read_text()).get("extents")
++            if not isinstance(extents, dict) or not extents:
++                raise ValueError("Partition manifest must contain nonempty extents")
++            candidates = []
++            for name, extent in extents.items():
++                if Path(name).name != name or not name.endswith(".parquet"):
++                    raise ValueError(f"Invalid partition name: {name}")
++                candidates.append((path.parent / name, extent))
++        else:
++            candidates = [(path, None)]
++        for candidate, extent in candidates:
++            candidate = candidate.resolve()
++            if candidate.suffix != ".parquet" or not candidate.is_file():
++                raise ValueError(f"Missing local Parquet: {candidate}")
++            if candidate in seen:
++                raise ValueError(f"Duplicate local Parquet: {candidate}")
++            seen.add(candidate)
++            if filter_shape is not None and extent is not None:
++                try:
++                    bounds = [float(extent[k]) for k in ("minx", "miny", "maxx", "maxy")]
++                    import math
++
++                    if not all(math.isfinite(v) for v in bounds) or bounds[0] > bounds[2] or bounds[1] > bounds[3]:
++                        raise ValueError("Invalid partition extent")
++                    if not filter_shape.intersects(box(*bounds)):
++                        continue
++                except (KeyError, TypeError, ValueError):
++                    # Incomplete extents must never suppress a valid partition.
++                    pass
++            paths.append(str(candidate))
++    return paths
+--- /dev/null
++++ b/python/tests/test_cli_extract_local.py
+@@ -0,0 +1,58 @@
++import json
++
++import pytest
++from click.testing import CliRunner
++from shapely.geometry import box
++from test_cli_extract import write_parquet
++
++from iomaps.commands import extract as command
++from iomaps.core.local_parquet import local_parquet_paths
++
++
++def test_local_partition_cli_does_not_fetch_catalog(tmp_path, monkeypatch):
++    write_parquet(tmp_path / "a.parquet", [(1, 5, 5), (2, 50, 50)])
++    write_parquet(tmp_path / "b.parquet", [(3, 6, 6)])
++    manifest = tmp_path / "data.parquet.meta.json"
++    manifest.write_text(json.dumps({"extents": {"a.parquet": {}, "b.parquet": {}}}))
++
++    def no_network(*args, **kwargs):
++        pytest.fail("Local extraction attempted remote catalog access")
++
++    monkeypatch.setattr(command, "get_vector_sources", no_network)
++    monkeypatch.setattr(command, "fetch_partition_metadata", no_network)
++    output = tmp_path / "out.geojsonl"
++    result = CliRunner().invoke(command.extract, ["--parquet", str(manifest), "-b", "0,0,10,10", "-o", str(output)])
++    assert result.exit_code == 0, result.output
++    rows = [json.loads(line.lstrip("\x1e")) for line in output.read_text().splitlines() if line.strip()]
++    assert sorted(r["properties"]["id"] for r in rows) == [1, 3]
++
++
++def test_manifest_prunes_extents_but_preserves_boundary_and_missing_bounds(tmp_path):
++    extents = {
++        "a.parquet": {"minx": 0, "miny": 0, "maxx": 10, "maxy": 10},
++        "b.parquet": {"minx": 50, "miny": 50, "maxx": 60, "maxy": 60},
++        "c.parquet": {},
++    }
++    for name in extents:
++        (tmp_path / name).touch()
++    manifest = tmp_path / "data.parquet.meta.json"
++    manifest.write_text(json.dumps({"extents": extents}))
++    assert local_parquet_paths([manifest], box(10, 0, 20, 10)) == [
++        str(tmp_path / "a.parquet"),
++        str(tmp_path / "c.parquet"),
++    ]
++    with pytest.raises(ValueError, match="Duplicate"):
++        local_parquet_paths([manifest, tmp_path / "a.parquet"])
++    manifest.write_text(json.dumps({"extents": {"../outside.parquet": {}}}))
++    with pytest.raises(ValueError, match="Invalid partition"):
++        local_parquet_paths([manifest])
++
++
++def test_cli_rejects_mixed_source_options(tmp_path):
++    path = tmp_path / "a.parquet"
++    path.touch()
++    result = CliRunner().invoke(
++        command.extract, ["-s", "anything", "--parquet", str(path), "-o", str(tmp_path / "out.geojsonl")]
++    )
++    assert result.exit_code != 0
++    assert "exactly one" in result.output
+--- a/python/README.md
++++ b/python/README.md
+@@ -535,3 +535,13 @@
+ 
+ Keep unrelated local changes out of deployment. Delhi and IILB have already been
+ published; use only `--dry-run` when using their files to exercise the tooling.
++
++### Extract from downloaded Parquets
++
++Use `iomaps cli extract --parquet /path/data.parquet.meta.json -f index.geojson
++--pick-filter-feature-kv id=56M_9 -o contours.geojsonl` for a downloaded multipart
++dataset. Repeat `--parquet` for individual Parquets. This bypasses the remote
++catalog, retains bbox pruning and exact geometry intersections, and preserves
++complete matching geometries. The DuckDB spatial extension must be installed;
++HTTP extensions are not loaded for local inputs. Local inputs cannot be combined
++with `--source`, catalog options, or an HTTP client override.

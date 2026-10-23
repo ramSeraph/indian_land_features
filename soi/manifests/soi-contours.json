@@ -1,0 +1,36 @@
+{
+  "dataset": "SOI released raw contours",
+  "release_url": "https://github.com/ramSeraph/indian_land_features/releases/tag/soi-dem",
+  "assets": [
+    {
+      "name": "SOI_Contours_raw.000.parquet",
+      "url": "https://github.com/ramSeraph/indian_land_features/releases/download/soi-dem/SOI_Contours_raw.000.parquet",
+      "bytes": 1230395637,
+      "sha256": "59fe8183d21f5017f8815bff68de47f5b9d0abc08b710b99e457ea49319e932b"
+    },
+    {
+      "name": "SOI_Contours_raw.001.parquet",
+      "url": "https://github.com/ramSeraph/indian_land_features/releases/download/soi-dem/SOI_Contours_raw.001.parquet",
+      "bytes": 1330868839,
+      "sha256": "0be93e4117d546ef065657dfb0a9df5a4e6360ecfea2ac5d6fdb3261cc0d57fe"
+    },
+    {
+      "name": "SOI_Contours_raw.010.parquet",
+      "url": "https://github.com/ramSeraph/indian_land_features/releases/download/soi-dem/SOI_Contours_raw.010.parquet",
+      "bytes": 1181274086,
+      "sha256": "220fca8f0931bd116f1b445429dbbb7f02d2abcdb28f0cd6cd69fa4d39ed5c55"
+    },
+    {
+      "name": "SOI_Contours_raw.011.parquet",
+      "url": "https://github.com/ramSeraph/indian_land_features/releases/download/soi-dem/SOI_Contours_raw.011.parquet",
+      "bytes": 1108668312,
+      "sha256": "23d9f7545f8164b9096bff87be91f439f5615a66d0043d6a165d24a6b00835de"
+    },
+    {
+      "name": "SOI_Contours_raw.parquet.meta.json",
+      "url": "https://github.com/ramSeraph/indian_land_features/releases/download/soi-dem/SOI_Contours_raw.parquet.meta.json",
+      "bytes": 1209,
+      "sha256": "2c6c88986768c6de5d6afa2e139fbae5c079a3c8f37186ccf34e7a9e003fc03a"
+    }
+  ]
+}

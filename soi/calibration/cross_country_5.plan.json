@@ -1,0 +1,447 @@
+{
+  "purpose": "Five geographically separated sheets; unchanged geometry detector; raster used only for calibration review",
+  "detector": {
+    "circle_max_radius_m": 13,
+    "circle_radial_cv_max": 0.03,
+    "circle_roundness_min": 0.98,
+    "triangle_nominal_side_m": 70
+  },
+  "resolution_m": 30,
+  "code_sha256": {
+    "contours_to_dem.py": "a9eb9b944361a6be656896aa3a54541d23a0a28b1eb5a73f6e2f2cef6336214f",
+    "extract_sheet_dem.py": "cba98afa7ff11c5ccc4f90da79691a97fa80a0f497eb27a2093f20cbd9415219",
+    "audit_spot_heights.py": "d90735a8f3be1c01845ab46faaf2a14acb31ffd5e40e59482866a49efb6ad009"
+  },
+  "coverage_limitation": "Published contour partition extents span 18\u201332 N, 71\u201395 E; actual feature coverage can be sparse.",
+  "sheets": [
+    {
+      "sheet": "53A_16",
+      "region": "Himachal Pradesh \u2014 lower Himalayan terrain",
+      "index_feature": {
+        "type": "Feature",
+        "properties": {
+          "id": "53A_16",
+          "OSM_SHEET_": "H 43E16"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                76.75,
+                31.25
+              ],
+              [
+                76.75,
+                31.0
+              ],
+              [
+                77.0,
+                31.0
+              ],
+              [
+                77.0,
+                31.25
+              ],
+              [
+                76.75,
+                31.25
+              ]
+            ]
+          ]
+        }
+      },
+      "toposheet": {
+        "name": "53A_16.tif",
+        "size": "11199045",
+        "url": "https://github.com/ramSeraph/india_topo_maps/releases/download/50k-osm-georef-extra1/53A_16.tif"
+      },
+      "output_dir": "data/contour_dem/53A_16-cross-country-joined",
+      "audit_dir": "data/contours/53A_16/calibration-cross-country",
+      "baseline_output_dir": "data/contour_dem/53A_16-cross-country"
+    },
+    {
+      "sheet": "45F_4",
+      "region": "Rajasthan \u2014 arid terrain near Jodhpur",
+      "index_feature": {
+        "type": "Feature",
+        "properties": {
+          "id": "45F_4",
+          "OSM_SHEET_": "G 43H4"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                73.0,
+                26.25
+              ],
+              [
+                73.0,
+                26.0
+              ],
+              [
+                73.25,
+                26.0
+              ],
+              [
+                73.25,
+                26.25
+              ],
+              [
+                73.0,
+                26.25
+              ]
+            ]
+          ]
+        }
+      },
+      "toposheet": {
+        "name": "45F_4.tif",
+        "size": "4853637",
+        "url": "https://github.com/ramSeraph/india_topo_maps/releases/download/50k-osm-georef-extra3/45F_4.tif"
+      },
+      "output_dir": "data/contour_dem/45F_4-cross-country",
+      "audit_dir": "data/contours/45F_4/calibration-cross-country"
+    },
+    {
+      "sheet": "73D_15",
+      "region": "Odisha \u2014 Mahanadi valley and Eastern Ghats",
+      "index_feature": {
+        "type": "Feature",
+        "properties": {
+          "id": "73D_15",
+          "OSM_SHEET_": "F 45S15"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                84.75,
+                20.5
+              ],
+              [
+                84.75,
+                20.25
+              ],
+              [
+                85.0,
+                20.25
+              ],
+              [
+                85.0,
+                20.5
+              ],
+              [
+                84.75,
+                20.5
+              ]
+            ]
+          ]
+        }
+      },
+      "toposheet": {
+        "name": "73D_15.tif",
+        "size": "7488232",
+        "url": "https://github.com/ramSeraph/india_topo_maps/releases/download/50k-osm-georef/73D_15.tif"
+      },
+      "output_dir": "data/contour_dem/73D_15-cross-country",
+      "audit_dir": "data/contours/73D_15/calibration-cross-country"
+    },
+    {
+      "sheet": "83E_11",
+      "region": "Arunachal Pradesh \u2014 Himalayan foothills",
+      "index_feature": {
+        "type": "Feature",
+        "properties": {
+          "id": "83E_11",
+          "OSM_SHEET_": "G 46D11"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                93.5,
+                27.5
+              ],
+              [
+                93.5,
+                27.25
+              ],
+              [
+                93.75,
+                27.25
+              ],
+              [
+                93.75,
+                27.5
+              ],
+              [
+                93.5,
+                27.5
+              ]
+            ]
+          ]
+        }
+      },
+      "toposheet": {
+        "name": "83E_11.tif",
+        "size": "4747292",
+        "url": "https://github.com/ramSeraph/india_topo_maps/releases/download/50k-osm-georef-extra2/83E_11.tif"
+      },
+      "output_dir": "data/contour_dem/83E_11-cross-country",
+      "audit_dir": "data/contours/83E_11/calibration-cross-country"
+    },
+    {
+      "sheet": "47J_9",
+      "region": "Maharashtra \u2014 Deccan plateau east of Pune",
+      "index_feature": {
+        "type": "Feature",
+        "properties": {
+          "id": "47J_9",
+          "OSM_SHEET_": "E 43I9"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                74.5,
+                19.0
+              ],
+              [
+                74.5,
+                18.75
+              ],
+              [
+                74.75,
+                18.75
+              ],
+              [
+                74.75,
+                19.0
+              ],
+              [
+                74.5,
+                19.0
+              ]
+            ]
+          ]
+        }
+      },
+      "toposheet": {
+        "name": "47J_9.tif",
+        "size": "6561618",
+        "url": "https://github.com/ramSeraph/india_topo_maps/releases/download/50k-osm-georef-extra3/47J_9.tif"
+      },
+      "output_dir": "data/contour_dem/47J_9-cross-country",
+      "audit_dir": "data/contours/47J_9/calibration-cross-country"
+    }
+  ],
+  "http_client": "curl",
+  "network_retry_note": "Default httplib reads were interrupted while their outputs were still empty; retry uses curl with certificate verification and unchanged spatial queries and detector thresholds. No complete Parquet downloads.",
+  "code_sha256_before_http_client_option": {
+    "contours_to_dem.py": "a9eb9b944361a6be656896aa3a54541d23a0a28b1eb5a73f6e2f2cef6336214f",
+    "extract_sheet_dem.py": "875df11029fe258971bc410cc7b91c59d2d407489117a7860297a88c716b8fe8",
+    "audit_spot_heights.py": "d90735a8f3be1c01845ab46faaf2a14acb31ffd5e40e59482866a49efb6ad009"
+  },
+  "iomaps_extract_sha256": "3732e1a4fcad93c46e0f3a8ceb9f5f9c4e2cf076223002fc33074e81cbde04a5",
+  "excluded_sheets": [
+    {
+      "sheet": "47F_9",
+      "region": "Maharashtra \u2014 Western Ghats near Pune",
+      "index_feature": {
+        "type": "Feature",
+        "properties": {
+          "id": "47F_9",
+          "OSM_SHEET_": "E 43H9"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                73.5,
+                19.0
+              ],
+              [
+                73.5,
+                18.75
+              ],
+              [
+                73.75,
+                18.75
+              ],
+              [
+                73.75,
+                19.0
+              ],
+              [
+                73.5,
+                19.0
+              ]
+            ]
+          ]
+        }
+      },
+      "toposheet": {
+        "name": "47F_9.tif",
+        "size": "7998483",
+        "url": "https://github.com/ramSeraph/india_topo_maps/releases/download/50k-osm-georef/47F_9.tif"
+      },
+      "output_dir": "data/contour_dem/47F_9-cross-country",
+      "audit_dir": "data/contours/47F_9/calibration-cross-country",
+      "exclusion_reason": "iomaps returned zero contour features; partition bounds do not imply complete coverage."
+    },
+    {
+      "sheet": "73H_3",
+      "region": "Odisha \u2014 eastern hill and agricultural terrain",
+      "index_feature": {
+        "type": "Feature",
+        "properties": {
+          "id": "73H_3",
+          "OSM_SHEET_": "F 45T3"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                85.0,
+                20.5
+              ],
+              [
+                85.0,
+                20.25
+              ],
+              [
+                85.25,
+                20.25
+              ],
+              [
+                85.25,
+                20.5
+              ],
+              [
+                85.0,
+                20.5
+              ]
+            ]
+          ]
+        }
+      },
+      "toposheet": {
+        "name": "73H_3.tif",
+        "size": "6760221",
+        "url": "https://github.com/ramSeraph/india_topo_maps/releases/download/50k-osm-georef/73H_3.tif"
+      },
+      "output_dir": "data/contour_dem/73H_3-cross-country",
+      "audit_dir": "data/contours/73H_3/calibration-cross-country",
+      "exclusion_reason": "No interior contour coverage (empty extract or boundary-only fragments)."
+    },
+    {
+      "sheet": "83B_10",
+      "region": "Assam \u2014 Brahmaputra floodplain near Tezpur",
+      "index_feature": {
+        "type": "Feature",
+        "properties": {
+          "id": "83B_10",
+          "OSM_SHEET_": "G 46I10"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                92.5,
+                26.75
+              ],
+              [
+                92.5,
+                26.5
+              ],
+              [
+                92.75,
+                26.5
+              ],
+              [
+                92.75,
+                26.75
+              ],
+              [
+                92.5,
+                26.75
+              ]
+            ]
+          ]
+        }
+      },
+      "toposheet": {
+        "name": "83B_10.tif",
+        "size": "5587053",
+        "url": "https://github.com/ramSeraph/india_topo_maps/releases/download/50k-osm-georef-extra3/83B_10.tif"
+      },
+      "output_dir": "data/contour_dem/83B_10-cross-country",
+      "audit_dir": "data/contours/83B_10/calibration-cross-country",
+      "exclusion_reason": "No interior contour coverage (empty extract or boundary-only fragments)."
+    },
+    {
+      "sheet": "56N_14",
+      "region": "Telangana \u2014 Godavari valley and plateau near Manthani",
+      "index_feature": {
+        "type": "Feature",
+        "properties": {
+          "id": "56N_14",
+          "OSM_SHEET_": "E 44H14"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                79.75,
+                18.75
+              ],
+              [
+                79.75,
+                18.5
+              ],
+              [
+                80.0,
+                18.5
+              ],
+              [
+                80.0,
+                18.75
+              ],
+              [
+                79.75,
+                18.75
+              ]
+            ]
+          ]
+        }
+      },
+      "toposheet": {
+        "name": "56N_14.tif",
+        "size": "5626875",
+        "url": "https://github.com/ramSeraph/india_topo_maps/releases/download/50k-osm-georef-extra4/56N_14.tif"
+      },
+      "output_dir": "data/contour_dem/56N_14-cross-country",
+      "audit_dir": "data/contours/56N_14/calibration-cross-country",
+      "exclusion_reason": "No interior contour coverage (empty extract or boundary-only fragments)."
+    }
+  ],
+  "code_sha256_initial_detector": {
+    "contours_to_dem.py": "a9eb9b944361a6be656896aa3a54541d23a0a28b1eb5a73f6e2f2cef6336214f",
+    "extract_sheet_dem.py": "cba98afa7ff11c5ccc4f90da79691a97fa80a0f497eb27a2093f20cbd9415219",
+    "audit_spot_heights.py": "d90735a8f3be1c01845ab46faaf2a14acb31ffd5e40e59482866a49efb6ad009"
+  },
+  "detector_changes": [
+    "Guard and count degenerate zero-length source lines.",
+    "Reconstruct closed symbols from exactly connected fragments with identical elevations; keep original shape thresholds and all fragment attributes."
+  ]
+}
