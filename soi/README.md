@@ -6,6 +6,7 @@ flattening have not been applied.
 
 - [Production workflow and reproduction instructions](PRODUCTION.md)
 - [Historical calibration notes](calibration/NOTES.md)
+- [Official statement on DEM and contour availability](PRODUCTION.md#official-data-availability-statement)
 - [Intermediate elevation sheets](https://github.com/ramSeraph/indian_land_features/releases/tag/soi-dem-30m)
 
 The workflow reads local contour GeoParquet partitions through iomaps, includes

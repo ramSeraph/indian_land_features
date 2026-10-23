@@ -34,6 +34,18 @@ elevation input. WGS84 is the agreed horizontal grid. Source heights are retaine
 without an assumed vertical-datum conversion; these outputs are not labelled as
 a verified EGM2008 conversion.
 
+## Official data-availability statement
+
+In its 30 July 2025 written Lok Sabha reply,
+[Availability of contour plans for public use](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2150133&reg=48&lang=2),
+the Ministry of Science & Technology stated that DEMs generated from SOI
+topographical datasets and contours in Open Series Maps were available through
+the SOI online-maps portal. The reply also states that SOI DEM/contour data
+generated under national projects for ecologically sensitive areas and
+disaster-prone zones are accessible to all Indian entities, and describes the
+public-data access provisions of the 2021 Geospatial Guidelines and National
+Geospatial Policy, 2022.
+
 ## Reproduce the inputs
 
 Run commands from `soi/`. Use Python 3.12.9, `uv`, `curl`, and GDAL suitable for
