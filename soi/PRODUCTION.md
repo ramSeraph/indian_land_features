@@ -124,7 +124,10 @@ Failed sheets are recorded locally and produce no release asset.
 Uploads use gh-release-tools 0.1.14. Completed outputs are removed locally only
 after remote size and SHA256 verification. Existing remote names are not
 overwritten. `run_production_batch.py` wraps the producer and refreshes the
-release listing after the selected queue finishes.
+release listing after the selected queue finishes. If an upload command fails
+for a checked COG, the launcher resumes that saved output with up to four
+retries (15, 30, 60 and 120 seconds). Source-processing failures and verification
+mismatches are not retried by this mechanism.
 
 ## Outputs and remaining limitations
 
