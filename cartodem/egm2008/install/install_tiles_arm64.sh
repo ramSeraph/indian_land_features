@@ -3,7 +3,7 @@
 set -euo pipefail
 
 usage() {
-    echo 'Usage: bash install_tiles_arm64.sh /path/to/tiling-tools'
+    echo 'Usage: bash install/install_tiles_arm64.sh /path/to/tiling-tools'
     echo 'Linux ARM64, glibc >= 2.28 (Ubuntu 22.04/24.04 or Debian 12 recommended).'
     echo 'Installs pinned uv, Python, tiling wheels and GitHub CLI into this directory.'
 }
@@ -12,7 +12,7 @@ if [[ $# != 1 ]]; then usage >&2; exit 2; fi
 if [[ $(uname -s) != Linux || $(uname -m) != aarch64 ]]; then
     echo 'This installer targets Linux ARM64 (aarch64).' >&2; exit 2
 fi
-tile_code_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+tile_code_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
 for tile_command in curl tar gzip sha256sum; do
     if ! command -v "$tile_command" >/dev/null; then
         echo 'Install prerequisites: sudo apt-get update && sudo apt-get install -y ca-certificates curl tar gzip coreutils' >&2

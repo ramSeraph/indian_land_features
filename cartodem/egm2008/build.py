@@ -470,7 +470,7 @@ sheet was reopened to verify its native geometry and valid-pixel count.
 ## Reproduction
 
 Install Python 3.14 and the packages pinned in `requirements.txt`. On Linux ARM64,
-run `python install_whitebox_binary.py --workdir /path/to/build`, followed by
+run `python install/install_whitebox_binary.py --workdir /path/to/build`, followed by
 `python run_build.py --workdir /path/to/build --river-source {river_source or 'glo30'} --detach`.
 Downloads and all later stages are included. Supply `inputs.lock.json` alongside the scripts to
 enforce the recorded input checksums in a fresh workspace. Existing inputs are

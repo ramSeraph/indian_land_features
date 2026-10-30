@@ -89,7 +89,7 @@ def rebuild(root,cog_dir,cog_manifest,*,label='display',expected_sheets=543,min_
     code=Path(__file__).resolve().parent
     source_names=('rebuild_tiles.py','build.py','cartodem_to_egm2008.py','production_tiles.py',
                   'terrain_rgb.py','validation/__init__.py','validation/check_tiles_environment.py','requirements-tiles.txt',
-                  'install_tiles_arm64.sh','TILING_SETUP.md',
+                  'install/install_tiles_arm64.sh','TILING_SETUP.md',
                   'export_mbtiles.py','partition_mbtiles.sh','validation/verify_partitioned.py',
                   'validation/verify_mosaic.mjs','requirements-mosaic.txt')
     with tarfile.open(release_dir/'tiling-source.tar.gz','w:gz') as archive:

@@ -10,7 +10,8 @@ experimental fitting algorithm and the measured limitations.
 
 | Folder | Contents |
 | --- | --- |
-| This directory | Download, conversion, COG and tiling commands; installers and dependency pins. |
+| This directory | Download, conversion, COG and tiling commands; dependency pins. |
+| `install/` | Environment and WhiteboxTools installation scripts. |
 | `river_flattening/` | River geometry, routing and fitting implementation. |
 | `tests/` | Automated tests, with river tests in `tests/river_flattening/`. |
 | `validation/` | Environment checks, river audits, PMTiles verification and mosaic compatibility checks. |
@@ -56,7 +57,7 @@ dem_work=/path/to/dem-build
 display_work=/path/to/display-build
 tool_dir=/path/to/tools
 
-bash install_pipeline_arm64.sh "$tool_dir" "$dem_work"
+bash install/install_pipeline_arm64.sh "$tool_dir" "$dem_work"
 ```
 
 The installer creates `processing-venv`, `venv` for tiling, and `mosaic-venv`

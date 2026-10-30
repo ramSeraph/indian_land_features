@@ -202,7 +202,7 @@ The limited RivGraph code used for direction suggestions is vendored from
 [vendor/provenance.json](vendor/provenance.json) lists the selected functions,
 source hashes and local edits; [the BSD-3-Clause license](vendor/LICENSE-RivGraph.txt)
 is included. WhiteboxTools is downloaded as a pinned standalone binary by
-`install_whitebox_binary.py`; its package licenses and binary hash are retained
+`install/install_whitebox_binary.py`; its package licenses and binary hash are retained
 with the installation.
 
 Earlier GLO-30, WRIS, GRASS and source-pin experiments are archived under

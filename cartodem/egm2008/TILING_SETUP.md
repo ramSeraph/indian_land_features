@@ -14,7 +14,7 @@ display_work=/path/to/display-build
 cog_dir=/path/to/final/cogs
 cog_manifest=/path/to/cogs.json
 
-bash install_tiles_arm64.sh "$tool_dir"
+bash install/install_tiles_arm64.sh "$tool_dir"
 
 "$tool_dir/venv/bin/python" rebuild_tiles.py \
   --workdir "$display_work" --cog-dir "$cog_dir" \
