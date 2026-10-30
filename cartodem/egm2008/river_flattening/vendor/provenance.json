@@ -1,0 +1,23 @@
+{
+  "repository": "https://github.com/mwort/RivGraph",
+  "revision": "0a0a7135752894f451344bbf3521cc0f85f6f426",
+  "license": "BSD-3-Clause",
+  "functions": {
+    "rivgraph/directionality.py": [
+      "algmap",
+      "dir_shortest_paths_links"
+    ],
+    "rivgraph/networks/network_directionality.py": [
+      "guess_synthetic_slope"
+    ]
+  },
+  "normalized_source_sha256": {
+    "rivgraph/directionality.py": "7b3fb520a04017fded5e6249ec85ef1fd203a98eaa7ef968610c61c7272080d5",
+    "rivgraph/networks/network_directionality.py": "1672d1d9d2c01e587bee18dd176c8091c9d02096d15f5dc896f3cf9ff3492aff"
+  },
+  "edits": [
+    "Remove dy namespace from default algmap argument",
+    "Reject equal outlet distances rather than choose an arbitrary endpoint",
+    "Keep minimum parallel-edge length in the distance graph"
+  ]
+}

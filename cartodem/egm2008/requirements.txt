@@ -1,0 +1,22 @@
+# Production runtime: Python 3.14.3. Record GDAL/PROJ versions in reports too.
+numpy==2.5.4
+rasterio==1.5.2
+pillow==13.0.0
+pmtiles==3.8.1
+affine==3.0.1
+attrs==26.1.0
+certifi==2026.10.23
+click==8.5.0
+pyparsing==3.3.3
+scipy==1.18.1
+scikit-image==0.26.0
+clarabel==0.11.1
+cffi==2.1.1
+pycparser==3.12
+imageio==2.38.1
+lazy-loader==0.6
+networkx==3.7
+packaging==26.3
+tifffile==2026.10.15
+pyarrow==22.0.0
+shapely==2.2.0

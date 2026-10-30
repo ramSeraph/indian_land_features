@@ -1,0 +1,15 @@
+{
+  "url": "https://github.com/ramSeraph/indian_water_features/releases/download/rivers/WRIS_River_Polygons.parquet",
+  "bytes": 205905090,
+  "sha256": "f6013592adfc4cd516cee3cf3e95b07a7a049a73499a9f82a68bdc9ef81c9433",
+  "route": "/river-polygons/wris/",
+  "legend_url": "https://arc.indiawris.gov.in/server/rest/services/NWIC/River_GangaBasin/MapServer/11?f=pjson",
+  "national_layer_url": "https://arc.indiawris.gov.in/server/rest/services/SubInfoSysLCC/WaterBodies/MapServer/9?f=pjson",
+  "classes": [
+    {"code": "01", "label": "River", "features": 9837},
+    {"code": "02", "label": "Sand", "features": 24537},
+    {"code": "03", "label": "Island", "features": 6321},
+    {"code": " ", "label": "River", "features": 91},
+    {"code": null, "label": "River", "features": 112}
+  ]
+}

@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+original_cartodem/
+geoid/
+corrected_cartodem/
+tiles/
+pilots/
+.local/
+# Local inspection artifacts and transport configuration are not build inputs.
+build-host
+diagnostics/
+preview/
+records/
+river_flattening/pilots/
+work/
+output/
+tmp/

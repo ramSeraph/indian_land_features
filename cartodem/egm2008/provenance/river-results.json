@@ -1,0 +1,31 @@
+{
+  "connected_components": 52807,
+  "downstream_profile_violations": 0,
+  "fit_rejections": {
+    "Connected river has an unsupported section": 36,
+    "Connected river still contains unmodelled native contacts": 798,
+    "Insufficient bank support for connected river": 4953,
+    "Joint profile requires excessive adjustment of supported bank levels": 1009,
+    "No modelled river reach": 5710
+  },
+  "maximum_added_water_jump_m": 33.98618698120117,
+  "native_treatment_boundary_pairs": 0,
+  "nodata_pixels": 519329841,
+  "parameters": {
+    "maximum_support_gap_m": 1200.0,
+    "quantile": 0.2,
+    "spacing_m": 180.0,
+    "stiffness": 2.0
+  },
+  "quality_status": "Candidate build; gradient review precedes publication",
+  "river_source": "glo30",
+  "sheets": 543,
+  "sources": {
+    "rivers/final/audit.json": "1f223a2984138d4579491c07a75e3e6bc9a8959c8b86deaba1edd596b93a2276",
+    "rivers/final/cogs.json": "c82afb1c700169be6ec764e35445a63077ea590b3bc1032159b123f7f826b7b6",
+    "rivers/final/fit.json": "cb9774823e593373b9043837d49843e05f609b72271ccbae1d45a0a6af58c6f2"
+  },
+  "treated_river_pixels": 6388041,
+  "treatment_percent": 15.04575098989713,
+  "valid_river_pixels": 42457442
+}

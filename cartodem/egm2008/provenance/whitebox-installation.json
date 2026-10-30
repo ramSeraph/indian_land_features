@@ -1,0 +1,29 @@
+{
+  "distribution": "conda-forge standalone CLI",
+  "version": "WhiteboxTools v2.4.0 (c) Dr. John Lindsay 2017-2023\n\nWhiteboxTools is an advanced geospatial data analysis platform developed at\nthe University of Guelph's Geomorphometry and Hydrogeomatics Research \nGroup (GHRG). See www.whiteboxgeo.com for more details.",
+  "packages": [
+    {
+      "url": "https://conda.anaconda.org/conda-forge/linux-aarch64/whitebox_tools-2.4.0-py314hfe60d44_2.conda",
+      "sha256": "e3e680dc957a87fa99ed73f9cd0fc9028866557684af28b09ac9537e76dc2102"
+    },
+    {
+      "url": "https://conda.anaconda.org/conda-forge/linux-aarch64/libgcc-14.3.0-he277a41_7.conda",
+      "sha256": "2e3ed044b4c33e7d2633b13e25e3764053e1a4eca64886bb88a0de96a0e03dea"
+    }
+  ],
+  "binary": "tools/whitebox-prebuilt/bin/whitebox_tools",
+  "binary_sha256": "4001b38d4e4127462f5cb87bfd4dde7d3217e8dd60e2226d4e733aa8c95e8bf5",
+  "library_directory": "tools/whitebox-prebuilt/lib",
+  "runtime_sha256": {
+    "libgcc_s.so.1": "83f5d05fd6657442ed1e15d24194595d04121f268cbb4d46732deb6da6bd628b"
+  },
+  "settings": {
+    "working_directory": "",
+    "verbose_mode": true,
+    "max_procs": 1,
+    "compress_rasters": true
+  },
+  "installer_sha256": "110e7477384d719ecd621a9439bbfab68be10f22cad692e3ec3bce4b02aa26fa",
+  "license": "WhiteboxTools: MIT; libgcc: GPL-3.0-only WITH GCC-exception-3.1",
+  "compiled_locally": false
+}

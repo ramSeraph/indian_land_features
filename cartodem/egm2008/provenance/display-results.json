@@ -1,0 +1,121 @@
+{
+  "metadata": {
+    "alpha": 255,
+    "attribution": "CartoDEM: NRSC/ISRO; EGM2008: NGA; ocean mask: Copernicus DEM; river mask: Copernicus GLO-30",
+    "coastal_mask": "Copernicus GLO-30 ocean class 1",
+    "encoding": "mapbox",
+    "format": "webp",
+    "name": "CartoDEM V3R1 EGM2008 TerrainRGB",
+    "nodata_height_m": 0,
+    "nodata_preserved": false,
+    "nodata_rgb": [
+      1,
+      134,
+      160
+    ],
+    "quality_status": "Candidate build; gradient review precedes publication",
+    "quantization": "round_bits=16-max(z,5)",
+    "river_flattening": true,
+    "river_mask": "Copernicus GLO-30 WBM class 3 (River); class 2 (Lake) excluded",
+    "tileSize": 512,
+    "vertical_datum": "EGM2008"
+  },
+  "mosaic_validation": {
+    "archives": 4,
+    "maxzoom": 12,
+    "mime_type": "image/webp",
+    "minzoom": 0,
+    "verified_tiles": 227426
+  },
+  "packaging_tool": "pmtiles-mosaic==0.2.0",
+  "partitions": [
+    {
+      "bounds": [
+        59.9414062,
+        7.8851472,
+        98.0859375,
+        39.0959629
+      ],
+      "bytes": 1824408397,
+      "file": "Bhuvan_CartoDEM_v3r1_TerrainRGB-part0000.pmtiles",
+      "maxzoom": 11,
+      "minzoom": 0,
+      "sha256": "c45a0a2400effbc8193ad27c5e7709ca8a0fc0eaa6bac044e4ff5ea552677418",
+      "tiles": 57298,
+      "verified_tiles": 57298
+    },
+    {
+      "bounds": [
+        59.9414062,
+        7.9721977,
+        73.6523437,
+        39.0277188
+      ],
+      "bytes": 1999496086,
+      "file": "Bhuvan_CartoDEM_v3r1_TerrainRGB-part0001.pmtiles",
+      "maxzoom": 12,
+      "minzoom": 12,
+      "sha256": "dea163c906bb5f956383e4441d64f611fd404a12129cd26cfc3e0fa18a8ca0d1",
+      "tiles": 61152,
+      "verified_tiles": 61152
+    },
+    {
+      "bounds": [
+        73.6523437,
+        7.9721977,
+        82.0019531,
+        39.0277188
+      ],
+      "bytes": 1995228022,
+      "file": "Bhuvan_CartoDEM_v3r1_TerrainRGB-part0002.pmtiles",
+      "maxzoom": 12,
+      "minzoom": 12,
+      "sha256": "264f7c79c603d87404f805519cfc6b0f05c6997626c803c56c808bb7dece609f",
+      "tiles": 37240,
+      "verified_tiles": 37240
+    },
+    {
+      "bounds": [
+        82.0019531,
+        7.9721977,
+        98.0859375,
+        39.0277188
+      ],
+      "bytes": 1454354937,
+      "file": "Bhuvan_CartoDEM_v3r1_TerrainRGB-part0003.pmtiles",
+      "maxzoom": 12,
+      "minzoom": 12,
+      "sha256": "30027d65d82e35bd025eb890500e370ac7c705df0205ea041cb04f27022bfa13",
+      "tiles": 71736,
+      "verified_tiles": 71736
+    }
+  ],
+  "pmtiles_bytes": 7273487442,
+  "source_count": 13,
+  "tile_software": {
+    "architecture": "aarch64",
+    "gdal": "3.12.2",
+    "lossless_webp_roundtrip": true,
+    "nodata_rgba": [
+      1,
+      134,
+      160,
+      255
+    ],
+    "packages": {
+      "affine": "3.0.1",
+      "attrs": "26.1.0",
+      "certifi": "2026.10.23",
+      "click": "8.5.0",
+      "numpy": "2.5.4",
+      "pillow": "13.0.0",
+      "pmtiles": "3.8.1",
+      "pyparsing": "3.3.3",
+      "rasterio": "1.5.2"
+    },
+    "proj": "9.8.1",
+    "python": "3.14.3",
+    "system": "Linux"
+  },
+  "tiles": 227426
+}
