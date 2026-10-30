@@ -8,12 +8,12 @@ import unittest
 
 
 class ResumeTests(unittest.TestCase):
-    def test_default_glo30_restart_rejects_wris_geometry_before_detaching(self):
+    def test_restart_rejects_incompatible_geometry_before_detaching(self):
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory)
             geometry=root/'rivers/final/geometry-recipe.json'
             geometry.parent.mkdir(parents=True)
-            geometry.write_text(json.dumps(dict(river_source='wris')))
+            geometry.write_text(json.dumps(dict(river_source='unsupported')))
             result=subprocess.run([sys.executable,str(Path(__file__).resolve().parents[1]/'run_build.py'),
                                    '--workdir',str(root),'--resume-from','routing','--detach'],
                                   text=True,capture_output=True)

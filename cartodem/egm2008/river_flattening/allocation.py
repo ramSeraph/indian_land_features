@@ -14,17 +14,12 @@ from build import atomic_json, sha256
 from .whitebox import grid_matches, installation, measured
 
 
-def backend_recipe(root, backend):
-    if backend not in ('whitebox', 'scipy'):
-        raise ValueError('Unknown river allocation backend')
-    result = dict(backend=backend, code_sha256=sha256(Path(__file__)))
-    if backend == 'whitebox':
-        result.update(tools=['CostDistance', 'CostAllocation'],
-                      whitebox=installation(root)[0],
-                      adapter_sha256=sha256(Path(__file__).with_name('whitebox.py')),
-                      neighbours=8, cost=1, outside='nodata barrier',
-                      metric='existing constant window dx/dy in metres')
-    return result
+def allocation_recipe(root):
+    return dict(backend='whitebox',code_sha256=sha256(Path(__file__)),
+                tools=['CostDistance','CostAllocation'],whitebox=installation(root)[0],
+                adapter_sha256=sha256(Path(__file__).with_name('whitebox.py')),
+                neighbours=8,cost=1,outside='nodata barrier',
+                metric='existing constant window dx/dy in metres')
 
 
 def write_inputs(folder, river, seeds, dx, dy):
@@ -103,12 +98,9 @@ def read_owners(folder, river, seeds):
 
 
 def make_allocator(root, work, sheet, recipe):
-    """Small reference tests can explicitly request the historical SciPy backend."""
-    backend = recipe['allocation']['backend']
-    if backend == 'scipy':
-        return None
-    if backend != 'whitebox':
-        raise ValueError('Unknown river allocation backend')
+    """Create the Whitebox allocator for one sheet's temporary geometry rasters."""
+    if recipe['allocation']['backend'] != 'whitebox':
+        raise ValueError('Expected a Whitebox allocation recipe')
 
     def allocate(river, seeds, dx, dy):
         folder = work/'allocation'/Path(sheet).stem

@@ -7,7 +7,6 @@ in SQLite and fitted separately. Each component uses the existing joint solver.
 from collections import Counter
 import io
 import json
-import math
 from pathlib import Path
 import sqlite3
 import time
@@ -75,11 +74,11 @@ def pieces(groups,arrays,result):
         for name,data in arrays.items():item[name]=data[take]
 
 
-def partition(root,label,use_routing=True):
+def partition(root,label):
     root=Path(root);work=root/'rivers'/label;folder=work/'components';folder.mkdir(exist_ok=True)
     records=read_json(work/'geometry.json');grid=read_json(work/'grid.json')
-    routing=read_json(work/'routing/report.json') if use_routing else None
-    if routing is not None and routing.get('mode')!='regional':
+    routing=read_json(work/'routing/report.json')
+    if routing.get('mode')!='regional':
         raise ValueError('Partitioned fitting requires regional direction evidence')
     recipe=dict(geometry_sha256=sha256(work/'geometry.json'),routing=routing,
                 code_sha256=sha256(Path(__file__)),native_valid_water_contacts=True)
@@ -110,7 +109,7 @@ def partition(root,label,use_routing=True):
     labels=parent[labels]
     np.save(folder/'nodes.npy',ids);np.save(folder/'labels.npy',labels)
     pending=database.with_name(database.name+'.part');pending.unlink(missing_ok=True)
-    regions={r['sheet']:r for r in routing['regions']} if routing else {}
+    regions={r['sheet']:r for r in routing['regions']}
     with sqlite3.connect(pending) as db:
         db.execute('PRAGMA journal_mode=DELETE');db.execute('PRAGMA cache_size=-32768')
         db.execute('CREATE TABLE chunks (component INTEGER, source TEXT, data BLOB, PRIMARY KEY(component,source))')
@@ -124,12 +123,11 @@ def partition(root,label,use_routing=True):
                 pieces(labels[lookup(ids,nodes)],dict(nodes=nodes),chunks)
                 pieces(labels[lookup(ids,bank)],dict(bank_owners=bank,bank_heights=data['bank_heights']),chunks)
                 pieces(labels[lookup(ids,ocean)],dict(ocean_owners=ocean),chunks)
-            if routing:
-                r=regions[name];path=work/'routing'/r['evidence']
-                if sha256(path)!=r['sha256']:raise ValueError('Regional owner evidence changed')
-                with np.load(path) as data:
-                    nodes=data['nodes']
-                    pieces(labels[lookup(ids,nodes)],{('route_'+k):data[k] for k in data.files},chunks)
+            r=regions[name];path=work/'routing'/r['evidence']
+            if sha256(path)!=r['sha256']:raise ValueError('Regional owner evidence changed')
+            with np.load(path) as data:
+                nodes=data['nodes']
+                pieces(labels[lookup(ids,nodes)],{('route_'+k):data[k] for k in data.files},chunks)
             # Contacts are reduced to unique owner pairs. The joint fit uses
             # their topology; it never pins the raw pixel heights.
             with np.load(tables[number]) as data:pairs=np.unique(data['owners'],axis=0)
@@ -152,9 +150,9 @@ def partition(root,label,use_routing=True):
     return report
 
 
-def fit(root,label,spacing=180.,quantile=.2,stiffness=2.,max_support_gap=1200.,use_routing=True):
+def fit(root,label,spacing=180.,quantile=.2,stiffness=2.,max_support_gap=1200.):
     root=Path(root);work=root/'rivers'/label;folder=work/'components'
-    staged=partition(root,label,use_routing=use_routing)
+    staged=partition(root,label)
     recipe=dict(partition_sha256=sha256(folder/'partition.json'),spacing_m=spacing,quantile=quantile,
                 stiffness=stiffness,maximum_support_gap_m=max_support_gap,
                 method='existing joint profiles; complete global components',
@@ -189,13 +187,11 @@ def fit(root,label,spacing=180.,quantile=.2,stiffness=2.,max_support_gap=1200.,u
             lat=t.f+t.e*(nodes//grid['width']+.5)
             dx=t.a*111195.0802*np.cos(np.deg2rad(lat));dy=abs(t.e)*111195.0802
             network=compress_network(nodes,grid['width'],dx,dy,spacing=spacing)
-            routing=None
-            if use_routing:
-                routing=dict(vector=np.zeros((len(nodes),2)),weight=np.zeros(len(nodes)),count=np.zeros(len(nodes),np.int64))
-                if len(data.get('route_nodes',[])):
-                    index=lookup(nodes,data['route_nodes'])
-                    for axis in range(2):np.add.at(routing['vector'][:,axis],index,data['route_vector'][:,axis])
-                    for key in ('weight','count'):np.add.at(routing[key],index,data['route_'+key])
+            routing=dict(vector=np.zeros((len(nodes),2)),weight=np.zeros(len(nodes)),count=np.zeros(len(nodes),np.int64))
+            if len(data.get('route_nodes',[])):
+                index=lookup(nodes,data['route_nodes'])
+                for axis in range(2):np.add.at(routing['vector'][:,axis],index,data['route_vector'][:,axis])
+                for key in ('weight','count'):np.add.at(routing[key],index,data['route_'+key])
             pairs=data.get('contacts',np.empty((0,2),np.int64))
             contacts=[dict(owners=pairs,heights=np.zeros(pairs.shape,np.float32))]
             # An isolated skeleton pixel has no reach, but remains an explicit

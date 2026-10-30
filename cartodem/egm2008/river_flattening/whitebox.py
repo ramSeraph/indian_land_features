@@ -20,7 +20,7 @@ def uncertain_upstream(pointer, valid):
 
     Seed valid cells beside NULL or a crop edge, then mark their downstream
     paths. This is conservative at ocean edges. The supplied pointers define
-    the network, including when evaluating an alternative routing algorithm.
+    the network.
     """
     if pointer.shape != valid.shape or pointer.ndim != 2:
         raise ValueError('Pointer and validity grids must match')
@@ -123,21 +123,14 @@ def installation(root, directory='tools/whitebox-prebuilt'):
     return record,binary,env
 
 
-def run_flow(binary,folder,env,*,workflow='staged',logs=None,prefix='',max_rss_mib=1100):
+def run_flow(binary,folder,env,*,logs=None,prefix='',max_rss_mib=1100):
     folder=Path(folder);logs=Path(logs or folder)
-    if workflow=='full':
-        commands=[('flow',[
-            '-r=FlowAccumulationFullWorkflow','-v','--out_type=cells',
-            f'--dem={folder/"analysis-whitebox.tif"}',f'--out_dem={folder/"conditioned.tif"}',
-            f'--out_pntr={folder/"pointer.tif"}',f'--out_accum={folder/"accumulation.tif"}'])]
-    elif workflow=='staged':
-        commands=[
-            ('breach',['-r=BreachDepressions','-v',f'--dem={folder/"analysis-whitebox.tif"}',
-                       f'--output={folder/"conditioned.tif"}']),
-            ('pointer',['-r=D8Pointer','-v',f'--dem={folder/"conditioned.tif"}',f'--output={folder/"pointer.tif"}']),
-            ('accumulation',['-r=D8FlowAccumulation','-v','--pntr','--out_type=cells',
-                             f'--input={folder/"pointer.tif"}',f'--output={folder/"accumulation.tif"}'])]
-    else:raise ValueError('Unknown Whitebox workflow')
+    commands=[
+        ('breach',['-r=BreachDepressions','-v',f'--dem={folder/"analysis-whitebox.tif"}',
+                   f'--output={folder/"conditioned.tif"}']),
+        ('pointer',['-r=D8Pointer','-v',f'--dem={folder/"conditioned.tif"}',f'--output={folder/"pointer.tif"}']),
+        ('accumulation',['-r=D8FlowAccumulation','-v','--pntr','--out_type=cells',
+                         f'--input={folder/"pointer.tif"}',f'--output={folder/"accumulation.tif"}'])]
     for name,command in commands:
         yield name,measured([str(binary),*command],logs/(prefix+name+'.log'),max_rss_mib,env)
 

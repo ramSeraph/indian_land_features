@@ -65,7 +65,7 @@ def curvature_matrix(n, reaches, distances):
 
 def fit_network(n, edges, observation_station, observations, *, reaches=(),
                 distances=(), quantile=0.2, stiffness=2.0, weights=None,
-                upper_bounds=None, boundary_samples=None, max_iterations=200,
+                upper_bounds=None, max_iterations=200,
                 unoriented_reaches=(), unoriented_distances=()):
     """Return Float32 station heights and numerical validation results.
 
@@ -73,9 +73,6 @@ def fit_network(n, edges, observation_station, observations, *, reaches=(),
     No interpolation is allowed for an entirely unobserved connected component.
     Optional upper bounds constrain station heights; they are not invented from
     a reference DEM. They must use the same datum as the observations.
-    Boundary samples are [left station, right station, fraction, source height].
-    Their interpolated level is pinned within 0.5 mm while fitting and checked
-    within 1 mm after Float32 storage. This is numerical tolerance, not DEM accuracy.
     """
     if not isinstance(n, (int, np.integer)) or n < 1:
         raise ValueError('At least one river station is required')
@@ -138,25 +135,6 @@ def fit_network(n, edges, observation_station, observations, *, reaches=(),
         bounds.append(upper_bounds[capped]-offset)
         cones.append(clarabel.NonnegativeConeT(len(capped)))
 
-    boundary_matrix=None
-    if boundary_samples is not None and len(boundary_samples):
-        boundary_samples=np.asarray(boundary_samples,dtype=float)
-        if (boundary_samples.ndim!=2 or boundary_samples.shape[1]!=4
-                or not np.isfinite(boundary_samples).all()):
-            raise ValueError('Invalid boundary samples')
-        stations=boundary_samples[:,:2]
-        fractions=boundary_samples[:,2];levels=boundary_samples[:,3]
-        if (np.any(stations!=np.floor(stations)) or np.any((stations<0)|(stations>=n))
-                or np.any((fractions<0)|(fractions>1)) or np.any(levels==-255)):
-            raise ValueError('Invalid boundary interpolation or nodata height')
-        k=len(levels)
-        boundary_matrix=sparse.csc_matrix((np.column_stack((1-fractions,fractions)).ravel(),
-                            (np.repeat(np.arange(k),2),stations.astype(int).ravel())),shape=(k,n))
-        padded=sparse.hstack((boundary_matrix,sparse.csc_matrix((k,2*m))),format='csc')
-        matrices.extend((padded,-padded))
-        bounds.extend((levels-offset+.0005,-levels+offset+.0005))
-        cones.append(clarabel.NonnegativeConeT(2*k))
-
     settings=clarabel.DefaultSettings()
     settings.verbose=False
     settings.max_iter=max_iterations
@@ -189,21 +167,12 @@ def fit_network(n, edges, observation_station, observations, *, reaches=(),
         raise ValueError('Fitted river height collides with output nodata or Float32 range')
     if np.any(result[edges[:, 1]] > result[edges[:, 0]]):
         raise ValueError('Float32 river profile is not monotone')
-    boundary_error=0.
-    if boundary_matrix is not None:
-        # Match raster application, including the final Float32 interpolation.
-        predicted=np.asarray(boundary_matrix @ result.astype(float)).astype(np.float32)
-        boundary_error=float(np.abs(predicted.astype(float)-levels).max())
-        if boundary_error>.001:
-            raise ValueError('Float32 boundary mismatch exceeds one millimetre')
     residuals = z-result[ids]
     report = dict(stations=n, observations=m, edges=len(edges), quantile=quantile,
                   stiffness=stiffness, median_station_spacing_m=spacing,
                   iterations=int(solution.iterations), solver='Clarabel', solver_status='solved',
                   maximum_solver_monotonicity_error_m=violation,
                   maximum_numerical_adjustment_m=numerical_adjustment,
-                  boundary_samples=0 if boundary_matrix is None else len(levels),
-                  maximum_boundary_mismatch_m=boundary_error,
                   median_observation_minus_surface_m=float(np.median(residuals)),
                   p95_absolute_observation_residual_m=float(np.percentile(np.abs(residuals), 95)))
     return result, report

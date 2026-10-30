@@ -56,19 +56,6 @@ class ProfileTests(unittest.TestCase):
         self.assertTrue(np.all(fitted <= np.array([-.5, -1, -1.5])+.0001))
         self.assertTrue(np.all(fitted < 0))
 
-    def test_boundary_level_is_constrained_during_fit_at_substation_position(self):
-        values,report=fit_network(3,[[0,1],[1,2]],[0,1,2],[10,6,2],
-                                 reaches=[[0,1,2]],distances=[[0,100,200]],
-                                 upper_bounds=[10,6,2],boundary_samples=[[0,1,.5,7.]])
-        self.assertLessEqual(abs(float(np.float32((values[0]+values[1])*.5))-7),.001)
-        self.assertTrue(np.all(np.diff(values)<=0))
-        self.assertEqual(report['boundary_samples'],1)
-
-    def test_incompatible_boundary_and_bank_cap_is_rejected(self):
-        with self.assertRaisesRegex(ValueError,'did not converge'):
-            fit_network(3,[[0,1],[1,2]],[0,1,2],[3,2,1],upper_bounds=[3,2,1],
-                        boundary_samples=[[1,1,0,5]])
-
 
 if __name__ == '__main__':
     unittest.main()

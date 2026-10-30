@@ -1,4 +1,4 @@
-"""Joint profile experiment: one fit for all connected, supported sections.
+"""Joint river profiles: one fit for all connected, supported sections.
 
 Shared junction elevations are unknowns, not hard targets copied from raw water
 pixels. Established directions constrain the first fit; missing directions are
@@ -12,8 +12,18 @@ from scipy.sparse.csgraph import dijkstra, connected_components
 
 from .directions import infer_directions
 from .profiles import fit_network
-from .study import assign_stations
 from .boundaries import native_values, read_contacts
+
+
+def assign_stations(network, owners):
+    """Map native skeleton owners to the nearest longitudinal station."""
+    ids = network['ids']
+    indices = np.searchsorted(ids, owners)
+    safe = np.minimum(indices,len(ids)-1)
+    good = (indices<len(ids)) & (ids[safe]==owners)
+    stations = np.where(network['fraction'][safe]<=.5,network['left'][safe],network['right'][safe])
+    good &= stations>=0
+    return stations,good
 
 
 def collapse_levels(n,edges,flat_reaches):

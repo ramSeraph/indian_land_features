@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Reproducible CartoDEM downloads, EGM2008/river COGs and TerrainRGB build.
+"""Download CartoDEM inputs and prepare EGM2008 ocean-masked sheets.
 
 All paths are relative to --workdir. Existing verified inputs can be reused.
 GLO-30 supplies ocean and river classification across the DEM footprint; elevation
@@ -16,8 +16,6 @@ import hashlib
 import json
 import math
 import shutil
-import sys
-import tempfile
 import time
 import urllib.error
 import urllib.request
@@ -38,6 +36,15 @@ SOURCE_COUNT = 543
 SOURCE_BYTES = 14466784647
 SOURCE_LIST_SHA256 = '233b812f228fa8c96ddb1ceca6f5d3e1a0eaeecec3526413bebac4bf1369de88'
 NODATA = -255.0
+
+
+def atomic_npz(path,**arrays):
+    path=Path(path)
+    path.parent.mkdir(parents=True,exist_ok=True)
+    temp=path.with_name(path.name+'.part')
+    with temp.open('wb') as stream:
+        np.savez_compressed(stream,**arrays)
+    temp.replace(path)
 
 
 def atomic_json(path, value):
@@ -122,7 +129,7 @@ def mask_name(lon, lat):
 
 def fetch_inputs(root, workers=4):
     previous_path = root / "reports/inputs.json"
-    pinned_path = Path(__file__).with_name('inputs.lock.json')
+    pinned_path = Path(__file__).resolve().parent / 'provenance/inputs.lock.json'
     previous = (read_json(previous_path) if previous_path.exists() else
                 read_json(pinned_path) if pinned_path.exists() else {})
     old_sources = {x["name"]: x for x in previous.get("sheets", [])}
@@ -347,189 +354,19 @@ def create_mosaic(paths, height_path, validity_path):
                 bounds=[west,north+height*dy,west+width*dx,north],sheets=len(records))
 
 
-def mosaic(root, names=None, variant='coastal'):
-    inventory=read_json(root/'reports/inputs.json')
-    prefix=('pilot-' if names else '')+variant
-    source_dir=root/f'output/{prefix}/cogs' if variant=='final' else root/'sheets/coastal'
-    paths=[source_dir/e['name'] for e in inventory['sheets']
-           if names is None or e['name'] in names]
-    if variant=='final':
-        cogs=read_json(root/f'rivers/{prefix}/cogs.json')
-        expected={r['file']:r['sha256'] for r in cogs['sheets']}
-        for path in paths:
-            if expected.get(path.name)!=sha256(path):
-                raise ValueError('Final COG manifest/checksum differs')
-    report=create_mosaic(paths,root/f'mosaics/{prefix}.vrt',root/f'mosaics/{prefix}-validity.vrt')
-    atomic_json(root/f'reports/{prefix}-mosaic.json',report)
-    return report
-
-
-def write_run_notes(root,prefix):
-    """Record the completed build without connection details or absolute paths."""
-    import importlib.metadata
-    from datetime import datetime,timezone
-    inputs=read_json(root/'reports/inputs.json')
-    pilot=prefix.startswith('pilot')
-    prepared=read_json(root/('reports/pilot-prepare-summary.json' if pilot else 'reports/prepare-summary.json'))
-    tiled=read_json(root/f'reports/{prefix}-tiles.json')
-    packed=read_json(root/f'reports/{prefix}-package.json')
-    recipe=tiled['recipe']
-    versions={p:importlib.metadata.version(p) for p in ('numpy','rasterio','pillow','pmtiles','scipy','scikit-image','clarabel','pyarrow','shapely')}
-    versions.update(python=sys.version.split()[0],gdal=rasterio.__gdal_version__,proj=rasterio.__proj_version__)
-    rivers=read_json(root/f'rivers/{prefix}/cogs.json') if recipe['river_flattening'] else None
-    river_source=rivers['river_source'] if rivers else None
-    mask_text=('GLO-30 WBM class 3 supplied the river footprint across the DEM coverage. '
-               'Lake class 2 was excluded from river treatment and bank samples. '
-               if river_source=='glo30' else
-               'WRIS River polygons supplied the river footprint. Sand (02) and Island (03) '
-               'were excluded, with interior rings preserved; River (01, blank and null) '
-               'was selected using the WRIS ArcGIS legend. ')
-    water_text=('GLO-30 ocean class 1 removed elevations. '+mask_text+
-                'The river footprint was used '
-                'for shared monotone profiles fitted from corrected CartoDEM bank samples. '
-                'Junctions shared a fitted elevation; model groups with an unsupported native-water interface were retained unchanged. '
-                'Unsupported components retain their corrected CartoDEM elevations. '
-                f"The river stage treated {rivers['treated_river_pixels']:,} of {rivers['valid_river_pixels']:,} valid river pixels. "
-                f'Fit summaries are in `rivers/{prefix}/fit.json`; partitioned component decisions are in `rivers/{prefix}/components/models.sqlite`. '
-                'Native-grid Float32 COGs include averaged numeric overviews and declare NoData=-255. '
-                'Every native output value and validity sample was verified after COG export.'
-                if rivers else 'GLO-30 ocean class 1 removed elevations. River flattening was disabled for this coastal baseline.')
-    body=f'''# CartoDEM EGM2008 build results
-
-Completed {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}.
-
-## Data and processing
-
-The build uses the [original CartoDEM V3R1 release]({RELEASE.replace('/download/','/tag/').rstrip('/')}).
-The input manifest in `reports/inputs.json` records download URLs, byte sizes and
-SHA-256 checksums for every original sheet, geoid grid and GLO-30 classification file.
-The input inventory contains {len(inputs['sheets'])} CartoDEM sheets; this output
-uses {prepared['sheets']} prepared sheets.
-
-Source values -1024 and -255 were masked before applying H = h - N, with the
-pinned EGM2008 grid sampled bilinearly at the original pixel centres. Prepared
-Float32 sheets retain the native grid and declare NoData=-255. Valid sentinel
-collisions and missing geoid or mask coverage are checked before publication.
-Every newly clipped GLO-30 ocean pixel also becomes -255 nodata. River treatment
-preserves these holes together with both original source nodata classes.
-
-{water_text}
-
-These are candidate outputs. Native adjacent-water gradient diagnostics in
-`rivers/{prefix}/audit.json` require review before publication; passing shared
-junction and validity checks does not establish that all river surfaces are
-correct. Stripe correction was outside this build's scope.
-
-Outside the selected river footprint, CartoDEM's existing waterbody treatment was
-retained, with the same datum correction as other valid elevations. No GLO-30
-elevations were copied, and source nodata on land was not filled.
-
-## Elevation tiles
-
-Tiles are 512 by 512 pixels, covering zooms {recipe['minzoom']} through {recipe['maxzoom']}.
-Numeric heights use valid-sample averaging at zooms 0 through 11 and bilinear
-sampling at zoom 12. A separate native 0/255 validity raster, with no nodata or
-overviews, defines pixel-centre coverage through nearest-neighbour sampling.
-Quantization clears 16 minus max(zoom, 5) low bits of the
-packed height code after resampling. Each tile is encoded as lossless RGBA WebP.
-
-Nodata is exactly RGB (1, 134, 160), decoding to zero metres. Every pixel is
-opaque (alpha 255). Missing pixels bypass height quantization at every zoom.
-The display tiles do not preserve a distinguishable nodata marker; analytical
-consumers use the COGs and their declared NoData=-255. Normal image decoding
-requires no alpha-254 workaround. Validity checks use the explicit input mask.
-
-## Validation results
-
-- Source -1024 pixels: {prepared['source_fill_counts']['-1024']:,}.
-- Source -255 pixels: {prepared['source_fill_counts']['-255']:,}.
-- Valid source pixels removed by the ocean mask: {prepared['newly_masked_ocean_pixels']:,}.
-- Source nodata pixels on GLO-30 land: {prepared['source_nodata_on_glo30_land_pixels']:,}; retained as nodata.
-- Valid prepared pixels: {prepared['valid_pixels']:,}.
-- Packaged tiles checked byte for byte against encoded tiles: {packed['verified_tiles']:,}.
-
-Every newly encoded image was reopened and compared with the expected RGBA
-array. Valid heights were checked against half the selected quantization
-increment, and invalid pixels against the exact nodata tuple. Each prepared
-sheet was reopened to verify its native geometry and valid-pixel count.
-
-| Zoom | Tiles | Maximum encoding error in metres | Height increment in metres |
-| --- | --- | --- | --- |
-'''
-    for z in tiled['zooms']:
-        body+=f"| {z['zoom']} | {z['tiles']} | {z['max_encoding_error_m']:.6f} | {z['height_step_m']} |\n"
-    body+='\n## Outputs\n\n| Archive | Bytes | SHA-256 |\n| --- | --- | --- |\n'
-    for p in packed['partitions']:
-        body+=f"| {p['file']} | {p['bytes']} | `{p['sha256']}` |\n"
-    body+='\nArchive metadata and coverage are recorded in `output/'+prefix+'/archives.json`.\n'
-    if rivers:
-        body+=f'\nThe {len(rivers["sheets"])} final COGs are in `output/{prefix}/cogs/`; file sizes, checksums and per-sheet treatment counts are in `rivers/{prefix}/cogs.json`.\n'
-    body+='\n## Software versions\n\n'
-    body+='\n'.join(f'- {name}: {version}.' for name,version in versions.items())+'\n'
-    body+=f'''
-## Reproduction
-
-Install Python 3.14 and the packages pinned in `requirements.txt`. On Linux ARM64,
-run `python install/install_whitebox_binary.py --workdir /path/to/build`, followed by
-`python run_build.py --workdir /path/to/build --river-source {river_source or 'glo30'} --detach`.
-Downloads and all later stages are included. Supply `inputs.lock.json` alongside the scripts to
-enforce the recorded input checksums in a fresh workspace. Existing inputs are
-verified before reuse. The README gives bounded pilot and coastal-only commands.
-
-Per-sheet reports are in `reports/sheets/`. Tile recipes include hashes of their
-prepared inputs and processing code. River method notes and limitations are in
-`river_flattening/README.md` alongside the reproducible processing source.
-'''
-    (root/'reports'/('PILOT_RUN_NOTES.md' if pilot else 'RUN_NOTES.md')).write_text(body)
-    atomic_json(root/'reports/software.json',versions)
-
-
 def main():
+    import fcntl
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('stage',choices=['download','prepare','rivers','cogs','mosaic','tiles','package','run'])
+    parser.add_argument('stage',choices=['download','prepare'])
     parser.add_argument('--workdir',type=Path,required=True)
     parser.add_argument('--download-workers',type=int,default=4)
-    parser.add_argument('--sheets',nargs='+',help='Pilot source filenames; omit for the full inventory')
-    parser.add_argument('--river-source',choices=['glo30','wris'],default='glo30')
-    parser.add_argument('--min-zoom',type=int,default=0)
-    parser.add_argument('--max-zoom',type=int,default=12)
-    parser.add_argument('--variant',choices=['final','coastal'],default='final',
-                        help='Final includes the river stage and COGs; coastal is a comparison baseline')
+    parser.add_argument('--sheets',nargs='+',help='Source filenames; omit for the full inventory')
     args=parser.parse_args()
-    if not 0 <= args.min_zoom <= args.max_zoom <= 12:
-        parser.error('The production zoom range is 0 through 12')
     root=setup(args.workdir)
-    prefix=('pilot-' if args.sheets else '')+args.variant
-    # Excludes simultaneous writers while allowing independent tile readers later.
-    import fcntl
     with (root/'logs/build.lock').open('a') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-        if args.stage in ('download','run'):
-            fetch_inputs(root,args.download_workers)
-            if args.river_source=='wris':
-                from river_flattening.wris import prepare_source
-                prepare_source(root)
-        if args.stage in ('prepare','run'):
-            prepare(root,args.sheets)
-        if args.variant=='final' and args.stage in ('rivers','run'):
-            from river_flattening.production import geometry,fit
-            from river_flattening.routing import route
-            geometry(root,prefix,args.sheets,river_source=args.river_source)
-            route(root,prefix)
-            fit(root,prefix)
-        if args.variant=='final' and args.stage in ('cogs','run'):
-            from river_flattening.production import apply
-            apply(root,prefix)
-        if args.stage in ('mosaic','run'):
-            emit('mosaic',**mosaic(root,args.sheets,args.variant))
-        if args.stage in ('tiles','run'):
-            from production_tiles import tiles
-            tiles(root,prefix,args.min_zoom,args.max_zoom)
-        if args.stage in ('package','run'):
-            from production_tiles import package
-            package(root,prefix)
-            write_run_notes(root,prefix)
+        if args.stage=='download':fetch_inputs(root,args.download_workers)
+        else:prepare(root,args.sheets)
 
 
-if __name__=='__main__':
-    main()
+if __name__=='__main__':main()

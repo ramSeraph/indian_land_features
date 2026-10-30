@@ -18,5 +18,3 @@ lazy-loader==0.6
 networkx==3.7
 packaging==26.3
 tifffile==2026.10.15
-pyarrow==22.0.0
-shapely==2.2.0

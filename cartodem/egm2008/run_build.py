@@ -15,7 +15,7 @@ import subprocess
 import sys
 import traceback
 
-STAGES=('download','prepare','geometry','routing','fit','cogs','mosaic','tiles','package')
+STAGES=('download','prepare','geometry','routing','fit','cogs')
 
 
 def write_status(path,data):
@@ -28,13 +28,13 @@ def commands(args):
     selection=['--sheets',*args.sheets] if args.sheets else []
     for stage in STAGES:
         if stage=='geometry':
-            command=[sys.executable,'-m','river_flattening.production','geometry',*common,
-                     '--label',args.label,'--river-source',args.river_source,*selection]
+            command=[sys.executable,'-m','river_flattening.prepare',*common,
+                     '--label',args.label,*selection]
         elif stage in ('routing','fit','cogs'):
             command=[sys.executable,'-m','river_flattening.national',
                      'apply' if stage=='cogs' else stage,*common,'--label',args.label]
         else:
-            command=[sys.executable,'build.py',stage,*common,'--river-source',args.river_source,*selection]
+            command=[sys.executable,'build.py',stage,*common,*selection]
         yield stage,command
 
 
@@ -43,8 +43,6 @@ def main():
     parser.add_argument('--workdir',type=Path,required=True)
     parser.add_argument('--label',default='final')
     parser.add_argument('--sheets',nargs='+')
-    parser.add_argument('--river-source',choices=['glo30','wris'],default='glo30',
-                        help='GLO-30 class 3 covers the full DEM footprint; WRIS is retained for comparisons')
     parser.add_argument('--resume-from',choices=STAGES,default='download')
     parser.add_argument('--through',choices=STAGES,default='cogs',
                         help='Stop after COGs by default; use the documented display/MBTiles pipeline for tiles')
@@ -54,13 +52,10 @@ def main():
         parser.error('Use a plain output label')
     first,last=STAGES.index(args.resume_from),STAGES.index(args.through)
     if first>last:parser.error('The start stage follows the last stage')
-    expected='pilot-final' if args.sheets else 'final'
-    if last>=STAGES.index('mosaic') and args.label!=expected:
-        parser.error(f'Tiling requires label {expected}; custom pilots can stop after cogs')
     if first>STAGES.index('geometry'):
         recipe=args.workdir/'rivers'/args.label/'geometry-recipe.json'
-        if not recipe.exists() or json.loads(recipe.read_text()).get('river_source')!=args.river_source:
-            parser.error('Requested river source does not match cached geometry; rebuild geometry under a fresh label')
+        if not recipe.exists() or json.loads(recipe.read_text()).get('river_source')!='glo30':
+            parser.error('GLO-30 river source does not match cached geometry; rebuild geometry under a fresh label')
     for directory in ('logs','reports'):(args.workdir/directory).mkdir(parents=True,exist_ok=True)
     code=Path(__file__).resolve().parent
     log_path=args.workdir/'logs'/f'build-{args.label}.log'
@@ -78,8 +73,8 @@ def main():
                 started=datetime.now(timezone.utc).isoformat(),completed_stages=[],
                 source_sha256={str(p.relative_to(code)):hashlib.sha256(p.read_bytes()).hexdigest()
                                for p in sorted(code.rglob('*.py')) if '.venv' not in p.parts},
-                river_source=args.river_source,
-                scope=f'EGM2008, unified nodata, GLO-30 ocean, {args.river_source} rivers, candidate COGs/TerrainRGB',
+                river_source='glo30',
+                scope='EGM2008, unified nodata, GLO-30 ocean and rivers, candidate COGs',
                 publication_requires_gradient_review=True)
     with (args.workdir/'logs'/f'run-{args.label}.lock').open('a') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)

@@ -7,8 +7,7 @@ a Euclidean shortcut across a meander or island is not allowed.
 """
 import numpy as np
 from scipy import ndimage, sparse
-from scipy.sparse.csgraph import dijkstra, connected_components
-from scipy.sparse.linalg import spsolve
+from scipy.sparse.csgraph import connected_components
 from scipy.spatial import cKDTree
 from skimage.morphology import skeletonize
 
@@ -44,15 +43,14 @@ def pixel_graph(ids, width, dx, dy, *, remove_corner_diagonals=False):
 
 
 def extract_window(heights, classes, *, dx, dy, grid_width, row_offset=0,
-                   col_offset=0, core=None, nodata=-255.0, bank_pixels=2, allocator=None):
+                   col_offset=0, core=None, nodata=-255.0, bank_pixels=2, allocator):
     """Extract geometry using a halo, returning only core-owned output/samples.
 
     Heights/classes must already share the original CartoDEM grid. `core` is
     (row_start, row_end, col_start, col_end) in this window. Nonfinite and declared
     nodata elevations cannot be bank observations. Lake class 2 is not sampled.
     An allocator returns local seed pixel IDs in row-major river-cell order.
-    The default SciPy implementation is retained for small reference studies;
-    production supplies the memory-bounded Whitebox raster allocator.
+    The caller supplies the bounded Whitebox raster allocator.
     """
     heights, classes = np.asarray(heights), np.asarray(classes)
     if heights.ndim != 2 or classes.shape != heights.shape or dx <= 0 or dy <= 0:
@@ -72,19 +70,9 @@ def extract_window(heights, classes, *, dx, dy, grid_width, row_offset=0,
     skeleton = skeletonize(river)
     skeleton,pruned=prune_spurs(skeleton,river,dx,dy)
     skel_flat = np.flatnonzero(skeleton)
-    if allocator is None:
-        water_graph = pixel_graph(flat, width, dx, dy)
-        sources = np.searchsorted(flat, skel_flat)
-        distance, _, owner = dijkstra(water_graph, directed=False, indices=sources,
-                                      min_only=True, return_predecessors=True)
-        if not np.isfinite(distance).all() or np.any(owner < 0):
-            raise ValueError('A river pixel has no connected skeleton owner')
-        local_owner = flat[owner]
-        del water_graph, distance, owner
-    else:
-        local_owner = allocator(river, skeleton, dx, dy)
-        if local_owner.shape != flat.shape or not np.isin(local_owner, skel_flat).all():
-            raise ValueError('Invalid river allocation')
+    local_owner = allocator(river, skeleton, dx, dy)
+    if local_owner.shape != flat.shape or not np.isin(local_owner, skel_flat).all():
+        raise ValueError('Invalid river allocation')
 
     def global_ids(local):
         return (local//width + row_offset)*grid_width + local%width + col_offset
@@ -243,53 +231,3 @@ def compress_network(ids, width, dx, dy, *, spacing=180.0):
     return dict(ids=ids, station_pixels=ids[np.asarray(representatives,dtype=np.int64)],
                 reaches=reaches, distances=distances, left=left, right=right,
                 fraction=fraction, unsupported_skeleton_pixels=int(np.sum((left<0)|(right<0))))
-
-
-def orient_component(n, reaches, distances, root):
-    """Geometric direction candidate for a component with an established outlet.
-
-    Interior harmonic potential is computed with outlet=0 and terminal inlets=1.
-    Unlike shortest paths, this can orient both arms of a split/rejoined channel
-    consistently. It is a hypothesis, not measured flow: CartoDEM observations
-    must independently support it before the surface is applied.
-    """
-    edge_lengths = {}
-    for reach, x in zip(reaches, distances):
-        for u,v,length in zip(reach[:-1], reach[1:], np.diff(x)):
-            key = tuple(sorted((int(u), int(v))))
-            edge_lengths[key] = min(edge_lengths.get(key, np.inf),float(length))
-    edges = np.asarray(list(edge_lengths),dtype=int).reshape(-1,2)
-    if not len(edges) or root not in edges:
-        raise ValueError('Outlet is not in this river component')
-    conductance = np.array([1/edge_lengths[tuple(e)] for e in edges])
-    adjacency = sparse.csr_matrix((np.tile(conductance,2),
-                                   (np.r_[edges[:,0],edges[:,1]],np.r_[edges[:,1],edges[:,0]])),shape=(n,n))
-    active = np.flatnonzero(np.diff(adjacency.indptr)>0)
-    n_components, _ = connected_components(adjacency[active][:,active],directed=False)
-    if n_components != 1:
-        raise ValueError('Fit one connected river component at a time')
-    degree = np.diff(adjacency.indptr)
-    terminals = np.flatnonzero(degree==1)
-    if root not in terminals or len(terminals)<2:
-        raise ValueError('Outlet/inlets are not unambiguous terminal stations')
-    fixed = terminals
-    potential = np.full(n,np.nan)
-    potential[fixed] = 1
-    potential[root] = 0
-    free = np.setdiff1d(active,fixed)
-    laplacian = sparse.diags(np.asarray(adjacency.sum(axis=1)).ravel())-adjacency
-    if len(free):
-        potential[free] = spsolve(laplacian.tocsr()[free][:,free],
-                                  -laplacian.tocsr()[free][:,fixed]@potential[fixed])
-    directed_reaches, directed_distances = [], []
-    for reach,x in zip(reaches,distances):
-        delta = potential[reach[0]]-potential[reach[-1]]
-        if not np.isfinite(delta) or abs(delta)<1e-9:
-            raise ValueError('A channel direction is unresolved by outlet geometry')
-        if delta>0:
-            directed_reaches.append(list(reach)); directed_distances.append(np.asarray(x))
-        else:
-            directed_reaches.append(list(reversed(reach)))
-            directed_distances.append(x[-1]-np.asarray(x)[::-1])
-    directed_edges = np.unique(np.asarray([e for r in directed_reaches for e in zip(r[:-1],r[1:])]),axis=0)
-    return directed_edges,directed_reaches,directed_distances,potential

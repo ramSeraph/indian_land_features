@@ -6,12 +6,9 @@ unexplained interior sinks/sources invalidate implicated links.
 """
 import numpy as np
 import networkx as nx
-from scipy import sparse
-from scipy.sparse.csgraph import dijkstra
 from scipy.stats import theilslopes
 
 from .vendor.rivgraph import dir_shortest_paths_links, guess_synthetic_slope
-from .profiles import fit_network
 
 
 def reach_height(reference,reach,distance,min_drop=3.):
@@ -35,7 +32,7 @@ def reach_height(reference,reach,distance,min_drop=3.):
 
 
 def reach_routing(network,routing,width):
-    """Project GRASS pixel-flow vectors onto the local centreline tangent."""
+    """Project normalized pixel-flow vectors onto the local centreline tangent."""
     n=len(network['station_pixels'])
     summed=np.zeros((n,2));weight=np.zeros(n);count=np.zeros(n,int)
     owner_station=np.where(network['fraction']<=.5,network['left'],network['right'])
@@ -165,93 +162,3 @@ def infer_directions(network,reference,coast_station,*,routing=None,width=None,s
         diagnostics[i]['direction']=int(direction[i])
         diagnostics[i]['status']='accepted' if direction[i] else 'unresolved'
     return direction,diagnostics
-
-
-def fit_directed(native,network,*,routing=None,width=None,spacing=180.,quantile=.2,stiffness=2.,max_support_gap=1200.,contacts=None):
-    from .study import assign_stations
-    n=len(network['station_pixels'])
-    os,ok=assign_stations(network,native['bank_owners'])
-    os=os[ok];oh=native['bank_heights'][ok]
-    cs,good=assign_stations(network,native['ocean_owners']);cs=np.unique(cs[good])
-    count=np.bincount(os,minlength=n);order=np.argsort(os,kind='stable');starts=np.r_[0,np.cumsum(count)]
-    reference=np.full(n,np.nan)
-    for i in np.flatnonzero(count>=4): reference[i]=np.quantile(oh[order[starts[i]:starts[i+1]]],quantile)
-    direction,diagnostics=infer_directions(network,reference,cs,routing=routing,width=width,spacing=spacing)
-    graph=nx.Graph()
-    accepted={}
-    for i,(r,x) in enumerate(zip(network['reaches'],network['distances'])):
-        if not direction[i]: continue
-        rr=list(r) if direction[i]>0 else list(reversed(r));xx=x if direction[i]>0 else x[-1]-x[::-1]
-        accepted[i]=(rr,xx)
-        graph.add_weighted_edges_from((int(u),int(v),float(d)) for u,v,d in zip(rr[:-1],rr[1:],np.diff(xx)))
-    fitted=np.full(n,np.nan,dtype=np.float32);labels=np.full(n,-1,dtype=np.int32)
-    reports=[];supported_edges=[];supported_reaches=[];plans={}
-    for component,group in enumerate(sorted(nx.connected_components(graph),key=min)):
-        members=np.array(sorted(group));labels[members]=component
-        observed=np.isfinite(reference[members])
-        report=dict(component=component,stations=len(members),supported_stations=int(observed.sum()),status='unchanged');reports.append(report)
-        if len(members)<3 or observed.sum()<3 or observed.mean()<.6:
-            report['reason']='Insufficient CartoDEM bank support';continue
-        local=nx.to_scipy_sparse_array(graph.subgraph(group),nodelist=members.tolist(),weight='weight',format='csr')
-        local=sparse.csr_matrix(local);local.indices=local.indices.astype('int32');local.indptr=local.indptr.astype('int32')
-        gap=dijkstra(local,directed=False,indices=np.flatnonzero(observed),min_only=True)
-        report['maximum_support_gap_m']=float(gap.max())
-        if gap.max()>max_support_gap:
-            report['reason']='A section is too far from supported bank observations';continue
-        mapping={v:i for i,v in enumerate(members)}
-        ri=[i for i,(r,x) in accepted.items() if r[0] in group]
-        rr=[[mapping[v] for v in accepted[i][0]] for i in ri];dd=[accepted[i][1] for i in ri]
-        edges=np.asarray([(u,v) for r in rr for u,v in zip(r[:-1],r[1:])],dtype=int)
-        sample=np.isin(os,members);localobs=np.searchsorted(members,os[sample])
-        try:
-            plans[component]=dict(members=members,edges=edges,localobs=localobs,observations=oh[sample],
-                                  reaches=rr,distances=dd,observed=observed)
-            values,detail=fit_network(len(members),edges,localobs,oh[sample],reaches=rr,distances=dd,
-                                     quantile=quantile,stiffness=stiffness,
-                                     upper_bounds=np.where(observed,reference[members],np.inf))
-            change=np.abs(values[observed]-reference[members][observed])
-            report.update(p95_station_adjustment_m=float(np.percentile(change,95)),maximum_station_adjustment_m=float(change.max()))
-            if np.percentile(change,95)>15 or change.max()>40:
-                raise ValueError('Profile requires excessive adjustment of supported bank levels')
-            fitted[members]=values;supported_edges.extend(members[edges].tolist());supported_reaches.extend(ri)
-            report.update(status='fitted',fit=detail)
-        except ValueError as exc:
-            report['reason']=str(exc)
-    # An unresolved branch must remain unchanged even when its two junctions
-    # were fitted through other branches. Endpoint finiteness is insufficient.
-    pairs={tuple(sorted((int(a),int(b)))) for a,b in supported_edges}
-    left,right=network['left'],network['right']
-    supported=np.array([(a>=0 and b>=0 and (tuple(sorted((int(a),int(b)))) in pairs or
-                         (a==b and np.isfinite(fitted[a])))) for a,b in zip(left,right)],bool)
-    for i,d in enumerate(diagnostics): d['profile_applied']=i in set(supported_reaches)
-    network.update(fitted=fitted,supported_edges=np.asarray(supported_edges,dtype=int).reshape(-1,2),
-                   native_supported=supported,bank_reference=reference,bank_count=count,component=labels,
-                   direction_diagnostics=diagnostics,missing_bank_owners=int((~ok).sum()))
-    if contacts is not None:
-        from .boundaries import constrain_joins
-        def refit(group,samples):
-            plan=plans[group];members=plan['members'];observed=plan['observed']
-            local_samples=samples.copy()
-            local_samples[:,:2]=np.searchsorted(members,samples[:,:2].astype(int))
-            values,detail=fit_network(len(members),plan['edges'],plan['localobs'],plan['observations'],
-                                     reaches=plan['reaches'],distances=plan['distances'],
-                                     quantile=quantile,stiffness=stiffness,
-                                     upper_bounds=np.where(observed,reference[members],np.inf),
-                                     boundary_samples=local_samples)
-            change=np.abs(values[observed]-reference[members][observed])
-            if np.percentile(change,95)>15 or change.max()>40:
-                raise ValueError('Boundary-constrained profile requires excessive bank adjustment')
-            network['fitted'][members]=values
-            reports[group].update(fit=detail,p95_station_adjustment_m=float(np.percentile(change,95)),
-                                  maximum_station_adjustment_m=float(change.max()))
-        boundary=constrain_joins(network,contacts,refit)
-        network['boundary_acceptance']=boundary
-        rejected=set(boundary['rejected_profile_groups'])
-        for report in reports:
-            if report['component'] in rejected:
-                report.update(status='unchanged',reason='Incompatible treatment-boundary constraints: '+
-                              boundary['rejection_reasons'][str(report['component'])])
-        for d in diagnostics:
-            if d['profile_applied'] and labels[d['endpoints'][0]] in rejected:
-                d.update(profile_applied=False,profile_rejection='Incompatible treatment-boundary constraints')
-    return network,reports

@@ -3,7 +3,7 @@ from unittest.mock import patch
 
 import numpy as np
 
-from river_flattening.directions import infer_directions,fit_directed
+from river_flattening.directions import infer_directions
 from river_flattening.routing import analysis_window
 from river_flattening.vendor.rivgraph import dir_shortest_paths_links
 
@@ -42,15 +42,6 @@ class DirectionTests(unittest.TestCase):
         self.assertEqual(direction[0],0)
         self.assertIn('conflicts',report[0]['reason'])
 
-    def test_unresolved_parallel_reaches_are_not_filled_via_fitted_junctions(self):
-        net=network([[0,4,1],[1,5,2],[1,6,7,2],[2,8,3]])
-        # First and last reaches descend; two flat middle branches are ambiguous.
-        reference=np.array([20,10,10,0,15,10,10,10,5.])
-        native=dict(bank_owners=np.repeat(np.arange(9),5),bank_heights=np.repeat(reference,5),ocean_owners=np.array([],int))
-        fitted,report=fit_directed(native,net)
-        self.assertTrue(np.isfinite(fitted['fitted'][[1,2]]).all())
-        self.assertFalse(fitted['native_supported'][[5,6,7]].any())
-        self.assertTrue(fitted['native_supported'][[0,4,1,2,8,3]].all())
 
     def test_equal_outlet_distances_do_not_break_tie_by_link_order(self):
         links=dict(id=[0,1,2],conn=[[0,1],[1,2],[0,3]],len=[10,10,10],guess=[[],[],[]],guess_alg=[[],[],[]])

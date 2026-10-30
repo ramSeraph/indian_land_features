@@ -17,6 +17,20 @@ experimental fitting algorithm and the measured limitations.
 | `validation/` | Environment checks, river audits, PMTiles verification and mosaic compatibility checks. |
 | `provenance/` | Recorded input/output manifests and build results. |
 
+## Build sequence
+
+| Step | Entry point | Output |
+| --- | --- | --- |
+| Download sources | `build.py download` | Original CartoDEM, EGM2008 grid and GLO-30 masks. |
+| Correct heights and mask ocean | `build.py prepare` | Native sheets with EGM2008 heights and uniform nodata. |
+| Extract river geometry | `river_flattening.prepare` | Connected river skeleton and CartoDEM bank samples. |
+| Route, fit and export COGs | `river_flattening.national routing`, `fit`, `apply` | Joint river profiles and final COGs. |
+| Encode display tiles | `rebuild_tiles.py` | One SQLite tile database per zoom. |
+| Package for publication | `export_mbtiles.py`, `partition_mbtiles.sh` | Standard MBTiles, then partitioned PMTiles and mosaic JSON. |
+
+`run_build.py` runs the first four steps in order. The commands below cover
+installation, each build stage and verification.
+
 ## Processing contract
 
 | Stage | Result |
@@ -38,9 +52,8 @@ this workflow.
 
 The recorded build used Linux ARM64, Python 3.14.3, Rasterio 1.5.2 with GDAL
 3.12.2/PROJ 9.8.1, WhiteboxTools 2.4.0, and the packages pinned in
-[requirements.txt](requirements.txt). The display environment is pinned in
-[requirements-tiles.txt](requirements-tiles.txt); the separate partitioning
-environment uses [requirements-mosaic.txt](requirements-mosaic.txt).
+[requirements.txt](requirements.txt). The separate partitioning environment
+uses [requirements-mosaic.txt](requirements-mosaic.txt).
 
 Run commands from this directory. Choose ordinary directories on storage with
 enough capacity; no machine address or mount location is required by the code.
@@ -57,22 +70,21 @@ dem_work=/path/to/dem-build
 display_work=/path/to/display-build
 tool_dir=/path/to/tools
 
-bash install/install_pipeline_arm64.sh "$tool_dir" "$dem_work"
+bash install/install_arm64.sh "$tool_dir" "$dem_work"
 ```
 
-The installer creates `processing-venv`, `venv` for tiling, and `mosaic-venv`
-under the selected tools directory. It downloads checksum-pinned uv and GitHub
-CLI binaries, uses uv to install Python 3.14.3, installs pinned Python wheels,
+The installer creates `processing-venv` for DEM processing and tiling, plus
+`mosaic-venv` for partitioning, under the selected tools directory. It downloads
+checksum-pinned uv, uses it to install Python 3.14.3, installs pinned Python wheels,
 and extracts checksum-pinned conda-forge WhiteboxTools/libgcc packages into the
-DEM workspace. It does not install Conda or require GRASS. Package license
-files and the Whitebox binary hash are retained under
+DEM workspace. Package license files and the Whitebox binary hash are retained under
 `tools/whitebox-prebuilt/` in that workspace.
 
 ## 1. Download inputs and build the final COGs
 
 ```bash
 "$tool_dir/processing-venv/bin/python" run_build.py \
-  --workdir "$dem_work" --river-source glo30 --through cogs
+  --workdir "$dem_work" --through cogs
 ```
 
 This runs `download`, `prepare`, `geometry`, `routing`, `fit`, and `cogs` in
@@ -82,8 +94,8 @@ individually, the equivalent commands are:
 ```bash
 "$tool_dir/processing-venv/bin/python" build.py download --workdir "$dem_work"
 "$tool_dir/processing-venv/bin/python" build.py prepare --workdir "$dem_work"
-"$tool_dir/processing-venv/bin/python" -m river_flattening.production geometry \
-  --workdir "$dem_work" --label final --river-source glo30
+"$tool_dir/processing-venv/bin/python" -m river_flattening.prepare \
+  --workdir "$dem_work" --label final
 "$tool_dir/processing-venv/bin/python" -m river_flattening.national routing \
   --workdir "$dem_work" --label final
 "$tool_dir/processing-venv/bin/python" -m river_flattening.national fit \
@@ -94,9 +106,10 @@ individually, the equivalent commands are:
 
 ### Download sources
 
-[inputs.lock.json](inputs.lock.json) records URLs, byte sizes and SHA-256 hashes
-for the actual inputs: 543 original CartoDEM TIFFs, 543 GLO-30 WBM TIFFs and one
-geoid grid. Keep this file beside `build.py` when reproducing the build.
+[provenance/inputs.lock.json](provenance/inputs.lock.json) records URLs, byte sizes
+and SHA-256 hashes for the actual inputs: 543 original CartoDEM TIFFs, 543 GLO-30
+WBM TIFFs and one geoid grid. Keep it under `provenance/` in the source checkout
+when reproducing the build.
 
 - CartoDEM: the [original-data release](https://github.com/ramSeraph/indian_land_features/releases/tag/cartodem-30m-v3r1-orig).
   Its checksum-pinned `listing_files.csv` supplies the original filenames and
@@ -147,15 +160,14 @@ Final files are `output/final/cogs/*.tif`, retaining the original sheet names.
 ## 2. Convert final COGs to TerrainRGB
 
 ```bash
-"$tool_dir/venv/bin/python" rebuild_tiles.py \
+"$tool_dir/processing-venv/bin/python" rebuild_tiles.py \
   --workdir "$display_work" \
   --cog-dir "$dem_work/output/final/cogs" \
   --cog-manifest "$dem_work/rivers/final/cogs.json" \
-  --workers 4 --tiles-only
+  --workers 4
 ```
 
-Use `--tiles-only`: packaging is performed by the standard tool in the next
-step. The tiler verifies all COG hashes, builds a shared VRT and a separate
+The tiler verifies all COG hashes, builds a shared VRT and a separate
 native 0/255 validity mosaic, and resamples numeric heights onto the Web Mercator
 tile grid. It averages valid samples at z0–11 and uses bilinear sampling at z12.
 It never resizes packed TerrainRGB colours to construct lower zooms.
@@ -194,7 +206,7 @@ packaging stage. See [TILING_SETUP.md](TILING_SETUP.md) for tiling details.
 ## 3. Export MBTiles and partition with pmtiles-mosaic
 
 ```bash
-"$tool_dir/venv/bin/python" export_mbtiles.py --workdir "$display_work" \
+"$tool_dir/processing-venv/bin/python" export_mbtiles.py --workdir "$display_work" \
   --outdir "$display_work/publication/mbtiles"
 bash partition_mbtiles.sh "$display_work/publication/mbtiles" \
   "$display_work/publication/pmtiles" "$tool_dir/mosaic-venv/bin/partition"
@@ -223,8 +235,6 @@ node validation/verify_mosaic.mjs /path/to/pmtiles-mosaic/dist \
 
 The private index used here is generated by `validation/verify_partitioned.py` for this
 validation and is not uploaded. See the publication commands in `TILING_SETUP.md`.
-The PMTiles writer formerly embedded in `production_tiles.py` is a historical
-code path and is not used by these commands.
 
 ## Resume, validation and publication
 
@@ -245,8 +255,13 @@ and removed before retrying that zoom.
 Run the synthetic and small-raster tests in the processing environment:
 
 ```bash
-"$tool_dir/processing-venv/bin/python" -m unittest discover -s tests -t . -v
+CARTODEM_WHITEBOX_DIR="$dem_work/tools/whitebox-prebuilt" \
+  "$tool_dir/processing-venv/bin/python" -m unittest discover -s tests -t . -v
 ```
+
+The Whitebox integration tests use the installed binary on small temporary
+rasters. They are skipped when `CARTODEM_WHITEBOX_DIR` is unset; set it as above
+to run the complete suite.
 
 Tests cover both nodata codes, geoid correction, ocean masking, native validity,
 COG preservation, direction conventions, shared junctions, connected fitting,

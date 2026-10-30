@@ -1,4 +1,4 @@
-"""Small end-to-end checks of mosaics, categorical coverage and packaged tiles."""
+"""Small end-to-end checks of mosaics, categorical coverage and encoded tiles."""
 import io
 import json
 import shutil
@@ -17,8 +17,8 @@ from rasterio.vrt import WarpedVRT
 from rasterio.warp import transform
 from rasterio.windows import Window
 
-from build import atomic_json,create_mosaic,setup,download
-from production_tiles import Sampler,tiles,package,validate_rgba
+from build import create_mosaic,setup,download
+from production_tiles import Sampler,tiles,validate_rgba
 
 
 class ProductionTests(unittest.TestCase):
@@ -89,12 +89,10 @@ class ProductionTests(unittest.TestCase):
         self.assertGreater(valid_count,0)
         self.assertGreater(invalid_count,0)
 
-    def test_tiles_resume_and_pmtiles_keep_exact_rgba(self):
+    def test_tiles_resume_and_keep_exact_rgba(self):
         first=tiles(self.root,'pilot',11,12)
         again=tiles(self.root,'pilot',11,12)
         self.assertEqual(first[0]['tiles'],again[0]['tiles'])
-        output=package(self.root,'pilot',max_bytes=1000000)
-        self.assertEqual(sum(x['verified_tiles'] for x in output),sum(z['tiles'] for z in first))
         with sqlite3.connect(self.root/'tiles/pilot/z12.sqlite') as db,Sampler(self.height,self.mask,12) as sampler:
             for x,y,data,valid in db.execute('SELECT x,y,data,valid FROM tiles'):
                 rgba=np.asarray(Image.open(io.BytesIO(data)).convert('RGBA'))
@@ -139,22 +137,6 @@ class ProductionTests(unittest.TestCase):
                 self.assertGreater(g['xmax'],g['xmin'])
                 self.assertGreater(count,0)
 
-    def test_packaged_river_metadata_identifies_the_actual_mask_source(self):
-        from pmtiles.reader import Reader
-        atomic_json(self.root/'rivers/pilot/cogs.json',
-                    dict(river_source='glo30',quality_status='Candidate test data'))
-        tiles(self.root,'pilot',12,12)
-        output=package(self.root,'pilot',max_bytes=1000000)
-        data=(self.root/'output/pilot'/output[0]['file']).read_bytes()
-        metadata=Reader(lambda offset,length:data[offset:offset+length]).metadata()
-        self.assertEqual(metadata['river_mask'],
-                         'Copernicus GLO-30 WBM class 3 (River); class 2 (Lake) excluded')
-        self.assertFalse(metadata['nodata_preserved'])
-        self.assertEqual(metadata['nodata_height_m'],0)
-        self.assertNotIn('nodata_alpha',metadata)
-        self.assertNotIn('WRIS',metadata['attribution'])
-        recipe=json.loads((self.root/'tiles/pilot/recipe.json').read_text())
-        self.assertEqual(recipe['river_source'],'glo30')
 
     def test_parallel_tiles_match_serial_and_resume_an_incomplete_column(self):
         rows,cols=np.indices((96,96))
@@ -183,10 +165,6 @@ class ProductionTests(unittest.TestCase):
                 db.execute('UPDATE tiles SET data=? WHERE x=?',(b'incomplete',x))
             tiles(self.root,'pilot',12,12,output_prefix='parallel',workers=1)
             self.assertEqual(contents('parallel'),expected)
-        serial=package(self.root,'serial');parallel=package(self.root,'parallel')
-        self.assertEqual([p['sha256'] for p in serial],[p['sha256'] for p in parallel])
-
-
 
 
 if __name__=='__main__':

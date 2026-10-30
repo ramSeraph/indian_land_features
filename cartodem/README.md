@@ -12,5 +12,5 @@
    `pmtiles-mosaic` to create geographic PMTiles partitions.
 
 The [river method](egm2008/river_flattening/README.md) explains fitting and its
-limitations. [old/](old/README.md) preserves superseded scripts and experiments.
+limitations. [old/](old/README.md) preserves the original CartoDEM workflow.
 [RELEASE_NOTES.md](RELEASE_NOTES.md) contains the derived-data release notes.

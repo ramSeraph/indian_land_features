@@ -1,32 +1,16 @@
-"""Isolate per-sheet GEOS/GDAL allocations while retaining global geometry IDs."""
+"""Isolate per-sheet GDAL allocations while retaining global geometry IDs."""
 import argparse
 import math
 from pathlib import Path
-import subprocess
-import sys
 import time
 
 import numpy as np
 import rasterio
 from rasterio.windows import Window
 
-from build import atomic_json,digest_json,emit,read_json,sha256
+from build import atomic_json,atomic_npz,digest_json,read_json,sha256
 from .geometry import extract_window
 from .allocation import make_allocator
-from .production import atomic_npz
-
-
-def masks_in_processes(root,label,selected):
-    work=root/'rivers'/label
-    for number,sheet in enumerate(selected):
-        output=work/'masks'/sheet['name']
-        # prepare_masks verifies every existing mask against source/code/output
-        # hashes afterwards; an existing file never bypasses that verification.
-        if not output.exists():
-            subprocess.run([sys.executable,'-m','river_flattening.staging','mask',
-                            '--workdir',str(root),'--label',label,'--sheet',sheet['name']],check=True)
-        emit('river_mask',complete=number+1,total=len(selected),sheet=sheet['name'])
-        atomic_json(work/'mask-status.json',dict(complete=number+1,total=len(selected),sheet=sheet['name']))
 
 
 def geometry_sheet(root,work,sheet):
@@ -58,17 +42,12 @@ def geometry_sheet(root,work,sheet):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('stage',choices=['mask','geometry'])
     parser.add_argument('--workdir',type=Path,required=True)
     parser.add_argument('--label',required=True)
     parser.add_argument('--sheet',required=True)
     args=parser.parse_args();root=args.workdir;work=root/'rivers'/args.label
     sheet=next(s for s in read_json(root/'reports/inputs.json')['sheets'] if s['name']==args.sheet)
-    if args.stage=='mask':
-        from .wris import prepare_masks
-        with rasterio.Env(GDAL_CACHEMAX=48*1024**2,GDAL_NUM_THREADS='1'):
-            prepare_masks(root,work,[sheet])
-    else:geometry_sheet(root,work,sheet)
+    geometry_sheet(root,work,sheet)
 
 
 if __name__=='__main__':main()

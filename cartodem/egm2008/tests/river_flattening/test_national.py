@@ -9,10 +9,11 @@ import rasterio
 from rasterio.transform import from_origin
 
 from build import atomic_json,read_json,sha256,setup
-from river_flattening.production import geometry,fit as fit_small,apply as apply_small
+from river_flattening.prepare import geometry
 from river_flattening.national import fit,apply,skeleton_components
-from river_flattening.regional import accumulate
+from river_flattening.regional import accumulate,route_regions
 from river_flattening.staging import geometry_sheet
+from .helpers import attach_whitebox
 
 
 class NationalTests(unittest.TestCase):
@@ -31,9 +32,10 @@ class NationalTests(unittest.TestCase):
         self.assertNotEqual(labels[0],labels[1])
         self.assertEqual(labels[2],labels[3])
 
-    def test_partitioned_fit_matches_shared_fit_across_sheets_and_preserves_holes(self):
+    def test_whitebox_and_joint_fit_cross_sheets_and_preserve_holes(self):
         with tempfile.TemporaryDirectory() as directory:
             root=setup(Path(directory)/'work');sheets=[];masks=[]
+            attach_whitebox(self,root)
             for tile in range(2):
                 name=f'sheet{tile}.tif';mask_name=f'mask{tile}.tif'
                 transform=from_origin(75+tile*128/3600,13,1/3600,1/3600)
@@ -54,10 +56,7 @@ class NationalTests(unittest.TestCase):
                 sheets.append(dict(name=name,mask=mask_name,width=128,height=96,transform=list(transform)[:6]))
                 atomic_json(root/'reports/sheets'/(Path(name).stem+'.json'),dict(output_sha256=sha256(path)))
             atomic_json(root/'reports/inputs.json',dict(sheets=sheets,masks=masks))
-            geometry(root,'whole',halo=32,river_source='glo30',allocation_backend='scipy')
-            fit_small(root,'whole',spacing=120,max_support_gap=600,use_routing=False)
-            apply_small(root,'whole')
-            geometry(root,'partitioned',halo=32,allocation_backend='scipy')
+            geometry(root,'partitioned',halo=32)
             self.assertEqual(read_json(root/'rivers/partitioned/geometry-recipe.json')['river_source'],'glo30')
             # The isolated worker must reproduce the same global IDs and bank
             # samples as the inline geometry path, including halo ownership.
@@ -66,7 +65,8 @@ class NationalTests(unittest.TestCase):
                 previous=sha256(path)
                 geometry_sheet(root,root/'rivers/partitioned',sheet)
                 self.assertEqual(sha256(path),previous)
-            report=fit(root,'partitioned',spacing=120,max_support_gap=600,use_routing=False)
+            route_regions(root,'partitioned',halo=64)
+            report=fit(root,'partitioned',spacing=120,max_support_gap=600)
             self.assertTrue(report['partitioned']);self.assertGreater(report['fitted_stations'],10)
             with sqlite3.connect(root/'rivers/partitioned/components/models.sqlite') as db:
                 loops=[(json.loads(text),model) for text,model in db.execute('SELECT report,data FROM models')
@@ -76,21 +76,27 @@ class NationalTests(unittest.TestCase):
                 self.assertEqual(loop['native_nodes'],4)
                 self.assertEqual(loop['components'][0]['reason'],'No modelled river reach')
                 self.assertIsNone(model)
-            self.assertEqual(fit(root,'partitioned',spacing=120,max_support_gap=600,use_routing=False),report)
+            self.assertEqual(fit(root,'partitioned',spacing=120,max_support_gap=600),report)
             result=apply(root,'partitioned')
             self.assertEqual(result['river_source'],'glo30')
-            self.assertGreater(result['treated_river_pixels'],0)
+            self.assertEqual(result['treated_river_pixels'],2288)
             self.assertEqual(result['nodata_pixels'],528)
+            outputs=[]
             for sheet in sheets:
-                with rasterio.open(root/'output/whole/cogs'/sheet['name']) as src:expected=src.read(1)
                 with rasterio.open(root/'output/partitioned/cogs'/sheet['name']) as src:
                     actual=src.read(1);self.assertEqual(src.nodata,-255)
                     self.assertEqual(src.tags(ns='IMAGE_STRUCTURE')['LAYOUT'],'COG')
                     self.assertEqual(src.tags()['RIVER_MASK'],'glo30')
                 with rasterio.open(root/'sheets/coastal'/sheet['name']) as src:
-                    np.testing.assert_array_equal(actual[10:14,20:26],src.read(1)[10:14,20:26])
-                    np.testing.assert_array_equal(actual[24:27,20:23],src.read(1)[24:27,20:23])
-                np.testing.assert_allclose(actual,expected,rtol=0,atol=.001)
+                    before=src.read(1)
+                with rasterio.open(root/'inputs/glo30-wbm'/sheet['mask']) as src:classes=src.read(1)
+                preserve=(classes!=3)|(before==-255)
+                np.testing.assert_array_equal(actual[preserve],before[preserve])
+                np.testing.assert_array_equal(actual[24:27,20:23],before[24:27,20:23])
+                self.assertLess(float(np.ptp(actual[42:51,70])),.01)
+                outputs.append(actual)
+            edge_drop=outputs[0][42:51,-1]-outputs[1][42:51,0]
+            self.assertTrue(np.all((edge_drop>0)&(edge_drop<.5)))
             self.assertEqual(apply(root,'partitioned')['treated_river_pixels'],result['treated_river_pixels'])
 
 

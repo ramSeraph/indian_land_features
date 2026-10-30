@@ -8,7 +8,7 @@ See [the reproduction commands](../README.md) for the complete pipeline.
 
 ## Geometry and bank observations
 
-`production.py` verifies the prepared elevation sheets and their WBM hashes,
+`prepare.py` verifies the prepared elevation sheets and their WBM hashes,
 then builds shared native-grid elevation and classification mosaics. WBM class
 0 is land, 1 is ocean, 2 is lake and 3 is river. Class 255 denotes missing
 classification coverage in the working mosaic and cannot support a valid
@@ -83,8 +83,6 @@ unresolved at this stage. A shortest-path suggestion alone does not establish
 flow direction.
 
 This provides local direction evidence, not a national watershed delineation.
-The production path does not run Whitebox `Watershed`; that tool was evaluated
-in an earlier trial. GRASS is not required by the production commands.
 
 ## A joint profile across connected reaches
 
@@ -202,10 +200,5 @@ The limited RivGraph code used for direction suggestions is vendored from
 [vendor/provenance.json](vendor/provenance.json) lists the selected functions,
 source hashes and local edits; [the BSD-3-Clause license](vendor/LICENSE-RivGraph.txt)
 is included. WhiteboxTools is downloaded as a pinned standalone binary by
-`install/install_whitebox_binary.py`; its package licenses and binary hash are retained
+[the Whitebox installer](../install/install_whitebox_binary.py); its package licenses and binary hash are retained
 with the installation.
-
-Earlier GLO-30, WRIS, GRASS and source-pin experiments are archived under
-[old/egm2008/river_flattening](../../old/egm2008/river_flattening/README.md).
-Their treatment percentages and transition statistics do not describe this
-national GLO-30/Whitebox run.

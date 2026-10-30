@@ -14,18 +14,18 @@ display_work=/path/to/display-build
 cog_dir=/path/to/final/cogs
 cog_manifest=/path/to/cogs.json
 
-bash install/install_tiles_arm64.sh "$tool_dir"
+bash install/install_arm64.sh "$tool_dir"
 
-"$tool_dir/venv/bin/python" rebuild_tiles.py \
+"$tool_dir/processing-venv/bin/python" rebuild_tiles.py \
   --workdir "$display_work" --cog-dir "$cog_dir" \
-  --cog-manifest "$cog_manifest" --workers 4 --tiles-only
+  --cog-manifest "$cog_manifest" --workers 4
 ```
 
-The installer uses checksum-pinned uv and GitHub CLI binaries, Python 3.14.3,
-[requirements-tiles.txt](requirements-tiles.txt), and a separate
+The installer uses checksum-pinned uv, Python 3.14.3,
+[requirements.txt](requirements.txt), and a separate
 [pmtiles-mosaic environment](requirements-mosaic.txt). Rasterio supplies GDAL
-and PROJ; Pillow supplies lossless WebP. No rio-rgbify or GDAL command-line
-installation is needed.
+and PROJ; Pillow supplies lossless WebP. With no DEM workspace argument, the
+installer skips WhiteboxTools because this path starts from existing COGs.
 
 Use a fresh display workspace when changing the input COGs or encoding recipe.
 The runner checks all 543 input COG hashes and does not modify them. Four CPU
@@ -56,7 +56,7 @@ worker count does not change the encoding recipe.
 mbtiles_dir="$display_work/publication/mbtiles"
 pmtiles_dir="$display_work/publication/pmtiles"
 
-"$tool_dir/venv/bin/python" export_mbtiles.py \
+"$tool_dir/processing-venv/bin/python" export_mbtiles.py \
   --workdir "$display_work" --outdir "$mbtiles_dir"
 
 bash partition_mbtiles.sh "$mbtiles_dir" "$pmtiles_dir" \
@@ -92,14 +92,15 @@ retain the `Bhuvan_CartoDEM_v3r1_TerrainRGB-part0000.pmtiles` through
 ## Publish with gh-release-tools
 
 Publish the COGs, PMTiles, the tool-generated mosaic JSON and the TIFF listing.
-Build manifests, checksum files, software records, source archives and the private
+Build manifests, software records and the private
 partition index are not release assets. Keep them in the workspace or repository.
 
-Authenticate GitHub CLI, choose the intended existing release, then use
+Install and authenticate GitHub CLI, choose the intended existing release, then use
 [gh-release-tools](https://github.com/ramSeraph/release_tools). These commands
 replace matching filenames:
 
 ```bash
+sudo apt-get install -y gh
 export PATH="$tool_dir/bin:$PATH"
 repo=OWNER/REPOSITORY
 release_tag=RELEASE_TAG

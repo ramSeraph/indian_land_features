@@ -4,19 +4,15 @@ Each sheet owns its samples once. Artificial context edges never become claimed
 river outlets. Incomplete upstream terrain is excluded from the evidence.
 The globally connected river fit remains independent of these processing windows.
 """
-import os
 from pathlib import Path
 import shutil
-import subprocess
-import sys
 import time
 
 import numpy as np
 import rasterio
 from rasterio.windows import Window
 
-from build import atomic_json, digest_json, emit, read_json, sha256
-from .production import atomic_npz
+from build import atomic_json, atomic_npz, digest_json, emit, read_json, sha256
 from .routing import analysis_window, OFFSETS
 
 
@@ -31,25 +27,17 @@ def accumulate(owners, direction, area, valid):
     return dict(nodes=ids,vector=vector,weight=weight,count=count)
 
 
-def route_regions(root,label,halo=1024,max_cells=40_000_000,backend='whitebox'):
+def route_regions(root,label,halo=1024,max_cells=40_000_000):
     root=Path(root);work=root/'rivers'/label;output=work/'routing'
     output.mkdir(exist_ok=True)
-    grass=None
-    if backend=='whitebox':
-        from .whitebox import installation,route_context
-        tool,_,_=installation(root)
-        algorithm='Whitebox BreachDepressions + D8Pointer + D8FlowAccumulation --pntr; cells'
-    elif backend=='grass':
-        grass=shutil.which('grass')
-        if not grass:raise ValueError('Install GRASS for the historical GRASS backend')
-        tool=dict(version=subprocess.check_output([grass,'--config','version'],text=True).strip())
-        algorithm='r.watershed -sm; memory=256'
-    else:raise ValueError('Unknown routing backend')
+    from .whitebox import installation,route_context
+    tool,_,_=installation(root)
+    algorithm='Whitebox BreachDepressions + D8Pointer + D8FlowAccumulation --pntr; cells'
     records=read_json(work/'geometry.json');grid=read_json(work/'grid.json')
     transform=rasterio.Affine(*grid['transform'])
     recipe=dict(geometry_sha256=sha256(work/'geometry.json'),
                 code={p:sha256(Path(__file__).with_name(p)) for p in ('regional.py','routing.py','whitebox.py')},
-                backend=backend,tool=tool,
+                backend='whitebox',tool=tool,
                 halo_pixels=halo,max_cells=max_cells,algorithm=algorithm,
                 only_positive_complete_accumulations=True)
     report_path=output/'report.json';recipe_id=digest_json(recipe)
@@ -60,7 +48,6 @@ def route_regions(root,label,halo=1024,max_cells=40_000_000,backend='whitebox'):
             if sha256(output/r['evidence'])!=r['sha256']:raise ValueError('Regional evidence changed')
         return old
     reports=[]
-    env=os.environ.copy();env.update(GRASS_MESSAGE_FORMAT='plain',OMP_NUM_THREADS='1',TMPDIR=str((root/'tmp').resolve()))
     with rasterio.Env(GDAL_CACHEMAX=48*1024**2,GDAL_NUM_THREADS='1',GDAL_MAX_DATASET_POOL_SIZE=24), \
          rasterio.open(work/'coastal.vrt') as src,rasterio.open(work/'classes.vrt') as masks:
         for record in records['sheets']:
@@ -106,15 +93,8 @@ def route_regions(root,label,halo=1024,max_cells=40_000_000,backend='whitebox'):
                                 dst.write(values[crop],1,window=Window(xx,yy,w,h))
                                 ev.write(valid[crop].astype('uint8'),1,window=Window(xx,yy,w,h))
                                 filled_total+=int(filled[crop].sum())
-                    if backend=='whitebox':
-                        routing_details=route_context(root,temporary,output,stem+'-whitebox-')
-                        validity_name='routing-valid'
-                    else:
-                        with (output/(stem+'-grass.log')).open('w') as log:
-                            subprocess.run([grass,'--tmp-location',str((temporary/'analysis.tif').resolve()),'--exec',
-                                            sys.executable,str(Path(__file__).with_name('routing.py').resolve()),
-                                            '--worker',str(temporary.resolve())],env=env,stdout=log,stderr=subprocess.STDOUT,check=True)
-                        validity_name='evidence'
+                    routing_details=route_context(root,temporary,output,stem+'-whitebox-')
+                    validity_name='routing-valid'
                     rows,cols=pixels//grid['width']-y0,pixels%grid['width']-x0
                     yy,xx=int(rows.min()),int(cols.min())
                     window=Window(xx,yy,int(cols.max()-xx+1),int(rows.max()-yy+1))

@@ -1,10 +1,9 @@
-"""Checks for rebuilding display tiles without changing COGs or invoking legacy packaging."""
+"""Check COG preservation, opaque tile encoding and resumable display builds."""
 import io
 from pathlib import Path
 import sqlite3
 import tempfile
 import unittest
-from unittest.mock import patch
 
 import numpy as np
 import rasterio
@@ -48,18 +47,15 @@ class RebuildTests(unittest.TestCase):
                 with rasterio.open(cogs/entry['file']) as src:self.assertEqual(src.nodata,-255)
             meta=read_json(root/'output/display/archives.json')['metadata']
             self.assertEqual(meta['alpha'],255);self.assertFalse(meta['nodata_preserved'])
-            with patch('rebuild_tiles.package',side_effect=AssertionError('Legacy packager must not run')):
-                tile_result=rebuild(root,cogs,manifest,expected_sheets=2,min_zoom=11,max_zoom=12,tiles_only=True)
-            self.assertEqual(tile_result['tiles'],result['tiles'])
-            self.assertEqual(tile_result['archives'],0)
-            self.assertEqual(sha256(database),before)
+            self.assertEqual(meta['river_mask'],
+                             'Copernicus GLO-30 WBM class 3 (River); class 2 (Lake) excluded')
+            self.assertEqual(meta['nodata_height_m'],0)
             self.assertEqual(read_json(root/'output/display/archives.json')['partitions'],[])
             with self.assertRaisesRegex(ValueError,'Expected 543'):
                 rebuild(parent/'wrong',cogs,manifest)
             with (cogs/entries[0]['file']).open('ab') as f:f.write(b'changed')
             with self.assertRaisesRegex(ValueError,'differs'):
                 rebuild(root,cogs,manifest,expected_sheets=2,min_zoom=11,max_zoom=12)
-
 
 
 if __name__=='__main__':unittest.main()

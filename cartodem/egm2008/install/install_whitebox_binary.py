@@ -60,7 +60,8 @@ def main():
     settings=dict(working_directory='',verbose_mode=True,max_procs=1,compress_rasters=True)
     (binary.parent/'settings.json').write_text(json.dumps(settings,indent=2)+'\n')
     version=subprocess.check_output([str(binary),'--version'],env=env,text=True).strip()
-    subprocess.run([str(binary),'--toolhelp=Watershed'],env=env,check=True,stdout=subprocess.DEVNULL)
+    for tool in ('CostDistance','CostAllocation','BreachDepressions','D8Pointer','D8FlowAccumulation'):
+        subprocess.run([str(binary),'--toolhelp='+tool],env=env,check=True,stdout=subprocess.DEVNULL)
     runtime=folder/'lib/libgcc_s.so.1'
     record=dict(distribution='conda-forge standalone CLI',version=version,packages=records,
                 binary=str(binary.relative_to(root)),binary_sha256=digest(binary),
