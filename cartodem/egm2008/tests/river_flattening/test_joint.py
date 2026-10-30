@@ -2,7 +2,7 @@ import unittest
 import numpy as np
 
 from river_flattening.joint import fit_joint,collapse_levels
-from river_flattening.test_directions import network
+from .test_directions import network
 
 
 def observations(levels):

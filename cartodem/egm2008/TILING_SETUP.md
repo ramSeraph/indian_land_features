@@ -62,7 +62,7 @@ pmtiles_dir="$display_work/publication/pmtiles"
 bash partition_mbtiles.sh "$mbtiles_dir" "$pmtiles_dir" \
   "$tool_dir/mosaic-venv/bin/partition"
 
-"$tool_dir/mosaic-venv/bin/python" verify_partitioned.py \
+"$tool_dir/mosaic-venv/bin/python" -m validation.verify_partitioned \
   --workdir "$display_work" --pmtiles-dir "$pmtiles_dir"
 ```
 
@@ -79,7 +79,7 @@ Check application compatibility with the same JavaScript mosaic resolver used
 by the serving application:
 
 ```bash
-node verify_mosaic.mjs /path/to/pmtiles-mosaic/dist \
+node validation/verify_mosaic.mjs /path/to/pmtiles-mosaic/dist \
   "$pmtiles_dir/Bhuvan_CartoDEM_v3r1_TerrainRGB.mosaic.json" \
   "$pmtiles_dir/.validation/partition-info.json"
 ```

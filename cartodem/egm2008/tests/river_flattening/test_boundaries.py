@@ -1,7 +1,7 @@
 import unittest
 import numpy as np
 from river_flattening.boundaries import adjacent_contacts,guard,constrain_joins
-from river_flattening.audit import audit_native_joins
+from validation.river_audit import audit_native_joins
 
 
 class BoundaryTests(unittest.TestCase):

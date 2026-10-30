@@ -1,5 +1,5 @@
 // Verify every packaged tile is a candidate in the production mosaic resolver.
-// Usage: node verify_mosaic.mjs /path/to/pmtiles-mosaic/dist mosaic.json partition_info.json
+// Usage: node validation/verify_mosaic.mjs /path/to/pmtiles-mosaic/dist mosaic.json partition_info.json
 import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';

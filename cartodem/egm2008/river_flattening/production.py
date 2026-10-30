@@ -330,7 +330,7 @@ def apply(root,label='final'):
                  valid_river_pixels=sum(r['valid_river_pixels'] for r in reports),
                  nodata_pixels=sum(r['nodata_pixels'] for r in reports))
     atomic_json(work/'cogs.json',summary)
-    from .audit import audit
+    from validation.river_audit import audit
     audit(root,label)
     return summary
 

@@ -14,7 +14,7 @@ class ResumeTests(unittest.TestCase):
             geometry=root/'rivers/final/geometry-recipe.json'
             geometry.parent.mkdir(parents=True)
             geometry.write_text(json.dumps(dict(river_source='wris')))
-            result=subprocess.run([sys.executable,str(Path(__file__).with_name('run_build.py')),
+            result=subprocess.run([sys.executable,str(Path(__file__).resolve().parents[1]/'run_build.py'),
                                    '--workdir',str(root),'--resume-from','routing','--detach'],
                                   text=True,capture_output=True)
             self.assertEqual(result.returncode,2)

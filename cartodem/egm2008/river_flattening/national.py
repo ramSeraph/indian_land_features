@@ -23,7 +23,7 @@ from cog import export_cog
 from .geometry import compress_network
 from .joint import fit_joint
 from .boundaries import contact_files,native_values
-from .audit import audit_native_joins
+from validation.river_audit import audit_native_joins
 
 
 def pack(data):

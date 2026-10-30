@@ -58,8 +58,11 @@ else
 fi
 "$tile_prefix/bin/uv" pip sync --python "$tile_prefix/venv/bin/python" \
     --only-binary :all: "$tile_code_dir/requirements-tiles.txt"
-"$tile_prefix/venv/bin/python" "$tile_code_dir/check_tiles_environment.py" \
-    --output "$tile_prefix/software.json"
+(
+    cd -- "$tile_code_dir"
+    "$tile_prefix/venv/bin/python" -m validation.check_tiles_environment \
+        --output "$tile_prefix/software.json"
+)
 # pmtiles-mosaic pins a different PMTiles library version, so keep its environment separate.
 if [[ ! -d "$tile_prefix/mosaic-venv" ]]; then
     "$tile_prefix/bin/uv" venv --python "$tile_python_version" "$tile_prefix/mosaic-venv"

@@ -8,7 +8,7 @@ from rasterio.transform import from_origin
 
 from build import atomic_json,sha256,setup
 from river_flattening.production import geometry,fit,apply
-from river_flattening.audit import audit
+from validation.river_audit import audit
 
 
 class CrossSheetTests(unittest.TestCase):

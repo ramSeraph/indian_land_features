@@ -12,7 +12,7 @@ from PIL import Image
 from pmtiles.tile import Compression, TileType, zxy_to_tileid
 from pmtiles.writer import Writer
 
-from verify_partitioned import main
+from validation.verify_partitioned import main
 
 
 class PartitionVerificationTests(unittest.TestCase):
@@ -39,7 +39,7 @@ class PartitionVerificationTests(unittest.TestCase):
                 writer.finalize(dict(tile_type=TileType.WEBP, tile_compression=Compression.NONE,
                                      min_zoom=3, max_zoom=3, min_lon_e7=0, min_lat_e7=0,
                                      max_lon_e7=450000000, max_lat_e7=409798981), {})
-            args = ['verify_partitioned.py', '--workdir', str(root), '--pmtiles-dir', str(root/'pmtiles')]
+            args = ['validation.verify_partitioned', '--workdir', str(root), '--pmtiles-dir', str(root/'pmtiles')]
             with patch('sys.argv', args):
                 main()
             info = json.loads((root/'pmtiles/.validation/partition-info.json').read_text())
